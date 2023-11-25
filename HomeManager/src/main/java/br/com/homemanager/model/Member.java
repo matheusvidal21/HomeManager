@@ -24,28 +24,28 @@ public class Member implements Serializable {
         this.name = name;
     }
 
-    public List<WeeklyTask> getTarefasSemanais() {
+    public List<WeeklyTask> getCurrentWTasks() {
         return currentWTasks;
     }
 
-    public void removerTarefasSemanais() {
+    public void removeWeeklyTasks() {
         currentWTasks.clear();
     }
 
-    public void adicionarTarefasSemanais(List<WeeklyTask> tarefas) {
-        currentWTasks.addAll(tarefas);
+    public void addAllWeeklyTasks(List<WeeklyTask> tasks) {
+        currentWTasks.addAll(tasks);
     }
 
-    public List<DailyTask> getTarefasDiarias(){
+    public List<DailyTask> getDailyTasks(){
         return currentDTasks;
     }
 
-    public void removerTarefasDiarias(){
+    public void removeDailyTasks(){
         currentDTasks.clear();
     }
 
-    public void adicionarTarefasDiarias(List<DailyTask> tarefas){
-        currentDTasks.addAll(tarefas);
+    public void addAllDailyTasks(List<DailyTask> tasks){
+        currentDTasks.addAll(tasks);
     }
 
     @Override

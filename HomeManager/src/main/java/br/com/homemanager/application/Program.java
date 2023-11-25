@@ -11,6 +11,10 @@ public class Program extends Application {
     private static Stage stage;
     // Scene = armazenar telas
     private static Scene loginScene;
+    private static Scene singupScene;
+
+
+
     @Override
     public void start(Stage stage) throws Exception {
         Program.stage = stage;
@@ -21,7 +25,10 @@ public class Program extends Application {
         Parent rootLogin = loaderLogin.load();
         LoginController loginController = loaderLogin.getController();
 
-        // --- loginController
+
+        Parent fxmlRegisterPage = FXMLLoader.load(getClass().getResource("/application/homemanager/cadastro.fxml"));
+        singupScene = new Scene(fxmlRegisterPage, 715, 485);
+
 
         // Configurar as cenas
         loginScene = new Scene(rootLogin, 715, 485);
@@ -35,6 +42,10 @@ public class Program extends Application {
         switch (scene){
             case "loginPage":{
                 stage.setScene(loginScene);
+                break;
+            }
+            case "singupPage":{
+                stage.setScene(singupScene);
                 break;
             }
         }
