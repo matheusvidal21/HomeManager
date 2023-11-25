@@ -58,6 +58,8 @@ public class SingupController implements Initializable {
 
         displaySuccessMessage("Usuário cadastrado");
         Session.getInstance().setCurrentUser(homeToAdd);
+        lbResult.setText("");
+        clearInputFields();
         Program.changeScreen("taskChooserPage");
     }
 

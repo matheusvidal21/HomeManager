@@ -1,5 +1,6 @@
 package br.com.homemanager.application;
 
+import br.com.homemanager.controller.HomePageController;
 import br.com.homemanager.controller.LoginController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +13,7 @@ public class Program extends Application {
     // Scene = armazenar telas
     private static Scene loginScene;
     private static Scene singupScene;
+    private static Scene taskChooserScene;
     private static Scene homeScene;
 
     @Override
@@ -24,17 +26,25 @@ public class Program extends Application {
         Parent rootLogin = loaderLogin.load();
         LoginController loginController = loaderLogin.getController();
 
+        // Carregar o FXML do HomePageController
+        FXMLLoader loaderHomePage = new FXMLLoader(getClass().getResource("/br/com/homemanager/home-page.fxml"));
+        Parent rootHomePage = loaderHomePage.load();
+        HomePageController homePageController = loaderHomePage.getController();
 
-        Parent fxmlRegisterPage = FXMLLoader.load(getClass().getResource("/application/homemanager/cadastro.fxml"));
-        singupScene = new Scene(fxmlRegisterPage, 715, 485);
-
+        loginController.setHomePageController(homePageController);
 
         // Configurar as cenas
         loginScene = new Scene(rootLogin, 715, 485);
+        homeScene = new Scene(rootHomePage, 715, 485);
+
+        Parent fxmlRegisterPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/singup.fxml"));
+        singupScene = new Scene(fxmlRegisterPage, 715, 485);
+
+        Parent fxmlTaskChooserPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/task-chooser.fxml"));
+        taskChooserScene = new Scene(fxmlTaskChooserPage, 715, 485);
 
         stage.setScene(loginScene);
         stage.show();
-
     }
 
     public static void changeScreen(String scene){
@@ -45,6 +55,10 @@ public class Program extends Application {
             }
             case "singupPage":{
                 stage.setScene(singupScene);
+                break;
+            }
+            case "taskChooserPage":{
+                stage.setScene(taskChooserScene);
                 break;
             }
             case "homePage":{

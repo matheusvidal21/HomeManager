@@ -129,7 +129,7 @@ public class MemberPageController implements Initializable {
     private void loadMemberPageScene(Member member) {
         try {
             // Carrega o arquivo FXML da cena da página do membro
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("member-page.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/br/com/homemanager/member-page.fxml"));
             Parent root = loader.load();
 
             // Obtém o controlador da cena da página do membro
