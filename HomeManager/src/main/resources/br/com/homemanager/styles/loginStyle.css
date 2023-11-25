@@ -1,0 +1,31 @@
+.left_pane{
+    -fx-background-color: #345449;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-border-style: #353A56;
+}
+
+.right_pane{
+    -fx-background-color: #f3e8d2;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 20px;
+    -fx-border-style: #f3e8d2;
+}
+
+.text-field-no-border{ /* Define a cor de fundo como transparente */
+    /* Define a cor da borda como transparente */
+    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+}
+
+.button-styled {
+    -fx-background-color: #f3e8d2; /* Background off white */
+    -fx-border-color: #000000; /* Borda preta */
+    -fx-border-radius: 10; /* Raio para bordas arredondadas */
+    -fx-background-radius: 10; /* Raio para o background arredondado */
+}
+
+/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+.button-styled:hover {
+    -fx-background-color: black; /* Cor do background ao passar o mouse */
+}
+
