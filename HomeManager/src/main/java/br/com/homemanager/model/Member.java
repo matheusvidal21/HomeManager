@@ -24,7 +24,7 @@ public class Member implements Serializable {
         this.name = name;
     }
 
-    public List<WeeklyTask> getCurrentWTasks() {
+    public List<WeeklyTask> getWeeklyTasks() {
         return currentWTasks;
     }
 

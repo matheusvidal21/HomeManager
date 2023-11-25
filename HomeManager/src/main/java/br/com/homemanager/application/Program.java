@@ -12,8 +12,7 @@ public class Program extends Application {
     // Scene = armazenar telas
     private static Scene loginScene;
     private static Scene singupScene;
-
-
+    private static Scene homeScene;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -48,6 +47,12 @@ public class Program extends Application {
                 stage.setScene(singupScene);
                 break;
             }
+            case "homePage":{
+                stage.setScene(homeScene);
+                break;
+            }
+            default:
+                throw new RuntimeException("Tela não existe!");
         }
     }
 

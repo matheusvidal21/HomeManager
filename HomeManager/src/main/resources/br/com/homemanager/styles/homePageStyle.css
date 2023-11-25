@@ -1,0 +1,70 @@
+.left_pane {
+    -fx-background-color: #345449; /* Substitua #00ff00 pela cor desejada */
+}
+
+.right_pane {
+    -fx-background-color: #f3e8d2; /* Substitua #00ff00 pela cor desejada */
+}
+
+.button-styled {
+    -fx-background-color: #e0e191; /* Background off white */
+    -fx-border-color: #000000; /* Borda preta */
+    -fx-border-radius: 10; /* Raio para bordas arredondadas */
+    -fx-background-radius: 10; /* Raio para o background arredondado */
+}
+
+/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+.button-styled:hover {
+    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+}
+
+.button-member {
+    -fx-background-color: #edc7f8; /* Background off white */
+    -fx-border-color: #000000; /* Borda preta */
+    -fx-border-radius: 10; /* Raio para bordas arredondadas */
+    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
+    -fx-font-size: 13px; /* Tamanho da fonte */
+}
+
+/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+.button-member:hover {
+    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+}
+
+.label-styled {
+    -fx-background-color: #e0e191; /* Background off white */
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-background-radius: 20; /* Raio para o background arredondado */
+}
+
+.label-tasks {
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold;
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-background-radius: 20; /* Raio para o background arredondado */
+}
+
+
+.vbox-tasks{
+    -fx-background-color: #edc7f8; /* Background off white */
+    -fx-border-color: transparent;
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-background-radius: 20;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent; /* Define o fundo do ScrollPane como transparente */
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent; /* Define o fundo da área visível do ScrollPane como transparente */
+}
+
+.scroll-pane .content {
+    -fx-background-color: #f0f0f0; /* Define a cor de fundo do conteúdo do ScrollPane */
+    -fx-background-radius: 10; /* Define o raio da borda do conteúdo do ScrollPane */
+}

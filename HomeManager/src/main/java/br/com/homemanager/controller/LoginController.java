@@ -22,7 +22,11 @@ public class LoginController{
     private Button btnSignup;
     @FXML
     private Label lbResult;
+    private HomePageController homePageController;
 
+    public void setHomePageController(HomePageController homePageController) {
+        this.homePageController = homePageController;
+    }
 
     public void onBtnLoginClick(){
         String enteredUsername = txtUsername.getText();
@@ -31,6 +35,20 @@ public class LoginController{
         // Cria uma instância de Home com as credenciais fornecidas
         Home user = HomeRepository.usernameAlreadyExists(enteredUsername);
 
+        // Verifica a autenticação usando o método verificarSenha
+        if (user != null && user.checkPassword(enteredPassword)) {
+
+            Session.getInstance().setCurrentUser(user);
+
+            if (homePageController != null) {
+                homePageController.showAllTasks();
+                homePageController.addMembersButtons();
+            }
+
+            Program.changeScreen("homePage");
+        } else {
+            lbResult.setText("Usuário não encontrado ou senha incorreta");
+        }
     }
 
     public void onBtnSignClick(ActionEvent event){

@@ -117,7 +117,7 @@ public class Home implements Serializable {
             Collections.shuffle(homeAvailableTasks);
 
             // Remove as tarefas atuais do membro
-            homeAvailableTasks.removeAll(membro.getCurrentWTasks());
+            homeAvailableTasks.removeAll(membro.getWeeklyTasks());
 
             List<WeeklyTask> homeAvailableTasksCopy = new ArrayList<>(homeAvailableTasks);
             int endIndex = Math.min(numberOfTasks, homeAvailableTasksCopy.size());
@@ -127,7 +127,7 @@ public class Home implements Serializable {
             }
             List<WeeklyTask> tasksToMember = homeAvailableTasksCopy.subList(0, endIndex);
 
-            homeAvailableTasks.addAll(membro.getCurrentWTasks());
+            homeAvailableTasks.addAll(membro.getWeeklyTasks());
             membro.removeWeeklyTasks();
             membro.addAllWeeklyTasks(tasksToMember);
 
@@ -180,7 +180,7 @@ public class Home implements Serializable {
     public void printTasks(){
         for (Member member : membersList) {
             System.out.println("Weekly Tasks for Member: " + member.getName());
-            for (WeeklyTask weeklyTask : member.getCurrentWTasks()) {
+            for (WeeklyTask weeklyTask : member.getWeeklyTasks()) {
                 System.out.println(" - " + weeklyTask.getTaskName());
             }
 
