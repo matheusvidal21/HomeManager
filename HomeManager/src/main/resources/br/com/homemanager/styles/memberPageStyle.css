@@ -63,7 +63,7 @@
 }
 
 .weekly-task-anchor {
-    -fx-background-color: #BDE191;
+    -fx-background-color: #E1DB87;
     -fx-border-width: 2px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
@@ -73,4 +73,24 @@
     -fx-min-height: 124;
     -fx-max-width: 93;
     -fx-max-height: 124;
+}
+
+/* Estilo para o CheckBox */
+.custom-checkbox .box {
+    -fx-background-color: transparent;
+    -fx-border-color: white; /* Cor da borda */
+    -fx-border-width: 2; /* Largura da borda */
+    -fx-border-radius: 3; /* Raio da borda */
+}
+
+.custom-checkbox:selected .box {
+    -fx-background-color: #345449; /* Cor do fundo quando selecionado */
+}
+
+.custom-checkbox .mark {
+    -fx-background-color: transparent;
+}
+
+.custom-checkbox:selected .mark {
+    -fx-background-color: white; /* Cor do "check" quando selecionado */
 }

@@ -181,12 +181,12 @@ public class Home implements Serializable {
         for (Member member : membersList) {
             System.out.println("Weekly Tasks for Member: " + member.getName());
             for (WeeklyTask weeklyTask : member.getWeeklyTasks()) {
-                System.out.println(" - " + weeklyTask.getTaskName());
+                System.out.println(" - " + weeklyTask.getTaskName() + ": " + weeklyTask.getTaskStatus());
             }
 
             System.out.println("Daily Tasks for Member: " + member.getName());
             for (DailyTask dailyTask : member.getDailyTasks()) {
-                System.out.println(" - " + dailyTask.getTaskName());
+                System.out.println(" - " + dailyTask.getTaskName() + ": " + dailyTask.getTaskStatus());
             }
 
             System.out.println(); // Adiciona uma linha em branco entre os membros

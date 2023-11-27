@@ -1,10 +1,11 @@
 package br.com.homemanager.controller;
 
-import br.com.homemanager.model.Member;
+import br.com.homemanager.event.EventManager;
+import br.com.homemanager.event.UpdateProgressEvent;
+import br.com.homemanager.model.*;
 import br.com.homemanager.application.Program;
-import br.com.homemanager.model.DailyTask;
-import br.com.homemanager.model.Session;
-import br.com.homemanager.model.WeeklyTask;
+import br.com.homemanager.model.enums.TaskStatus;
+import br.com.homemanager.repository.HomeRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -38,10 +40,12 @@ public class MemberPageController implements Initializable {
     private HBox hbDailyTasks;
 
     public void onBtnLogoutCLick(){
+        HomeRepository.saveUserData();
         Program.changeScreen("loginPage");
     }
 
     public void onBtnHomeClick(ActionEvent event){
+        EventManager.getInstance().fireEvent(new UpdateProgressEvent());
         Program.changeScreen("homePage");
     }
 
@@ -49,54 +53,65 @@ public class MemberPageController implements Initializable {
         lbHello.setText("Hello, " + member.getName() + "!");
     }
 
+    public void showTasks(List<? extends Task> tasks, HBox container, String anchorStyleClass){
+        container.getChildren().clear();
+
+        for(Task task : tasks){
+            Label label = new Label(task.getTaskName());
+            CheckBox checkBox = new CheckBox();
+            AnchorPane anchorPane = new AnchorPane();
+            anchorPane.getStyleClass().add(anchorStyleClass);
+
+            styleAnchor(anchorPane, label, checkBox);
+
+            anchorPane.getChildren().addAll(label, checkBox);
+            container.getChildren().add(anchorPane);
+
+            // Se a tarefa já estiver sido feita, o checkBox já estará selecionado
+            checkBox.setSelected(task.getTaskStatus() == TaskStatus.DONE);
+
+            checkBox.setOnAction(event -> {
+                if(checkBox.isSelected()){
+                    task.setTaskStatus(TaskStatus.DONE);
+                }else{
+                    task.setTaskStatus(TaskStatus.NOT_DONE);
+                }
+                HomeRepository.saveUserData();
+            });
+        }
+        container.setSpacing(10);
+    }
+
     public void showMemberDailyTasks(Member member){
         List<DailyTask> dailyTasks = member.getDailyTasks();
-        hbDailyTasks.getChildren().clear();
-
-        for(DailyTask dailytask : dailyTasks){
-            Label label = new Label(dailytask.getTaskName());
-            label.getStyleClass().add("label-tasks");
-            label.setWrapText(true);
-            label.setMaxWidth(150);
-
-            AnchorPane anchorPane = new AnchorPane();
-            anchorPane.getStyleClass().add("daily-task-anchor");
-            anchorPane.setMaxWidth(150);
-
-            // Definindo as âncoras do Label dentro do AnchorPane
-            AnchorPane.setTopAnchor(label, 15.0);
-            AnchorPane.setLeftAnchor(label, 5.0);
-            AnchorPane.setRightAnchor(label, 5.0);
-
-            anchorPane.getChildren().add(label);
-            hbDailyTasks.getChildren().add(anchorPane);
-        }
-        hbDailyTasks.setSpacing(10);
+        showTasks(dailyTasks, hbDailyTasks, "daily-task-anchor");
     }
 
     public void showMemberWeeklyTasks(Member member){
         List<WeeklyTask> weeklyTasks = member.getWeeklyTasks();
-        hbWeeklyTasks.getChildren().clear();
+        showTasks(weeklyTasks, hbWeeklyTasks, "weekly-task-anchor");
+    }
 
-        for(WeeklyTask weeklytask : weeklyTasks){
-            Label label = new Label(weeklytask.getTaskName());
-            label.getStyleClass().add("label-tasks");
-            label.setWrapText(true);
-            label.setMaxWidth(150);
+    private void styleAnchor(AnchorPane anchorPane, Label label, CheckBox checkBox){
+        // Estilizando label
+        label.getStyleClass().add("label-tasks");
+        label.setWrapText(true);
+        label.setMaxWidth(150);
 
-            AnchorPane anchorPane = new AnchorPane();
-            anchorPane.getStyleClass().add("weekly-task-anchor");
-            anchorPane.setMaxWidth(150);
+        // Estilizando checkBox
+        checkBox.getStyleClass().add("custom-checkbox");
 
-            // Definindo as âncoras do Label dentro do AnchorPane
-            AnchorPane.setTopAnchor(label, 15.0);
-            AnchorPane.setLeftAnchor(label, 5.0);
-            AnchorPane.setRightAnchor(label, 5.0);
+        // Estilizando anchorPane
+        anchorPane.setMaxWidth(150);
 
-            anchorPane.getChildren().add(label);
-            hbWeeklyTasks.getChildren().add(anchorPane);
-        }
-        hbWeeklyTasks.setSpacing(10);
+        // Definindo as âncoras da Label e do CheckBox dentro do AnchorPane
+        AnchorPane.setTopAnchor(label, 15.0);
+        AnchorPane.setLeftAnchor(label, 5.0);
+        AnchorPane.setRightAnchor(label, 5.0);
+
+        AnchorPane.setTopAnchor(checkBox, 80.0);
+        AnchorPane.setLeftAnchor(checkBox, 33.0);
+        AnchorPane.setRightAnchor(checkBox, 15.0);
     }
 
     public void setMemberInfo(Member member){

@@ -1,6 +1,8 @@
 package br.com.homemanager.controller;
 
 import br.com.homemanager.application.Program;
+import br.com.homemanager.event.EventManager;
+import br.com.homemanager.event.UpdateProgressEvent;
 import br.com.homemanager.model.Home;
 import br.com.homemanager.model.Session;
 import br.com.homemanager.repository.HomeRepository;
@@ -37,22 +39,29 @@ public class LoginController{
 
         // Verifica a autenticação usando o método verificarSenha
         if (user != null && user.checkPassword(enteredPassword)) {
-
             Session.getInstance().setCurrentUser(user);
 
             if (homePageController != null) {
                 homePageController.showAllTasks();
                 homePageController.addMembersButtons();
             }
-
+            EventManager.getInstance().fireEvent(new UpdateProgressEvent());
             Program.changeScreen("homePage");
+            clearInputFields();
         } else {
             lbResult.setText("Usuário não encontrado ou senha incorreta");
         }
     }
 
     public void onBtnSignClick(ActionEvent event){
+        clearInputFields();
         Program.changeScreen("singupPage");
+    }
+
+    private void clearInputFields(){
+        btnLogin.setDisable(true);
+        txtUsername.clear();
+        txtPassword.clear();
     }
 
     public void onKeyReleased(){

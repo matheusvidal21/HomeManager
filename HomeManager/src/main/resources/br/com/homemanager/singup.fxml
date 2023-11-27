@@ -42,7 +42,7 @@
                         <Bloom />
                     </effect>
                 </ComboBox>
-                <Label layoutX="85.0" layoutY="55.0" prefHeight="39.0" prefWidth="245.0" text="Cadastre sua casa" textFill="#345449">
+                <Label layoutX="104.0" layoutY="55.0" prefHeight="39.0" prefWidth="197.0" text="Cadastre sua casa" textFill="#345449">
                     <font>
                         <Font name="DejaVu Sans Condensed Bold" size="25.0" />
                     </font>

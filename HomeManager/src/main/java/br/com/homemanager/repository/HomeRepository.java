@@ -10,12 +10,12 @@ import java.util.List;
 public class HomeRepository {
 
     private static List<Home> homeList = new ArrayList<>();
-    private static final String FILE_PATH = "user_data.dat";
+    private static final String FILE_PATH = "./storage/user_data.dat";
 
     static {
         loadUserData();
-        homeList.forEach(Home::assignWeeklyTasks);
-        homeList.forEach(Home::assignDailyTasks);
+        //homeList.forEach(Home::assignWeeklyTasks);
+        //homeList.forEach(Home::assignDailyTasks);
         printHomeList();
     }
 

@@ -2,14 +2,12 @@
     -fx-background-color: #345449;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
-    -fx-border-style: #353A56;
 }
 
 .right_pane{
     -fx-background-color: #f3e8d2;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
-    -fx-border-style: #f3e8d2;
 }
 
 .text-field-no-border{ /* Define a cor de fundo como transparente */

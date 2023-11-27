@@ -74,3 +74,22 @@
     -fx-background-color: #f0f0f0; /* Define a cor de fundo do conteúdo do ScrollPane */
     -fx-background-radius: 10; /* Define o raio da borda do conteúdo do ScrollPane */
 }
+
+
+.progress-bar {
+    -fx-control-inner-background: #edc7f8; /* Cor de fundo da barra de progresso */
+    -fx-accent: #345449; /* Cor da barra de progresso */
+}
+
+.progress-bar .track {
+    -fx-background-color: #edc7f8; /* Cor de fundo da barra de progresso */
+    -fx-background-radius: 15; /* Raio para o fundo da barra de progresso */
+}
+
+.progress-bar .bar {
+    -fx-background-color: #345449; /* Cor da barra de progresso */
+    -fx-background-insets: 0; /* Remove o preenchimento interno */
+    -fx-background-radius: 15; /* Raio para a barra de progresso */
+}
+
+

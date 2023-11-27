@@ -2,14 +2,12 @@
     -fx-background-color: #e0e191;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
-    -fx-border-style: #e0e191;
 }
 
 .right_pane{
     -fx-background-color: #edc7f8;
     -fx-border-width: 2px 2px 2px 2px;
     -fx-border-radius: 20px;
-    -fx-border-style: #edc7f8;
 }
 
 .button-styled {
