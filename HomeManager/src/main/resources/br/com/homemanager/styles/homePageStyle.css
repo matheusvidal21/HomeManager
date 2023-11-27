@@ -48,6 +48,12 @@
     -fx-background-radius: 20; /* Raio para o background arredondado */
 }
 
+.label-result{
+    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
+    -fx-font-size: 13px; /* Tamanho da fonte */
+}
 
 .vbox-tasks{
     -fx-background-color: #edc7f8; /* Background off white */

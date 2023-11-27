@@ -4,6 +4,7 @@ import br.com.homemanager.model.Task;
 import br.com.homemanager.model.Member;
 import br.com.homemanager.application.Program;
 import br.com.homemanager.model.Session;
+import br.com.homemanager.repository.HomeRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,9 +31,28 @@ public class HomePageController implements Initializable {
     private VBox vbBtnMembers;
     @FXML
     private VBox vbAllTasks;
+    @FXML
+    private Button btnRedistributeDailyTasks;
+    @FXML
+    private Button btnRedistributeWeeklyTasks;
+    @FXML
+    private Label lbResult;
+
 
     public void onBtnLogoutCLick(){
         Program.changeScreen("loginPage");
+    }
+
+    public void onBtnRedistributeDailyTasks(){
+        displaySuccessMessage("Daily tasks redistributed");
+        Session.getInstance().getCurrentUser().assignDailyTasks();
+        HomeRepository.saveUserData();
+    }
+
+    public void onBtnRedistributeWeeklyTasks(){
+        displaySuccessMessage("Weekly tasks redistributed");
+        Session.getInstance().getCurrentUser().assignWeeklyTasks();
+        HomeRepository.saveUserData();
     }
 
     public void showAllTasks() {
@@ -96,6 +116,11 @@ public class HomePageController implements Initializable {
             e.printStackTrace();
             // Lida com erros ao carregar a cena da página do membro
         }
+    }
+
+    private void displaySuccessMessage(String message) {
+        lbResult.setText(message);
+        lbResult.setStyle("-fx-text-fill: green;");
     }
 
     @Override

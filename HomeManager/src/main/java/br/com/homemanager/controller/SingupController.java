@@ -42,13 +42,13 @@ public class SingupController implements Initializable {
         char[] enteredPassword = txtPassword.getText().toCharArray();
 
         if(HomeRepository.usernameAlreadyExists(enteredUsername) != null){
-            displayErrorMessage("Usuário já cadastrado");
+            displayErrorMessage("User already registered");
             clearInputFields();
             return;
         }
 
         if(cboQuantidadeMembros.getValue() == null || !areMembersNameFilled()){
-            displayErrorMessage("Preencha os nomes dos membros");
+            displayErrorMessage("Fill in the names of the members");
             return;
         }
 
@@ -56,11 +56,12 @@ public class SingupController implements Initializable {
         addMembersToHome(homeToAdd);
         HomeRepository.addHome(homeToAdd);
 
-        displaySuccessMessage("Usuário cadastrado");
+        displaySuccessMessage("Registered user");
         Session.getInstance().setCurrentUser(homeToAdd);
         lbResult.setText("");
         clearInputFields();
         Program.changeScreen("taskChooserPage");
+
     }
 
     public void onBtnVoltarClick(ActionEvent event){
@@ -78,7 +79,7 @@ public class SingupController implements Initializable {
 
         // Adiciona novos campos TextField conforme a quantidade de membros
         for (int i = 0; i < numbersOfMembers; i++) {
-            Label label = new Label("Nome do Membro " + (i + 1) + ":");
+            Label label = new Label("Member's name " + (i + 1) + ":");
             TextField textFieldNome = new TextField();
             listaTxtFieldNomes.add(textFieldNome);
 
