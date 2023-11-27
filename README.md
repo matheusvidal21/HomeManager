@@ -1,7 +1,7 @@
 [![Finalizado](https://img.shields.io/badge/Status-Em%20andamento-yellow)](https://github.com/imetropoledigital/trabalho-final-matheus-costa-vidal)
 
 <p>
-<img src="docs/imgs/HomeManager.png" alt="Logo Home Manager" height="350">
+<img src="docs/imgs/HomeManager.png" alt="Logo Home Manager" height="100">
 </p>
 O HomeManager é um aplicativo intuitivo e prático desenvolvido para simplificar a gestão de tarefas diárias e semanais em uma casa. Com o HomeManager, os membros de uma residência podem criar perfis individuais, cadastrar outros membros da casa e colaborar para manter a organização e eficiência nas atividades do lar.
 
