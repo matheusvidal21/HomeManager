@@ -28,7 +28,7 @@
                         <Font name="DejaVu Sans Condensed Bold" size="47.0" />
                     </font>
                 </Label>
-                <Label layoutX="33.0" layoutY="185.0" prefHeight="57.0" prefWidth="267.0" text="Harmony ." textFill="#a2c348">
+                <Label layoutX="33.0" layoutY="185.0" prefHeight="57.0" prefWidth="267.0" text="Manager ." textFill="#a2c348">
                     <font>
                         <Font name="DejaVu Sans Condensed Bold" size="47.0" />
                     </font>
