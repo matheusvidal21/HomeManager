@@ -7,6 +7,8 @@
 }
 
 .button-styled {
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
     -fx-background-color: #e0e191; /* Background off white */
     -fx-border-color: #000000; /* Borda preta */
     -fx-border-radius: 10; /* Raio para bordas arredondadas */
@@ -34,6 +36,8 @@
 }
 
 .label-styled {
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
     -fx-background-color: #e0e191; /* Background off white */
     -fx-border-color: transparent; /* Borda preta */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */

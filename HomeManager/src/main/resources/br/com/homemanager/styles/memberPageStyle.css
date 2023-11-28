@@ -34,6 +34,8 @@
 }
 
 .label-styled {
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
     -fx-background-color: #edc7f8; /* Background off white */
     -fx-border-color: transparent; /* Borda preta */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
@@ -47,6 +49,22 @@
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
     -fx-background-radius: 20; /* Raio para o background arredondado */
     -fx-font-size: 15px; /* Tamanho da fonte */
+}
+
+.label-progress-bar {
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold;
+    -fx-text-fill: black;
+    -fx-font-size: 12px; /* Tamanho da fonte */
+}
+
+.label-daily-progress {
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold;
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-font-size: 12px; /* Tamanho da fonte */
 }
 
 .daily-task-anchor {
@@ -94,3 +112,21 @@
 .custom-checkbox:selected .mark {
     -fx-background-color: white; /* Cor do "check" quando selecionado */
 }
+
+.progress-bar {
+    -fx-control-inner-background: #edc7f8; /* Cor de fundo da barra de progresso */
+    -fx-accent: #F048CE; /* Cor da barra de progresso */
+}
+
+.progress-bar .track {
+    -fx-background-color: #edc7f8; /* Cor de fundo da barra de progresso */
+    -fx-background-radius: 15; /* Raio para o fundo da barra de progresso */
+}
+
+.progress-bar .bar {
+    -fx-background-color: #F048CE; /* Cor da barra de progresso */
+    -fx-background-insets: 0; /* Remove o preenchimento interno */
+    -fx-background-radius: 15; /* Raio para a barra de progresso */
+}
+
+

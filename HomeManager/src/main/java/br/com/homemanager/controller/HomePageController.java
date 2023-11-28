@@ -56,8 +56,6 @@ public class HomePageController implements Initializable {
         double progress = (double) tasksCompleted / totalTasks;
 
         lbProgress.setText(String.format("%.0f", progress * 100)   + "% tasks completed");
-
-
         progressBar.setProgress(progress);
     }
 
@@ -145,7 +143,6 @@ public class HomePageController implements Initializable {
         lbResult.setText(message);
         lbResult.setStyle("-fx-text-fill: green;");
     }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

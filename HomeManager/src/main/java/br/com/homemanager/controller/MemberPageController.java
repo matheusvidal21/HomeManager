@@ -6,24 +6,31 @@ import br.com.homemanager.model.*;
 import br.com.homemanager.application.Program;
 import br.com.homemanager.model.enums.TaskStatus;
 import br.com.homemanager.repository.HomeRepository;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class MemberPageController implements Initializable {
     @FXML
@@ -38,6 +45,39 @@ public class MemberPageController implements Initializable {
     private HBox hbWeeklyTasks;
     @FXML
     private HBox hbDailyTasks;
+    @FXML
+    private ProgressBar memberProgressBar;
+    @FXML
+    private Label lbProgress;
+    @FXML
+    private Label lbCongratulations;
+    public void simulateProgressBar(Member member){
+        ArrayList<Task> allTasks = new ArrayList<>();
+        allTasks.addAll(member.getWeeklyTasks());
+        allTasks.addAll(member.getDailyTasks());
+        lbCongratulations.setText("");
+        lbCongratulations.getStyleClass().clear();
+
+        int tasksCompleted = 0;
+        int totalTasks = member.getWeeklyTasks().size() + (member.getDailyTasks().size() * 5);
+        for(Task task : allTasks){
+            if(task instanceof DailyTask){
+                tasksCompleted += (int) ((DailyTask) task).getProgress().get();
+            }else if(task.getTaskStatus() == TaskStatus.DONE){
+                tasksCompleted++;
+            }
+        }
+
+        double progress = (double) tasksCompleted / totalTasks;
+        lbProgress.setText(String.format("%.0f", progress * 100)   + "% tasks completed");
+
+        if(tasksCompleted == totalTasks){
+            lbCongratulations.getStyleClass().add("label-styled");
+            lbCongratulations.setText("Congratulations! You have completed all your tasks.");
+        }
+
+        memberProgressBar.setProgress(progress);
+    }
 
     public void onBtnLogoutCLick(){
         HomeRepository.saveUserData();
@@ -50,46 +90,117 @@ public class MemberPageController implements Initializable {
     }
 
     public void showMemberHello(Member member){
+        double textSize = 0.0;
+
+        if(member.getName().length() < 4){
+            textSize = 150.0;
+        }else if (member.getName().length() < 9){
+            textSize = 240.0;
+        }else{
+            textSize = 340.0;
+        }
+
+        lbHello.setPrefSize(textSize, 30);
         lbHello.setText("Hello, " + member.getName() + "!");
     }
 
-    public void showTasks(List<? extends Task> tasks, HBox container, String anchorStyleClass){
+    public void showMemberTasks(List<? extends Task> tasks, HBox container, String anchorStyle) {
         container.getChildren().clear();
 
-        for(Task task : tasks){
-            Label label = new Label(task.getTaskName());
-            CheckBox checkBox = new CheckBox();
-            AnchorPane anchorPane = new AnchorPane();
-            anchorPane.getStyleClass().add(anchorStyleClass);
+        for (Task task : tasks) {
+            Node taskNode = createTaskNode(task, anchorStyle);
+            container.getChildren().add(taskNode);
 
-            styleAnchor(anchorPane, label, checkBox);
+            if (task instanceof DailyTask) {
+                CheckBox checkBox = (CheckBox) ((AnchorPane) taskNode).getChildren().get(1);
+                AtomicInteger progress = ((DailyTask) task).getProgress();
+                Label labelProgress = createProgressLabel(progress);
+                boolean[] isSelected = {false};
 
-            anchorPane.getChildren().addAll(label, checkBox);
-            container.getChildren().add(anchorPane);
+                ((AnchorPane) taskNode).getChildren().add(labelProgress);
 
-            // Se a tarefa já estiver sido feita, o checkBox já estará selecionado
-            checkBox.setSelected(task.getTaskStatus() == TaskStatus.DONE);
+                AnchorPane.setTopAnchor(checkBox, 70.0);
+                AnchorPane.setTopAnchor(labelProgress, 95.0);
+                AnchorPane.setLeftAnchor(labelProgress, 32.0);
+                AnchorPane.setRightAnchor(labelProgress, 15.0);
 
-            checkBox.setOnAction(event -> {
-                if(checkBox.isSelected()){
-                    task.setTaskStatus(TaskStatus.DONE);
-                }else{
-                    task.setTaskStatus(TaskStatus.NOT_DONE);
-                }
-                HomeRepository.saveUserData();
-            });
+                checkBoxAction((DailyTask) task, progress, labelProgress, isSelected, checkBox);
+            } else if (task instanceof WeeklyTask) {
+                CheckBox checkBox = (CheckBox) ((AnchorPane) taskNode).getChildren().get(1);
+                checkBoxAction((WeeklyTask) task, checkBox);
+            }
         }
         container.setSpacing(10);
     }
+    private Label createProgressLabel(AtomicInteger progress) {
+        Label labelProgress = new Label(progress.get() + "/5");
+        labelProgress.getStyleClass().add("label-daily-progress");
+        return labelProgress;
+    }
+    private Node createTaskNode(Task task, String anchorStyle) {
+        Label label = new Label(task.getTaskName());
+        CheckBox checkBox = new CheckBox();
+        AnchorPane anchorPane = new AnchorPane();
+        anchorPane.getStyleClass().add(anchorStyle);
 
-    public void showMemberDailyTasks(Member member){
-        List<DailyTask> dailyTasks = member.getDailyTasks();
-        showTasks(dailyTasks, hbDailyTasks, "daily-task-anchor");
+        styleAnchor(anchorPane, label, checkBox);
+
+        anchorPane.getChildren().addAll(label, checkBox);
+        return anchorPane;
     }
 
-    public void showMemberWeeklyTasks(Member member){
-        List<WeeklyTask> weeklyTasks = member.getWeeklyTasks();
-        showTasks(weeklyTasks, hbWeeklyTasks, "weekly-task-anchor");
+    private void checkBoxAction(DailyTask dailyTask, AtomicInteger progress, Label labelProgress, boolean[] isSelected, CheckBox checkBox) {
+        checkBox.setSelected(dailyTask.getTaskStatus() == TaskStatus.DONE);
+        checkBox.setOnAction(event -> {
+            if(progress.get() == 5){
+                progress.set(0);
+                isSelected[0] = false;
+                labelProgress.setText("0/5");
+                dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
+            }else{
+                progress.getAndIncrement();
+                labelProgress.setText(progress.get() + "/5");
+                if(progress.get() < 5){
+                    simulateProgress(checkBox, isSelected[0]);
+                    dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
+                }else{
+                    isSelected[0] = true;
+                    checkBox.setSelected(true);
+                    dailyTask.setTaskStatus(TaskStatus.DONE);
+                }
+            }
+            EventManager.getInstance().fireEvent(new UpdateProgressEvent());
+            HomeRepository.saveUserData();
+        });
+    }
+
+    private void simulateProgress(CheckBox checkBox, boolean isSelected){
+        checkBox.setDisable(true);
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0.5), event -> {
+                    // Habilita o CheckBox após o delay
+                    checkBox.setDisable(false);
+                    if(!isSelected){
+                        checkBox.setSelected(false);
+                    }
+                })
+        );
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
+    private void checkBoxAction(WeeklyTask weeklyTask, CheckBox checkBox) {
+        checkBox.setSelected(weeklyTask.getTaskStatus() == TaskStatus.DONE);
+        checkBox.setOnAction(event -> {
+            if(checkBox.isSelected()){
+                weeklyTask.setTaskStatus(TaskStatus.DONE);
+            }else{
+                weeklyTask.setTaskStatus(TaskStatus.NOT_DONE);
+            }
+            EventManager.getInstance().fireEvent(new UpdateProgressEvent());
+            HomeRepository.saveUserData();
+        });
     }
 
     private void styleAnchor(AnchorPane anchorPane, Label label, CheckBox checkBox){
@@ -114,11 +225,126 @@ public class MemberPageController implements Initializable {
         AnchorPane.setRightAnchor(checkBox, 15.0);
     }
 
+
+    /*
+    public void showMemberDailyTasks(Member member){
+        List<DailyTask> dailyTasks = member.getDailyTasks();
+        hbDailyTasks.getChildren().clear();
+
+        for(DailyTask dailytask : dailyTasks){
+            AtomicInteger progress = dailytask.getProgress();
+            final boolean[] isSelected = {false};
+
+            Label label = new Label(dailytask.getTaskName());
+            CheckBox checkBox = new CheckBox();
+            AnchorPane anchorPane = new AnchorPane();
+            Label labelProgress = createProgressLabel(progress);
+            anchorPane.getStyleClass().add("daily-task-anchor");
+
+            styleAnchor(anchorPane,label, checkBox);
+            AnchorPane.setTopAnchor(checkBox, 70.0);
+            AnchorPane.setTopAnchor(labelProgress, 95.0);
+            AnchorPane.setLeftAnchor(labelProgress, 32.0);
+            AnchorPane.setRightAnchor(labelProgress, 15.0);
+
+            anchorPane.getChildren().addAll(label, checkBox, labelProgress);
+            hbDailyTasks.getChildren().add(anchorPane);
+            checkBoxAction(dailytask, progress, isSelected, labelProgress, checkBox);
+        }
+        hbDailyTasks.setSpacing(10);
+    }
+
+    private Label createProgressLabel(AtomicInteger progress) {
+        Label labelProgress = new Label(progress.get() + "/5");
+        labelProgress.getStyleClass().add("label-daily-progress");
+        return labelProgress;
+    }
+
+    private void checkBoxAction(DailyTask dailyTask, AtomicInteger progress, boolean[] isSelected, Label labelProgress, CheckBox checkBox){
+        // Se a tarefa já estiver sido feita, o checkBox já estará selecionado
+        checkBox.setSelected(dailyTask.getTaskStatus() == TaskStatus.DONE);
+        checkBox.setOnAction(event -> {
+            if(progress.get() == 5){
+                progress.set(0);
+                isSelected[0] = false;
+                labelProgress.setText("0/5");
+                dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
+            }else{
+                progress.getAndIncrement();
+                labelProgress.setText(progress.get() + "/5");
+                if(progress.get() < 5){
+                    simulateProgress(checkBox, isSelected[0]);
+                    dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
+                }else{
+                    isSelected[0] = true;
+                    checkBox.setSelected(true);
+                    dailyTask.setTaskStatus(TaskStatus.DONE);
+                }
+            }
+            HomeRepository.saveUserData();
+        });
+    }
+
+    private void simulateProgress(CheckBox checkBox, boolean isSelected){
+        checkBox.setDisable(true);
+
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.seconds(0.5), event -> {
+                    // Habilita o CheckBox após o delay
+                    checkBox.setDisable(false);
+                    if(!isSelected){
+                        checkBox.setSelected(false);
+                    }
+                })
+        );
+        timeline.setCycleCount(1);
+        timeline.play();
+    }
+
+    public void showMemberWeeklyTasks(Member member){
+        List<WeeklyTask> weeklyTasks = member.getWeeklyTasks();
+        hbWeeklyTasks.getChildren().clear();
+
+        for(WeeklyTask weeklytask : weeklyTasks){
+            Label label = new Label(weeklytask.getTaskName());
+            CheckBox checkBox = new CheckBox();
+            AnchorPane anchorPane = new AnchorPane();
+            anchorPane.getStyleClass().add("weekly-task-anchor");
+
+            styleAnchor(anchorPane, label, checkBox);
+
+            anchorPane.getChildren().addAll(label, checkBox);
+            hbWeeklyTasks.getChildren().add(anchorPane);
+
+            // Se a tarefa já estiver sido feita, o checkBox já estará selecionado
+            checkBox.setSelected(weeklytask.getTaskStatus() == TaskStatus.DONE);
+
+            checkBox.setOnAction(event -> {
+                if(checkBox.isSelected()){
+                    weeklytask.setTaskStatus(TaskStatus.DONE);
+                }else{
+                    weeklytask.setTaskStatus(TaskStatus.NOT_DONE);
+                }
+                HomeRepository.saveUserData();
+            });
+        }
+        hbWeeklyTasks.setSpacing(10);
+    }
+*/
+
     public void setMemberInfo(Member member){
         addMembersButtons();
         showMemberHello(member);
-        showMemberDailyTasks(member);
-        showMemberWeeklyTasks(member);
+        EventManager.getInstance().setUpdateProgressEventHandler(event -> {
+            simulateProgressBar(member);
+        });
+        simulateProgressBar(member);
+        showMemberTasks(member.getDailyTasks(), hbDailyTasks, "daily-task-anchor");
+        showMemberTasks(member.getWeeklyTasks(), hbWeeklyTasks, "weekly-task-anchor");
+
+
+        //showMemberDailyTasks(member);
+        //showMemberWeeklyTasks(member);
     }
 
     public void addMembersButtons() {

@@ -3,6 +3,7 @@ package br.com.homemanager.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Member implements Serializable {
 
