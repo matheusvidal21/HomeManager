@@ -1,6 +1,8 @@
 package br.com.homemanager.controller;
 
 import br.com.homemanager.event.EventManager;
+import br.com.homemanager.event.EditTaskListEvent;
+import br.com.homemanager.event.UpdateProgressEvent;
 import br.com.homemanager.model.Task;
 import br.com.homemanager.model.Member;
 import br.com.homemanager.application.Program;
@@ -42,6 +44,8 @@ public class HomePageController implements Initializable {
     @FXML
     private Button btnRedistributeWeeklyTasks;
     @FXML
+    private Button btnEditTaskList;
+    @FXML
     private Label lbResult;
     @FXML
     private Label lbProgress;
@@ -60,6 +64,7 @@ public class HomePageController implements Initializable {
     }
 
     public void onBtnLogoutCLick(){
+        lbResult.setText("");
         HomeRepository.saveUserData();
         Program.changeScreen("loginPage");
     }
@@ -74,6 +79,13 @@ public class HomePageController implements Initializable {
         displaySuccessMessage("Weekly tasks redistributed");
         Session.getInstance().getCurrentUser().assignWeeklyTasks();
         HomeRepository.saveUserData();
+    }
+
+    public void onBtnEditTaskList(){
+        EventManager.getInstance().fireEditTaskListEvent(new EditTaskListEvent());
+        lbResult.setText("");
+        HomeRepository.saveUserData();
+        Program.changeScreen("editTaskListPage");
     }
 
     public void showAllTasks() {
@@ -112,6 +124,8 @@ public class HomePageController implements Initializable {
     }
 
     private void handleMemberButtonClick(Member member) {
+        lbResult.setText("");
+        EventManager.getInstance().fireProgressEvent(new UpdateProgressEvent());
         loadMemberPageScene(member);
     }
 
@@ -146,8 +160,11 @@ public class HomePageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        EventManager.getInstance().setUpdateProgressEventHandler(event -> {
+        EventManager.getInstance().setUpdateHomeProgressEventHandler(event -> {
             simulateProgress();
+        });
+        EventManager.getInstance().setShowAllTaskEventEventHandler(event-> {
+            showAllTasks();
         });
     }
 }

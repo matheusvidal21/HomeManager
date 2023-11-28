@@ -116,6 +116,9 @@
 .progress-bar {
     -fx-control-inner-background: #edc7f8; /* Cor de fundo da barra de progresso */
     -fx-accent: #F048CE; /* Cor da barra de progresso */
+    -fx-border-color: white;
+    -fx-border-width: 1px;
+    -fx-border-radius: 15.5;
 }
 
 .progress-bar .track {

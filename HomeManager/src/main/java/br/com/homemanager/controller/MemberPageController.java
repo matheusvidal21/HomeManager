@@ -1,6 +1,7 @@
 package br.com.homemanager.controller;
 
 import br.com.homemanager.event.EventManager;
+import br.com.homemanager.event.UpdateHomeProgressEvent;
 import br.com.homemanager.event.UpdateProgressEvent;
 import br.com.homemanager.model.*;
 import br.com.homemanager.application.Program;
@@ -52,31 +53,33 @@ public class MemberPageController implements Initializable {
     @FXML
     private Label lbCongratulations;
     public void simulateProgressBar(Member member){
-        ArrayList<Task> allTasks = new ArrayList<>();
-        allTasks.addAll(member.getWeeklyTasks());
-        allTasks.addAll(member.getDailyTasks());
-        lbCongratulations.setText("");
-        lbCongratulations.getStyleClass().clear();
-
-        int tasksCompleted = 0;
-        int totalTasks = member.getWeeklyTasks().size() + (member.getDailyTasks().size() * 5);
-        for(Task task : allTasks){
-            if(task instanceof DailyTask){
-                tasksCompleted += (int) ((DailyTask) task).getProgress().get();
-            }else if(task.getTaskStatus() == TaskStatus.DONE){
-                tasksCompleted++;
+        if(member.getDailyTasks().size() > 0 || member.getWeeklyTasks().size() > 0) {
+            ArrayList<Task> allTasks = new ArrayList<>();
+            allTasks.addAll(member.getWeeklyTasks());
+            allTasks.addAll(member.getDailyTasks());
+            int tasksCompleted = 0;
+            int totalTasks = member.getWeeklyTasks().size() + (member.getDailyTasks().size() * 5);
+            for(Task task : allTasks){
+                if(task instanceof DailyTask){
+                    tasksCompleted += (int) ((DailyTask) task).getProgress().get();
+                }else if(task.getTaskStatus() == TaskStatus.DONE){
+                    tasksCompleted++;
+                }
             }
+
+            double progress = (double) tasksCompleted / totalTasks;
+            lbProgress.setText(String.format("%.0f", progress * 100)   + "% tasks completed");
+
+            if(tasksCompleted == totalTasks){
+                lbCongratulations.getStyleClass().add("label-styled");
+                lbCongratulations.setText("Congratulations! You have completed all your tasks.");
+            }
+            memberProgressBar.setProgress(progress);
+        }else{
+            lbCongratulations.getStyleClass().clear();
+            lbCongratulations.setText("");
+            lbProgress.setText("You don't have any tasks yet");
         }
-
-        double progress = (double) tasksCompleted / totalTasks;
-        lbProgress.setText(String.format("%.0f", progress * 100)   + "% tasks completed");
-
-        if(tasksCompleted == totalTasks){
-            lbCongratulations.getStyleClass().add("label-styled");
-            lbCongratulations.setText("Congratulations! You have completed all your tasks.");
-        }
-
-        memberProgressBar.setProgress(progress);
     }
 
     public void onBtnLogoutCLick(){
@@ -85,7 +88,7 @@ public class MemberPageController implements Initializable {
     }
 
     public void onBtnHomeClick(ActionEvent event){
-        EventManager.getInstance().fireEvent(new UpdateProgressEvent());
+        EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
         Program.changeScreen("homePage");
     }
 
@@ -169,7 +172,7 @@ public class MemberPageController implements Initializable {
                     dailyTask.setTaskStatus(TaskStatus.DONE);
                 }
             }
-            EventManager.getInstance().fireEvent(new UpdateProgressEvent());
+            EventManager.getInstance().fireProgressEvent(new UpdateProgressEvent());
             HomeRepository.saveUserData();
         });
     }
@@ -198,7 +201,7 @@ public class MemberPageController implements Initializable {
             }else{
                 weeklyTask.setTaskStatus(TaskStatus.NOT_DONE);
             }
-            EventManager.getInstance().fireEvent(new UpdateProgressEvent());
+            EventManager.getInstance().fireProgressEvent(new UpdateProgressEvent());
             HomeRepository.saveUserData();
         });
     }

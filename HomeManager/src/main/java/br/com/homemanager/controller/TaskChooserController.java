@@ -45,6 +45,8 @@ public class TaskChooserController implements Initializable {
         getSpecialDTask();
         getSpecialWTask();
         Session.getInstance().getCurrentUser().printHomeTasks();
+        Session.getInstance().getCurrentUser().assignWeeklyTasks();
+        Session.getInstance().getCurrentUser().assignDailyTasks();
         Program.changeScreen("loginPage");
     }
 

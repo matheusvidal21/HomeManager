@@ -2,6 +2,7 @@ package br.com.homemanager.controller;
 
 import br.com.homemanager.application.Program;
 import br.com.homemanager.event.EventManager;
+import br.com.homemanager.event.UpdateHomeProgressEvent;
 import br.com.homemanager.event.UpdateProgressEvent;
 import br.com.homemanager.model.Home;
 import br.com.homemanager.model.Session;
@@ -45,7 +46,8 @@ public class LoginController{
                 homePageController.showAllTasks();
                 homePageController.addMembersButtons();
             }
-            EventManager.getInstance().fireEvent(new UpdateProgressEvent());
+            EventManager.getInstance().fireProgressEvent(new UpdateProgressEvent());
+            EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
             Program.changeScreen("homePage");
             clearInputFields();
         } else {
