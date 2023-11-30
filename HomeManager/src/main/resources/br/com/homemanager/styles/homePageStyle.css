@@ -28,7 +28,7 @@
     -fx-background-radius: 10; /* Raio para o background arredondado */
     -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-font-size: 16px; /* Tamanho da fonte */
 }
 
 /* Estilo para o Botão ao passar o mouse sobre ele (opcional) */

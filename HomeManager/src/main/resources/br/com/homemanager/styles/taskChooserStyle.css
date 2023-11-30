@@ -23,7 +23,7 @@
     -fx-border-color: transparent; /* Borda transparente */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
     -fx-background-radius: 20; /* Raio para o background arredondado */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-font-size: 15px; /* Tamanho da fonte */
 }
 
 .transparent-scroll-pane {

@@ -13,77 +13,77 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="485.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.homemanager.controller.SingupController">
+<AnchorPane prefHeight="585.0" prefWidth="915.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.homemanager.controller.SingupController">
     <children>
-        <AnchorPane layoutX="316.0" prefHeight="487.0" prefWidth="400.0" styleClass="right_pane" stylesheets="@styles/singupStyle.css">
+        <AnchorPane layoutX="364.0" prefHeight="585.0" prefWidth="550.0" styleClass="right_pane" stylesheets="@styles/singupStyle.css">
             <children>
-                <Label layoutX="40.0" layoutY="269.0" styleClass="label-styled" stylesheets="@styles/singupStyle.css" text="número de membros" textFill="#345449">
+                <Label layoutX="97.0" layoutY="304.0" styleClass="label-styled" stylesheets="@styles/singupStyle.css" text="Number of members" textFill="#345449">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="38.0" layoutY="189.0" styleClass="label-styled" stylesheets="@styles/singupStyle.css" text="senha" textFill="#345449">
+                <Label layoutX="99.0" layoutY="211.0" styleClass="label-styled" stylesheets="@styles/singupStyle.css" text="Password" textFill="#345449">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <Label layoutX="36.0" layoutY="118.0" styleClass="label-styled" stylesheets="@styles/singupStyle.css" text="username" textFill="#345449">
+                <Label layoutX="99.0" layoutY="130.0" styleClass="label-styled" stylesheets="@styles/singupStyle.css" text="Username" textFill="#345449">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="15.0" />
+                        <Font name="System Bold" size="17.0" />
                     </font>
                 </Label>
-                <TextField fx:id="txtUsername" layoutX="38.0" layoutY="144.0" onKeyReleased="#onKeyReleased" prefHeight="36.0" prefWidth="317.0" promptText="username da casa" styleClass="text-field-no-border">
+                <TextField fx:id="txtUsername" layoutX="97.0" layoutY="161.0" onKeyReleased="#onKeyReleased" prefHeight="36.0" prefWidth="353.0" promptText="Home username" styleClass="text-field-no-border">
                     <effect>
                         <Glow />
                     </effect>
                 </TextField>
-                <ComboBox fx:id="cboQuantidadeMembros" layoutX="229.0" layoutY="268.0" onKeyReleased="#onKeyReleased" prefHeight="19.0" prefWidth="41.0">
+                <ComboBox fx:id="cboQuantidadeMembros" layoutX="311.0" layoutY="304.0" onKeyReleased="#onKeyReleased" prefHeight="19.0" prefWidth="41.0">
                     <effect>
                         <Bloom />
                     </effect>
                 </ComboBox>
-                <Label layoutX="104.0" layoutY="55.0" prefHeight="39.0" prefWidth="197.0" text="Cadastre sua casa" textFill="#345449">
+                <Label layoutX="95.0" layoutY="55.0" prefHeight="40.0" prefWidth="361.0" text="Register your home" textFill="#345449">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="25.0" />
+                        <Font name="System Bold" size="32.0" />
                     </font>
                 </Label>
-                <PasswordField fx:id="txtPassword" layoutX="39.0" layoutY="217.0" onKeyReleased="#onKeyReleased" prefHeight="36.0" prefWidth="317.0" promptText="senha da casa" styleClass="text-field-no-border" stylesheets="@styles/singupStyle.css">
+                <PasswordField fx:id="txtPassword" layoutX="96.0" layoutY="243.0" onKeyReleased="#onKeyReleased" prefHeight="36.0" prefWidth="353.0" promptText="Home password" styleClass="text-field-no-border" stylesheets="@styles/singupStyle.css">
                     <effect>
                         <Glow />
                     </effect>
                 </PasswordField>
-                <ScrollPane layoutX="47.0" layoutY="308.0">
+                <ScrollPane layoutX="96.0" layoutY="341.0" prefHeight="163.0" prefWidth="355.0">
                     <content>
-                        <VBox fx:id="vboxNomesMembros" prefHeight="122.0" prefWidth="301.0">
+                        <VBox fx:id="vboxNomesMembros" prefHeight="122.0" prefWidth="353.0">
                             <children>
                                 <TextField disable="true" onKeyReleased="#onKeyReleased" />
                             </children>
                         </VBox>
                     </content>
                 </ScrollPane>
-                <Label fx:id="lbResult" alignment="CENTER" contentDisplay="CENTER" layoutX="20.0" layoutY="94.0" prefHeight="16.0" prefWidth="365.0" textAlignment="CENTER" textFill="RED" />
-                <Button fx:id="btnConcluir" disable="true" layoutX="165.0" layoutY="449.0" mnemonicParsing="false" onAction="#onBtnConcluirClick" onKeyReleased="#onKeyReleased" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Concluir" AnchorPane.bottomAnchor="12.0">
+                <Label fx:id="lbResult" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="100.0" prefHeight="16.0" prefWidth="413.0" textAlignment="CENTER" textFill="RED" />
+                <Button fx:id="btnConcluir" disable="true" layoutX="218.0" layoutY="523.0" mnemonicParsing="false" onAction="#onBtnConcluirClick" onKeyReleased="#onKeyReleased" prefHeight="31.0" prefWidth="104.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Finish" AnchorPane.bottomAnchor="31.0">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+                        <Font name="System Bold" size="15.0" />
                     </font>
                 </Button>
             </children>
         </AnchorPane>
-        <Pane layoutX="-3.0" layoutY="-2.0" prefHeight="487.0" prefWidth="319.0" styleClass="left_pane" stylesheets="@styles/singupStyle.css">
+        <Pane layoutX="-3.0" prefHeight="585.0" prefWidth="367.0" styleClass="left_pane" stylesheets="@styles/singupStyle.css">
             <children>
-                <Label layoutX="22.0" layoutY="146.0" prefHeight="123.0" prefWidth="290.0" text="&quot;A verdadeira beleza da organização está na cooperação, não na sobrecarga.&quot;" textFill="#345449" wrapText="true">
+                <Label layoutX="22.0" layoutY="151.0" prefHeight="180.0" prefWidth="337.0" text="&quot;The true beauty of the organization lies in cooperation, not overload.&quot;" textFill="#345449" wrapText="true">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="21.0" />
+                        <Font name="System Bold" size="29.0" />
                     </font>
                 </Label>
-                <Label layoutX="22.0" layoutY="261.0" prefHeight="38.0" prefWidth="271.0" text="Em média, mulheres dedicam 10,4 horas por semana a mais que os homens aos afazeres domésticos." textFill="#345449" wrapText="true">
+                <Label layoutX="22.0" layoutY="316.0" prefHeight="99.0" prefWidth="227.0" text="On average, women spend 10.4 hours a week more than men on household chores." textFill="#345449" wrapText="true">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="10.0" />
+                        <Font name="System Italic" size="14.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnVoltar" layoutX="22.0" layoutY="19.0" mnemonicParsing="false" onAction="#onBtnVoltarClick" onKeyReleased="#onKeyReleased" prefHeight="24.0" prefWidth="63.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Voltar">
+                <Button fx:id="btnVoltar" layoutX="22.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnVoltarClick" onKeyReleased="#onKeyReleased" prefHeight="29.0" prefWidth="72.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Back">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="13.0" />
+                        <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
             </children>
