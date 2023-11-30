@@ -52,6 +52,7 @@ public class MemberPageController implements Initializable {
     private Label lbProgress;
     @FXML
     private Label lbCongratulations;
+
     public void simulateProgressBar(Member member){
         if(member.getDailyTasks().size() > 0 || member.getWeeklyTasks().size() > 0) {
             ArrayList<Task> allTasks = new ArrayList<>();
@@ -96,11 +97,11 @@ public class MemberPageController implements Initializable {
         double textSize = 0.0;
 
         if(member.getName().length() < 4){
-            textSize = 150.0;
+            textSize = 180.0;
         }else if (member.getName().length() < 9){
-            textSize = 240.0;
+            textSize = 260.0;
         }else{
-            textSize = 340.0;
+            textSize = 350.0;
         }
 
         lbHello.setPrefSize(textSize, 30);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 
 <AnchorPane prefHeight="485.0" prefWidth="715.0" style="-fx-background-color: #345449;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.homemanager.controller.EditTaskListController">
     <children>
-        <QuadCurve controlX="53.0" controlY="-91.0" endX="235.0" endY="325.0" fill="#edc7f8" layoutX="305.0" layoutY="166.0" startX="-111.0" startY="325.0" stroke="#edc7f8" strokeType="INSIDE" />
+        <QuadCurve controlX="53.0" controlY="-91.0" endX="235.0" endY="325.0" fill="#edc7f8" layoutX="296.0" layoutY="166.0" startX="-111.0" startY="325.0" stroke="#edc7f8" strokeType="INSIDE" />
         <Circle fill="#544d4d" layoutX="325.0" layoutY="336.0" radius="8.0" stroke="#544d4d" strokeType="INSIDE" />
         <QuadCurve controlX="17.0" controlY="59.0" endX="39.0" fill="#edc7f8" layoutX="335.0" layoutY="357.0" startX="-6.0" stroke="#544d4d" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.5" />
         <Circle fill="#544d4d" layoutX="375.0" layoutY="335.0" radius="8.0" stroke="#544d4d" strokeType="INSIDE" />
@@ -37,25 +38,33 @@
             </content>
         </ScrollPane>
         <Button fx:id="btnFinish" layoutX="327.0" layoutY="440.0" mnemonicParsing="false" onAction="#onBtnFinishClick" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Finish" />
-      <Label layoutX="408.0" layoutY="131.0" prefHeight="30.0" prefWidth="164.0" text="New weekly tasks" textAlignment="CENTER" textFill="#edc7f8">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font>
-      </Label>
-      <ComboBox fx:id="cboWeeklyTasks" layoutX="572.0" layoutY="134.0" prefHeight="25.0" prefWidth="62.0" visibleRowCount="8" />
-      <ComboBox fx:id="cboDailyTasks" layoutX="237.0" layoutY="135.0" prefHeight="25.0" prefWidth="62.0" visibleRowCount="8" />
-      <Button fx:id="btnHome" layoutX="635.0" layoutY="30.0" mnemonicParsing="false" onAction="#onBtnHomeClick" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Home" />
-      <Label alignment="CENTER" layoutX="161.0" layoutY="69.0" prefHeight="30.0" prefWidth="394.0" text="select the tasks you want to have on the house list" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font name="System Italic" size="13.0" />
-         </font>
-      </Label>
-      <Button fx:id="btnYes" layoutX="34.0" layoutY="57.0" mnemonicParsing="false" text="Yes" />
-      <Button fx:id="btnNo" layoutX="34.0" layoutY="87.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="34.0" text="No" />
-      <Label fx:id="lbConfirmation" layoutX="74.0" layoutY="56.0" prefHeight="60.0" prefWidth="119.0" text="All weekly progress will be lost. Are you sure about that?" textFill="#edc7f8" wrapText="true">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
+        <Label layoutX="408.0" layoutY="131.0" prefHeight="30.0" prefWidth="164.0" text="New weekly tasks" textAlignment="CENTER" textFill="#edc7f8">
+            <font>
+                <Font name="System Bold" size="19.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cboWeeklyTasks" layoutX="572.0" layoutY="134.0" prefHeight="25.0" prefWidth="62.0" styleClass="combo-box-styled" stylesheets="@styles/editTaskListStyle.css" visibleRowCount="8" />
+        <ComboBox fx:id="cboDailyTasks" layoutX="237.0" layoutY="135.0" prefHeight="25.0" prefWidth="62.0" styleClass="combo-box-styled" stylesheets="@styles/editTaskListStyle.css" visibleRowCount="8" />
+        <Button fx:id="btnHome" layoutX="635.0" layoutY="30.0" mnemonicParsing="false" onAction="#onBtnHomeClick" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Home" />
+        <Label alignment="CENTER" layoutX="161.0" layoutY="69.0" prefHeight="30.0" prefWidth="394.0" text="select the tasks you want to have on the house list" textAlignment="CENTER" textFill="WHITE">
+            <font>
+                <Font name="System Italic" size="13.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnYes" layoutX="26.0" layoutY="46.0" mnemonicParsing="false" styleClass="button-styled" text="Yes">
+            <stylesheets>
+                <URL value="@styles/editTaskListStyle.css" />
+                <URL value="@styles/taskChooserStyle.css" />
+            </stylesheets></Button>
+        <Button fx:id="btnNo" layoutX="26.0" layoutY="81.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="38.0" styleClass="button-styled" text="No">
+            <stylesheets>
+                <URL value="@styles/editTaskListStyle.css" />
+                <URL value="@styles/taskChooserStyle.css" />
+            </stylesheets></Button>
+        <Label fx:id="lbConfirmation" layoutX="68.0" layoutY="44.0" prefHeight="69.0" prefWidth="127.0" styleClass="label-confirmation" stylesheets="@styles/editTaskListStyle.css" text="All weekly progress will be lost. Are you sure about that?" wrapText="true">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

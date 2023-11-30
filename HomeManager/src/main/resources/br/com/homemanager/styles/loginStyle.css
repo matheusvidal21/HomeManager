@@ -22,8 +22,7 @@
     -fx-background-radius: 10; /* Raio para o background arredondado */
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+/* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
     -fx-background-color: black; /* Cor do background ao passar o mouse */
 }
-

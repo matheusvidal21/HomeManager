@@ -35,17 +35,17 @@ public class Program extends Application {
         loginController.setHomePageController(homePageController);
 
         // Configurar as cenas
-        loginScene = new Scene(rootLogin, 715, 485);
-        homeScene = new Scene(rootHomePage, 715, 485);
+        loginScene = new Scene(rootLogin, 915, 585);
+        homeScene = new Scene(rootHomePage, 915, 585);
 
         Parent fxmlRegisterPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/singup.fxml"));
-        singupScene = new Scene(fxmlRegisterPage, 715, 485);
+        singupScene = new Scene(fxmlRegisterPage, 915, 585);
 
         Parent fxmlTaskChooserPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/task-chooser.fxml"));
-        taskChooserScene = new Scene(fxmlTaskChooserPage, 715, 485);
+        taskChooserScene = new Scene(fxmlTaskChooserPage, 915, 585);
 
         Parent fxmlEditTaskListPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/edit-task-list.fxml"));
-        editTaskListScene= new Scene(fxmlEditTaskListPage , 715, 485);
+        editTaskListScene= new Scene(fxmlEditTaskListPage , 915, 585);
 
         stage.setScene(loginScene);
         stage.show();

@@ -65,7 +65,7 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Label fx:id="lbCongratulations" layoutX="45.0" layoutY="79.0" prefHeight="17.0" prefWidth="308.0" textFill="#345449" />
+            <Label fx:id="lbCongratulations" layoutX="45.0" layoutY="79.0" prefHeight="17.0" prefWidth="321.0" textFill="#345449" />
             </children>
             <stylesheets>
                 <URL value="@styles/homePageStyle.css" />

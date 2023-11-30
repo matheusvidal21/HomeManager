@@ -35,7 +35,7 @@
                 </Button>
                 <Label layoutX="35.0" layoutY="32.0" prefHeight="46.0" prefWidth="287.0" styleClass="label-styled" stylesheets="@styles/homePageStyle.css" text="Your week progress" textFill="#345449">
                     <font>
-                        <Font name="DejaVu Sans Condensed Bold" size="29.0" />
+                        <Font name="System Bold" size="28.0" />
                     </font>
                 </Label>
                 <ScrollPane hbarPolicy="NEVER" layoutX="347.0" layoutY="219.0" prefHeight="201.0" prefWidth="172.0" styleClass="right_pane" stylesheets="@styles/homePageStyle.css" vbarPolicy="NEVER">

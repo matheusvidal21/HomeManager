@@ -90,20 +90,12 @@ public class EditTaskListController implements Initializable {
                 .collect(Collectors.toList());
     }
 
-    private <T extends Task> List<T> getNoSelectedTasks(VBox vbTasks, Function<String, T> taskConstructor){
-        return vbTasks.getChildren().stream()
-                .filter(node -> node instanceof HBox)
-                .map(node -> (HBox) node)
-                .filter(hBox -> !((CheckBox)hBox.getChildren().get(0)).isSelected() && hBox.getChildren().get(1) instanceof Label)
-                .map(hBox -> taskConstructor.apply(((Label) hBox.getChildren().get(1)).getText()))
-                .collect(Collectors.toList());
-    }
-
     private <T extends Task> List<T> getSelectedNewTasks(VBox vbTasks, Function<String, T> taskConstructor){
         return vbTasks.getChildren().stream()
                 .filter(node -> node instanceof HBox)
                 .map(node -> (HBox) node)
                 .filter(hBox -> ((CheckBox)hBox.getChildren().get(0)).isSelected() && hBox.getChildren().get(1) instanceof TextField)
+                .filter(hBox -> ((TextField) hBox.getChildren().get(1)).getLength() > 0)
                 .map(hBox -> taskConstructor.apply((((TextField) hBox.getChildren().get(1)).getText())))
                 .collect(Collectors.toList());
     }
@@ -119,6 +111,7 @@ public class EditTaskListController implements Initializable {
         for(DailyTask task : allTasks){
             CheckBox checkBox = new CheckBox();
             checkBox.setSelected(true);
+            checkBox.getStyleClass().add("custom-checkbox");
 
             Label label = new Label(task.getTaskName());
             label.getStyleClass().add("label-tasks");
@@ -138,7 +131,9 @@ public class EditTaskListController implements Initializable {
             for(int i = 0; i < numbersOfTasks; i++){
                 CheckBox checkBox = new CheckBox();
                 checkBox.setSelected(true);
+                checkBox.getStyleClass().add("custom-checkbox");
                 TextField textFieldTask = new TextField();
+                textFieldTask.getStyleClass().add("text-field-no-border");
 
                 HBox hbox = new HBox(checkBox, textFieldTask);
                 hbox.setSpacing(7);
@@ -158,6 +153,7 @@ public class EditTaskListController implements Initializable {
         for(WeeklyTask task : allTasks){
             CheckBox checkBox = new CheckBox();
             checkBox.setSelected(true);
+            checkBox.getStyleClass().add("custom-checkbox");
 
             Label label = new Label(task.getTaskName());
             label.getStyleClass().add("label-tasks");
@@ -177,7 +173,9 @@ public class EditTaskListController implements Initializable {
             for(int i = 0; i < numberOfTasks; i++){
                 CheckBox checkBox = new CheckBox();
                 checkBox.setSelected(true);
+                checkBox.getStyleClass().add("custom-checkbox");
                 TextField textFieldTask = new TextField();
+                textFieldTask.getStyleClass().add("text-field-no-border");
 
                 HBox hbox = new HBox(checkBox, textFieldTask);
                 hbox.setSpacing(7);
@@ -195,12 +193,12 @@ public class EditTaskListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        cboDailyTasks.getItems().addAll(1,2,3,4,5,6,7,8);
+        cboWeeklyTasks.getItems().addAll(1,2,3,4,5,6,7,8);
         EventManager.getInstance().setEditTaskListEventHandler(event -> {
             lbConfirmation.setVisible(false);
             btnNo.setVisible(false);
             btnYes.setVisible(false);
-            cboDailyTasks.getItems().addAll(1,2,3,4,5,6,7,8);
-            cboWeeklyTasks.getItems().addAll(1,2,3,4,5,6,7,8);
             showDailyTasks();
             showWeeklyTasks();
             cboDailyTasks.setOnAction(actionEvent -> onVboxDailyTasks());

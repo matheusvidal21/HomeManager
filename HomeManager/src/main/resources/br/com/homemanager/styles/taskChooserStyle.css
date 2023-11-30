@@ -5,9 +5,9 @@
     -fx-background-radius: 10; /* Raio para o background arredondado */
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+/* Estilo para o Botão ao passar o mouse sobre ele  */
 .button-styled:hover {
-    -fx-background-color: black; /* Cor do background ao passar o mouse */
+    -fx-background-color: #8C816B; /* Cor do background ao passar o mouse */
 }
 
 .label-styled {
@@ -18,7 +18,7 @@
 }
 
 .label-tasks {
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold;
     -fx-border-color: transparent; /* Borda transparente */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
@@ -69,5 +69,44 @@
 }
 
 .custom-checkbox:selected .mark {
-    -fx-background-color: white; /* Cor do "check" quando selecionado */
+    -fx-background-color: #345449; /* Cor do "check" quando selecionado */
+}
+
+.text-field-no-border{ /* Define a cor de fundo como transparente */
+    /* Define a cor da borda como transparente */
+    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+}
+
+.combo-box-styled {
+    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
+    -fx-border-color: #000000; /* Cor da borda preta */
+    -fx-border-radius: 10; /* Raio para bordas arredondadas */
+    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-pref-width: 200; /* Largura preferencial */
+    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-size: 13px; /* Tamanho da fonte */
+}
+
+.combo-box-styled .list-cell {
+    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
+    -fx-text-fill: #000000; /* Cor do texto preto */
+    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-size: 13px; /* Tamanho da fonte */
+}
+
+.combo-box-styled .arrow-button {
+    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
+    -fx-shape: ""; /* Remove a seta padrão */
+}
+
+.combo-box-styled .arrow-button .arrow {
+    -fx-background-color: #000000; /* Cor da seta preta */
+}
+
+.combo-box-styled .arrow-button:hover {
+    -fx-background-color: #000000; /* Cor de fundo ao passar o mouse */
+}
+
+.combo-box-styled .arrow-button:hover .arrow {
+    -fx-background-color: #f3e8d2; /* Cor da seta ao passar o mouse */
 }

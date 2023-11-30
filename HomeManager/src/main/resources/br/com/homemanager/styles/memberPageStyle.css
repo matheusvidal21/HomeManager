@@ -13,7 +13,7 @@
     -fx-background-radius: 10; /* Raio para o background arredondado */
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+/* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
     -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
 }
@@ -23,7 +23,7 @@
     -fx-border-color: #000000; /* Borda preta */
     -fx-border-radius: 10; /* Raio para bordas arredondadas */
     -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
     -fx-font-size: 13px; /* Tamanho da fonte */
 }
@@ -34,7 +34,7 @@
 }
 
 .label-styled {
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
     -fx-background-color: #edc7f8; /* Background off white */
     -fx-border-color: transparent; /* Borda preta */
@@ -43,7 +43,7 @@
 }
 
 .label-tasks {
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold;
     -fx-border-color: transparent; /* Borda preta */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
@@ -52,14 +52,14 @@
 }
 
 .label-progress-bar {
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold;
     -fx-text-fill: black;
     -fx-font-size: 12px; /* Tamanho da fonte */
 }
 
 .label-daily-progress {
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold;
     -fx-border-color: transparent; /* Borda preta */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
@@ -131,5 +131,3 @@
     -fx-background-insets: 0; /* Remove o preenchimento interno */
     -fx-background-radius: 15; /* Raio para a barra de progresso */
 }
-
-
