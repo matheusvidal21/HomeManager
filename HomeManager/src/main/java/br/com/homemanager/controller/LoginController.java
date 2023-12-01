@@ -10,6 +10,7 @@ import br.com.homemanager.repository.HomeRepository;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
@@ -18,7 +19,7 @@ public class LoginController{
     @FXML
     private TextField txtUsername;
     @FXML
-    private TextField txtPassword;
+    private PasswordField txtPassword;
     @FXML
     private Button btnLogin;
     @FXML
@@ -68,7 +69,7 @@ public class LoginController{
 
     public void onKeyReleased(){
         boolean login;
-        login = (txtUsername.getText().isEmpty() | txtPassword.getText().isEmpty());
+        login = (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty());
         btnLogin.setDisable(login);
     }
 

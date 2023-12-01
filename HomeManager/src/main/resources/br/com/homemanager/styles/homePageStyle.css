@@ -9,14 +9,17 @@
 .button-styled {
     -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
+    -fx-font-size: 15px;
     -fx-background-color: #e0e191; /* Background off white */
     -fx-border-color: #000000; /* Borda preta */
     -fx-border-radius: 10; /* Raio para bordas arredondadas */
     -fx-background-radius: 10; /* Raio para o background arredondado */
 }
 
+
 /* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
+    -fx-font-size: 15px;
     -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
 }
 
@@ -57,7 +60,7 @@
     -fx-background-radius: 10; /* Raio para o background arredondado */
     -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-font-size: 15px; /* Tamanho da fonte */
 }
 
 .vbox-tasks{

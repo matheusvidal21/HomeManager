@@ -54,6 +54,8 @@ public class MemberPageController implements Initializable {
     private Label lbCongratulations;
 
     public void simulateProgressBar(Member member){
+        lbCongratulations.getStyleClass().clear();
+        lbCongratulations.setText("");
         if(member.getDailyTasks().size() > 0 || member.getWeeklyTasks().size() > 0) {
             ArrayList<Task> allTasks = new ArrayList<>();
             allTasks.addAll(member.getWeeklyTasks());
@@ -72,7 +74,7 @@ public class MemberPageController implements Initializable {
             lbProgress.setText(String.format("%.0f", progress * 100)   + "% tasks completed");
 
             if(tasksCompleted == totalTasks){
-                lbCongratulations.getStyleClass().add("label-styled");
+                lbCongratulations.getStyleClass().add("label-result-styled");
                 lbCongratulations.setText("Congratulations! You have completed all your tasks.");
             }
             memberProgressBar.setProgress(progress);
@@ -94,17 +96,17 @@ public class MemberPageController implements Initializable {
     }
 
     public void showMemberHello(Member member){
-        double textSize = 0.0;
+        double textSize;
 
         if(member.getName().length() < 4){
-            textSize = 180.0;
+            textSize = 160.0;
         }else if (member.getName().length() < 9){
-            textSize = 260.0;
+            textSize = 270.0;
         }else{
-            textSize = 350.0;
+            textSize = 370.0;
         }
 
-        lbHello.setPrefSize(textSize, 30);
+        lbHello.setPrefSize(textSize, 53);
         lbHello.setText("Hello, " + member.getName() + "!");
     }
 
@@ -123,9 +125,9 @@ public class MemberPageController implements Initializable {
 
                 ((AnchorPane) taskNode).getChildren().add(labelProgress);
 
-                AnchorPane.setTopAnchor(checkBox, 70.0);
-                AnchorPane.setTopAnchor(labelProgress, 95.0);
-                AnchorPane.setLeftAnchor(labelProgress, 32.0);
+                AnchorPane.setTopAnchor(checkBox, 90.0);
+                AnchorPane.setTopAnchor(labelProgress, 112.0);
+                AnchorPane.setLeftAnchor(labelProgress, 35.0);
                 AnchorPane.setRightAnchor(labelProgress, 15.0);
 
                 checkBoxAction((DailyTask) task, progress, labelProgress, isSelected, checkBox);
@@ -224,117 +226,10 @@ public class MemberPageController implements Initializable {
         AnchorPane.setLeftAnchor(label, 5.0);
         AnchorPane.setRightAnchor(label, 5.0);
 
-        AnchorPane.setTopAnchor(checkBox, 80.0);
-        AnchorPane.setLeftAnchor(checkBox, 33.0);
+        AnchorPane.setTopAnchor(checkBox, 90.0);
+        AnchorPane.setLeftAnchor(checkBox, 37.0);
         AnchorPane.setRightAnchor(checkBox, 15.0);
     }
-
-
-    /*
-    public void showMemberDailyTasks(Member member){
-        List<DailyTask> dailyTasks = member.getDailyTasks();
-        hbDailyTasks.getChildren().clear();
-
-        for(DailyTask dailytask : dailyTasks){
-            AtomicInteger progress = dailytask.getProgress();
-            final boolean[] isSelected = {false};
-
-            Label label = new Label(dailytask.getTaskName());
-            CheckBox checkBox = new CheckBox();
-            AnchorPane anchorPane = new AnchorPane();
-            Label labelProgress = createProgressLabel(progress);
-            anchorPane.getStyleClass().add("daily-task-anchor");
-
-            styleAnchor(anchorPane,label, checkBox);
-            AnchorPane.setTopAnchor(checkBox, 70.0);
-            AnchorPane.setTopAnchor(labelProgress, 95.0);
-            AnchorPane.setLeftAnchor(labelProgress, 32.0);
-            AnchorPane.setRightAnchor(labelProgress, 15.0);
-
-            anchorPane.getChildren().addAll(label, checkBox, labelProgress);
-            hbDailyTasks.getChildren().add(anchorPane);
-            checkBoxAction(dailytask, progress, isSelected, labelProgress, checkBox);
-        }
-        hbDailyTasks.setSpacing(10);
-    }
-
-    private Label createProgressLabel(AtomicInteger progress) {
-        Label labelProgress = new Label(progress.get() + "/5");
-        labelProgress.getStyleClass().add("label-daily-progress");
-        return labelProgress;
-    }
-
-    private void checkBoxAction(DailyTask dailyTask, AtomicInteger progress, boolean[] isSelected, Label labelProgress, CheckBox checkBox){
-        // Se a tarefa já estiver sido feita, o checkBox já estará selecionado
-        checkBox.setSelected(dailyTask.getTaskStatus() == TaskStatus.DONE);
-        checkBox.setOnAction(event -> {
-            if(progress.get() == 5){
-                progress.set(0);
-                isSelected[0] = false;
-                labelProgress.setText("0/5");
-                dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
-            }else{
-                progress.getAndIncrement();
-                labelProgress.setText(progress.get() + "/5");
-                if(progress.get() < 5){
-                    simulateProgress(checkBox, isSelected[0]);
-                    dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
-                }else{
-                    isSelected[0] = true;
-                    checkBox.setSelected(true);
-                    dailyTask.setTaskStatus(TaskStatus.DONE);
-                }
-            }
-            HomeRepository.saveUserData();
-        });
-    }
-
-    private void simulateProgress(CheckBox checkBox, boolean isSelected){
-        checkBox.setDisable(true);
-
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0.5), event -> {
-                    // Habilita o CheckBox após o delay
-                    checkBox.setDisable(false);
-                    if(!isSelected){
-                        checkBox.setSelected(false);
-                    }
-                })
-        );
-        timeline.setCycleCount(1);
-        timeline.play();
-    }
-
-    public void showMemberWeeklyTasks(Member member){
-        List<WeeklyTask> weeklyTasks = member.getWeeklyTasks();
-        hbWeeklyTasks.getChildren().clear();
-
-        for(WeeklyTask weeklytask : weeklyTasks){
-            Label label = new Label(weeklytask.getTaskName());
-            CheckBox checkBox = new CheckBox();
-            AnchorPane anchorPane = new AnchorPane();
-            anchorPane.getStyleClass().add("weekly-task-anchor");
-
-            styleAnchor(anchorPane, label, checkBox);
-
-            anchorPane.getChildren().addAll(label, checkBox);
-            hbWeeklyTasks.getChildren().add(anchorPane);
-
-            // Se a tarefa já estiver sido feita, o checkBox já estará selecionado
-            checkBox.setSelected(weeklytask.getTaskStatus() == TaskStatus.DONE);
-
-            checkBox.setOnAction(event -> {
-                if(checkBox.isSelected()){
-                    weeklytask.setTaskStatus(TaskStatus.DONE);
-                }else{
-                    weeklytask.setTaskStatus(TaskStatus.NOT_DONE);
-                }
-                HomeRepository.saveUserData();
-            });
-        }
-        hbWeeklyTasks.setSpacing(10);
-    }
-*/
 
     public void setMemberInfo(Member member){
         addMembersButtons();
@@ -346,9 +241,6 @@ public class MemberPageController implements Initializable {
         showMemberTasks(member.getDailyTasks(), hbDailyTasks, "daily-task-anchor");
         showMemberTasks(member.getWeeklyTasks(), hbWeeklyTasks, "weekly-task-anchor");
 
-
-        //showMemberDailyTasks(member);
-        //showMemberWeeklyTasks(member);
     }
 
     public void addMembersButtons() {

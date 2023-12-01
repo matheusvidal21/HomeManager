@@ -6,31 +6,30 @@
     -fx-background-color: #345449; /* Substitua #00ff00 pela cor desejada */
 }
 
-.button-styled {
-    -fx-background-color: #e0e191; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
-}
-
-/* Estilo para o Botão ao passar o mouse sobre ele */
-.button-styled:hover {
-    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
-}
-
 .button-member {
     -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
+    -fx-border-color: black; /* Borda preta */
+    -fx-border-width: 0.5px;
     -fx-border-radius: 10; /* Raio para bordas arredondadas */
     -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-font-size: 16px; /* Tamanho da fonte */
 }
 
 /* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
 .button-member:hover {
     -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+}
+
+.label-hello {
+    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
+    -fx-font-size: 32px;
+    -fx-background-color: #edc7f8; /* Background off white */
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-background-radius: 20; /* Raio para o background arredondado */
 }
 
 .label-styled {
@@ -40,6 +39,18 @@
     -fx-border-color: transparent; /* Borda preta */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
     -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-font-size: 18px;
+}
+
+.label-result-styled {
+    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
+    -fx-background-color: #edc7f8; /* Background off white */
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-font-size: 13px;
+    -fx-text-alignment: center;
 }
 
 .label-tasks {
@@ -55,7 +66,7 @@
     -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold;
     -fx-text-fill: black;
-    -fx-font-size: 12px; /* Tamanho da fonte */
+    -fx-font-size: 14px; /* Tamanho da fonte */
 }
 
 .label-daily-progress {
@@ -64,7 +75,7 @@
     -fx-border-color: transparent; /* Borda preta */
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
     -fx-background-radius: 20; /* Raio para o background arredondado */
-    -fx-font-size: 12px; /* Tamanho da fonte */
+    -fx-font-size: 14px; /* Tamanho da fonte */
 }
 
 .daily-task-anchor {
@@ -74,10 +85,10 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #ecdfd7;
-    -fx-min-width: 93;
-    -fx-min-height: 124;
-    -fx-max-width: 93;
-    -fx-max-height: 124;
+    -fx-min-width: 100;
+    -fx-min-height: 140;
+    -fx-max-width: 100;
+    -fx-max-height: 140;
 }
 
 .weekly-task-anchor {
@@ -87,10 +98,10 @@
     -fx-background-radius: 20px;
     -fx-border-style: solid;
     -fx-border-color: #ecdfd7;
-    -fx-min-width: 93;
-    -fx-min-height: 124;
-    -fx-max-width: 93;
-    -fx-max-height: 124;
+    -fx-min-width: 100;
+    -fx-min-height: 140;
+    -fx-max-width: 100;
+    -fx-max-height: 140;
 }
 
 /* Estilo para o CheckBox */

@@ -82,8 +82,8 @@ public class SingupController implements Initializable {
             Label label = new Label("Member's name " + (i + 1) + ":");
             TextField textFieldNome = new TextField();
             listaTxtFieldNomes.add(textFieldNome);
-
-            label.getStyleClass().add("label-styled");
+            textFieldNome.getStyleClass().add("text-field-member");
+            label.getStyleClass().add("label-names-styled");
 
             // Adiciona rótulo e campo de texto ao VBox
             vboxNomesMembros.getChildren().addAll(label, textFieldNome);
@@ -116,6 +116,7 @@ public class SingupController implements Initializable {
     private void clearInputFields(){
         txtUsername.clear();
         txtPassword.clear();
+        vboxNomesMembros.getChildren().clear();
         listaTxtFieldNomes.forEach(TextField::clear);
     }
 

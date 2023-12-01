@@ -14,12 +14,12 @@
     <children>
         <AnchorPane fx:id="left_pane" prefHeight="586.0" prefWidth="264.0" styleClass="left_pane" stylesheets="@styles/homePageStyle.css">
             <children>
-                <Button layoutX="83.0" layoutY="36.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="92.0" styleClass="button-styled" stylesheets="@styles/homePageStyle.css" text="Home">
+                <Button alignment="CENTER" layoutX="80.0" layoutY="29.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="100.0" styleClass="button-styled" stylesheets="@styles/homePageStyle.css" text="Home" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Button>
-                <VBox fx:id="vbBtnMembers" layoutX="58.0" layoutY="78.0" prefHeight="298.0" prefWidth="144.0" />
+                <VBox fx:id="vbBtnMembers" alignment="CENTER" layoutX="56.0" layoutY="78.0" prefHeight="298.0" prefWidth="144.0" />
                 <QuadCurve controlX="-58.0" controlY="-187.3333282470703" endX="69.0" endY="205.0" fill="#edc7f8" layoutX="195.0" layoutY="382.0" startX="-195.0" startY="204.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                 <Circle fill="#566675" layoutX="119.0" layoutY="424.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                 <Circle fill="#566675" layoutX="144.0" layoutY="424.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -28,12 +28,12 @@
         </AnchorPane>
         <AnchorPane layoutX="264.0" prefHeight="585.0" prefWidth="650.0" styleClass="right_pane" stylesheets="@styles/homePageStyle.css">
             <children>
-                <Button fx:id="btnLogout" layoutX="548.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnLogoutCLick" styleClass="button-styled" stylesheets="@styles/homePageStyle.css" text="Logout">
+                <Button fx:id="btnLogout" alignment="CENTER" layoutX="548.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnLogoutCLick" styleClass="button-styled" stylesheets="@styles/homePageStyle.css" text="Logout" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>
                 </Button>
-                <Label layoutX="35.0" layoutY="33.0" prefHeight="46.0" prefWidth="365.0" styleClass="label-styled" stylesheets="@styles/homePageStyle.css" text="Your week progress" textFill="#345449">
+                <Label alignment="CENTER" layoutX="35.0" layoutY="33.0" prefHeight="46.0" prefWidth="365.0" styleClass="label-styled" stylesheets="@styles/homePageStyle.css" text="Your week progress" textAlignment="CENTER" textFill="#345449">
                     <font>
                         <Font name="System Bold" size="35.0" />
                     </font>
@@ -56,11 +56,11 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Label fx:id="lbResult" layoutX="35.0" layoutY="94.0" prefHeight="35.0" prefWidth="360.0" styleClass="label-result" textAlignment="CENTER" />
+            <Label fx:id="lbResult" alignment="CENTER" layoutX="35.0" layoutY="94.0" prefHeight="35.0" prefWidth="360.0" styleClass="label-result" textAlignment="CENTER" />
             <ProgressBar fx:id="progressBar" layoutX="33.0" layoutY="506.0" prefHeight="46.0" prefWidth="592.0" progress="0.0" />
             <Label fx:id="lbProgress" alignment="CENTER" layoutX="131.0" layoutY="514.0" prefHeight="29.0" prefWidth="405.0" styleClass="label-result" textAlignment="CENTER" textFill="#f7f4f8">
                <font>
-                  <Font size="10.0" />
+                  <Font size="16.0" />
                </font></Label>
             <Button fx:id="btnEditTaskList" layoutX="35.0" layoutY="276.0" mnemonicParsing="false" onAction="#onBtnEditTaskList" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Edit task list">
                <font>

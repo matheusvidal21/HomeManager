@@ -13,6 +13,9 @@
 .text-field-no-border{ /* Define a cor de fundo como transparente */
     /* Define a cor da borda como transparente */
     -fx-background-radius: 10; /* Raio para bordas arredondadas */
+    -fx-background-color: transparent;
+    -fx-border-color: #345449;
+    -fx-border-width: 0px 0px 2px 0px;
 }
 
 .button-styled {
@@ -24,5 +27,5 @@
 
 /* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
-    -fx-background-color: black; /* Cor do background ao passar o mouse */
+    -fx-background-color: #8C816B; /* Cor do background ao passar o mouse */
 }
