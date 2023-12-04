@@ -43,16 +43,16 @@
                         <VBox fx:id="vbAllTasks" maxHeight="283.0" maxWidth="360.0" prefHeight="300.0" prefWidth="200.0" styleClass="vbox-tasks" stylesheets="@styles/homePageStyle.css" />
                     </content>
                 </ScrollPane>
-                <Label alignment="CENTER" layoutX="431.0" layoutY="141.0" prefHeight="27.0" prefWidth="94.0" styleClass="label-styled" stylesheets="@styles/homePageStyle.css" text="All tasks" textFill="#345449">
+                <Label alignment="CENTER" layoutX="431.0" layoutY="144.0" prefHeight="27.0" prefWidth="94.0" styleClass="label-styled" stylesheets="@styles/homePageStyle.css" text="All tasks" textFill="#345449">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-            <Button fx:id="btnRedistributeDailyTasks" layoutX="34.0" layoutY="143.0" mnemonicParsing="false" onAction="#onBtnRedistributeDailyTasks" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Redistribute daily tasks">
+            <Button fx:id="btnRedistributeDailyTasks" layoutX="33.0" layoutY="146.0" mnemonicParsing="false" onAction="#onBtnRedistributeDailyTasks" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Redistribute daily tasks">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Button fx:id="btnRedistributeWeeklyTasks" layoutX="34.0" layoutY="210.0" mnemonicParsing="false" onAction="#onBtnRedistributeWeeklyTasks" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Redistribute weekly tasks">
+            <Button fx:id="btnRedistributeWeeklyTasks" layoutX="33.0" layoutY="238.0" mnemonicParsing="false" onAction="#onBtnRedistributeWeeklyTasks" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Redistribute weekly tasks">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -62,10 +62,15 @@
                <font>
                   <Font size="16.0" />
                </font></Label>
-            <Button fx:id="btnEditTaskList" layoutX="35.0" layoutY="276.0" mnemonicParsing="false" onAction="#onBtnEditTaskList" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Edit task list">
+            <Button fx:id="btnEditTaskList" layoutX="33.0" layoutY="418.0" mnemonicParsing="false" onAction="#onBtnEditTaskList" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Edit task list">
                <font>
                   <Font size="20.0" />
                </font></Button>
+            <Button fx:id="btnEditMemberList" layoutX="33.0" layoutY="331.0" mnemonicParsing="false" onAction="#onBtnEditMemberList" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Edit member list">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Button>
             </children>
         </AnchorPane>
     </children>

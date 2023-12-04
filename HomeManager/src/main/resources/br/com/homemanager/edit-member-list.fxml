@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.QuadCurve?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="585.0" prefWidth="915.0" style="-fx-background-color: #edc7f8;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.com.homemanager.controller.EditMemberListController">
+    <children>
+        <QuadCurve controlX="53.0" controlY="-91.0" endX="235.0" endY="325.0" fill="#edc7f8" layoutX="395.0" layoutY="260.0" startX="-111.0" startY="325.0" stroke="#345449" strokeType="INSIDE" />
+        <Circle fill="#544d4d" layoutX="424.0" layoutY="430.0" radius="8.0" stroke="#544d4d" strokeType="INSIDE" />
+        <QuadCurve controlX="17.0" controlY="59.0" endX="39.0" fill="#edc7f8" layoutX="434.0" layoutY="451.0" startX="-6.0" stroke="#544d4d" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.5" />
+        <Circle fill="#544d4d" layoutX="474.0" layoutY="429.0" radius="8.0" stroke="#544d4d" strokeType="INSIDE" />
+        <Label alignment="CENTER" layoutX="171.0" layoutY="39.0" prefHeight="40.0" prefWidth="556.0" text="Edit your list of members" textAlignment="CENTER" textFill="#345449">
+            <font>
+                <Font name="System Bold" size="32.0" />
+            </font>
+        </Label>
+        <Label layoutX="163.0" layoutY="147.0" prefHeight="34.0" prefWidth="203.0" text="Current members" textFill="#345449">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <ScrollPane fx:id="scrollPaneCurrentMembers" hbarPolicy="NEVER" layoutX="121.0" layoutY="200.0" prefHeight="260.0" prefWidth="288.0" styleClass="transparent-scroll-pane" stylesheets="@styles/editMemberListStyle.css" vbarPolicy="NEVER">
+            <content>
+                <VBox fx:id="vbCurrentMembers" prefHeight="229.0" prefWidth="255.0" stylesheets="@styles/editMemberListStyle.css" />
+            </content>
+        </ScrollPane>
+        <ScrollPane fx:id="scrollPaneNewMembers" hbarPolicy="NEVER" layoutX="487.0" layoutY="200.0" prefHeight="260.0" prefWidth="288.0" styleClass="transparent-scroll-pane" stylesheets="@styles/editMemberListStyle.css" vbarPolicy="NEVER">
+            <content>
+                <VBox fx:id="vbNewMembers" prefHeight="229.0" prefWidth="255.0" stylesheets="@styles/editMemberListStyle.css" />
+            </content>
+        </ScrollPane>
+        <Button fx:id="btnFinish" layoutX="414.0" layoutY="529.0" mnemonicParsing="false" onAction="#onBtnFinishClick" prefHeight="31.0" prefWidth="78.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Finish">
+            <font>
+                <Font size="15.0" />
+            </font></Button>
+        <Label layoutX="504.0" layoutY="147.0" prefHeight="34.0" prefWidth="171.0" text="New members" textAlignment="CENTER" textFill="#345449">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Label>
+        <ComboBox fx:id="cboNewMember" layoutX="678.0" layoutY="151.0" prefHeight="25.0" prefWidth="62.0" styleClass="combo-box-styled" stylesheets="@styles/editTaskListStyle.css" visibleRowCount="8" />
+        <Button fx:id="btnHome" layoutX="815.0" layoutY="25.0" mnemonicParsing="false" onAction="#onBtnHomeClick" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Home">
+            <font>
+                <Font size="15.0" />
+            </font></Button>
+        <Label alignment="CENTER" layoutX="251.0" layoutY="78.0" prefHeight="30.0" prefWidth="394.0" text="Add or remove members from your home" textAlignment="CENTER" textFill="#7d8381">
+            <font>
+                <Font name="System Italic" size="15.0" />
+            </font>
+        </Label>
+        <Button fx:id="btnYes" layoutX="16.0" layoutY="36.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="47.0" styleClass="button-styled" text="Yes">
+            <stylesheets>
+                <URL value="@styles/editTaskListStyle.css" />
+                <URL value="@styles/taskChooserStyle.css" />
+            </stylesheets>
+      </Button>
+        <Button fx:id="btnNo" layoutX="16.0" layoutY="79.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="47.0" styleClass="button-styled" text="No">
+            <stylesheets>
+                <URL value="@styles/editTaskListStyle.css" />
+                <URL value="@styles/taskChooserStyle.css" />
+            </stylesheets>
+            <font>
+                <Font size="14.0" />
+            </font>
+      </Button>
+        <Label fx:id="lbConfirmation" layoutX="67.0" layoutY="33.0" prefHeight="81.0" prefWidth="140.0" styleClass="label-confirmation" stylesheets="@styles/editTaskListStyle.css" text="All weekly progress will be lost. Are you sure about that?" wrapText="true">
+            <font>
+                <Font name="System Bold" size="13.0" />
+            </font>
+        </Label>
+      <Button fx:id="btnRemove" layoutX="220.0" layoutY="474.0" mnemonicParsing="false" onAction="#onBtnRemoveClick" prefHeight="26.0" prefWidth="88.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Remove" />
+      <Button fx:id="btnAdd" layoutX="587.0" layoutY="474.0" mnemonicParsing="false" onAction="#onBtnAddClick" prefHeight="26.0" prefWidth="88.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Add" />
+    </children>
+</AnchorPane>

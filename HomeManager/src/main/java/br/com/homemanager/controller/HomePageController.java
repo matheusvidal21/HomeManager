@@ -1,5 +1,6 @@
 package br.com.homemanager.controller;
 
+import br.com.homemanager.event.EditMemberListEvent;
 import br.com.homemanager.event.EventManager;
 import br.com.homemanager.event.EditTaskListEvent;
 import br.com.homemanager.event.UpdateProgressEvent;
@@ -46,6 +47,8 @@ public class HomePageController implements Initializable {
     @FXML
     private Button btnEditTaskList;
     @FXML
+    private Button btnEditMemberList;
+    @FXML
     private Label lbResult;
     @FXML
     private Label lbProgress;
@@ -86,6 +89,13 @@ public class HomePageController implements Initializable {
         lbResult.setText("");
         HomeRepository.saveUserData();
         Program.changeScreen("editTaskListPage");
+    }
+
+    public void onBtnEditMemberList(){
+        EventManager.getInstance().fireEditMemberListEvent(new EditMemberListEvent());
+        lbResult.setText("");
+        HomeRepository.saveUserData();
+        Program.changeScreen("editMemberListPage");
     }
 
     public void showAllTasks() {
@@ -163,8 +173,11 @@ public class HomePageController implements Initializable {
         EventManager.getInstance().setUpdateHomeProgressEventHandler(event -> {
             simulateProgress();
         });
-        EventManager.getInstance().setShowAllTaskEventEventHandler(event-> {
+        EventManager.getInstance().setShowAllTaskEventHandler(event-> {
             showAllTasks();
+        });
+        EventManager.getInstance().setShowMemberButtonsEventHandler(event -> {
+            addMembersButtons();
         });
     }
 }

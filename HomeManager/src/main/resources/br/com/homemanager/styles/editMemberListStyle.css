@@ -1,0 +1,49 @@
+.label-member {
+    -fx-padding: 3px;
+    -fx-text-fill: #345449;
+    -fx-font-weight: bold; /* Negrito */
+    -fx-background-color: #f3e8d2; /* Background off white */
+    -fx-border-color: transparent; /* Borda preta */
+    -fx-border-radius: 8; /* Raio para bordas arredondadas */
+    -fx-background-radius: 8; /* Raio para o background arredondado */
+    -fx-font-size: 16px;
+}
+
+/* Estilo para o CheckBox */
+.custom-checkbox .box {
+    -fx-background-color: transparent;
+    -fx-border-color: white; /* Cor da borda */
+    -fx-border-width: 2; /* Largura da borda */
+    -fx-border-radius: 3; /* Raio da borda */
+}
+
+.custom-checkbox:selected .box {
+    -fx-background-color: #345449; /* Cor do fundo quando selecionado */
+}
+
+.custom-checkbox .mark {
+    -fx-background-color: transparent;
+}
+
+.custom-checkbox:selected .mark {
+    -fx-background-color: white; /* Cor do "check" quando selecionado */
+}
+
+.text-field-no-border{ /* Define a cor de fundo como transparente */
+    -fx-border-color: #345449;
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-border-width: 0.5; /* Define a largura da borda (1 pixel, por exemplo) */
+    -fx-border-style: solid; /* Define o estilo da borda como sólida */
+    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+    -fx-max-width: 280;
+}
+
+.transparent-scroll-pane {
+    -fx-background-color: transparent; /* Define o fundo do ScrollPane como transparente */
+    -fx-background: transparent; /* Adiciona suporte a versões mais antigas do JavaFX */
+    -fx-border-color: white; /* Define a cor da borda como preta */
+    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-border-width: 1; /* Define a largura da borda (1 pixel, por exemplo) */
+    -fx-border-style: solid; /* Define o estilo da borda como sólida */
+    -fx-padding: 15 5 15 15; /* Adicionando espaçamento (topo, direita, inferior, esquerda) */
+}

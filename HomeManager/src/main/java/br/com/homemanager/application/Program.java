@@ -16,6 +16,8 @@ public class Program extends Application {
     private static Scene taskChooserScene;
     private static Scene homeScene;
     private static Scene editTaskListScene;
+    private static Scene editMemberListScene;
+
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -47,6 +49,9 @@ public class Program extends Application {
         Parent fxmlEditTaskListPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/edit-task-list.fxml"));
         editTaskListScene= new Scene(fxmlEditTaskListPage , 915, 585);
 
+        Parent fxmlEditMemberListPage = FXMLLoader.load(getClass().getResource("/br/com/homemanager/edit-member-list.fxml"));
+        editMemberListScene= new Scene(fxmlEditMemberListPage , 915, 585);
+
         stage.setScene(loginScene);
         stage.show();
     }
@@ -71,6 +76,10 @@ public class Program extends Application {
             }
             case "editTaskListPage":{
                 stage.setScene(editTaskListScene);
+                break;
+            }
+            case "editMemberListPage":{
+                stage.setScene(editMemberListScene);
                 break;
             }
             default:

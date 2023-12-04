@@ -31,13 +31,12 @@
 }
 
 .text-field-member {
-    -fx-border-color: #345449; /* Define a cor da borda como branca */
+    -fx-border-color: #345449;
     -fx-border-radius: 20; /* Raio para bordas arredondadas */
     -fx-border-width: 0.5; /* Define a largura da borda (1 pixel, por exemplo) */
     -fx-border-style: solid; /* Define o estilo da borda como sólida */
     -fx-background-radius: 10; /* Raio para bordas arredondadas */
     -fx-max-width: 280;
-
 }
 
 .label-styled {

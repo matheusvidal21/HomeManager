@@ -27,6 +27,10 @@ public class EditTaskListController implements Initializable {
     @FXML
     private Button btnHome;
     @FXML
+    private Button btnYes;
+    @FXML
+    private Button btnNo;
+    @FXML
     private ComboBox<Integer> cboDailyTasks;
     @FXML
     private ComboBox<Integer> cboWeeklyTasks;
@@ -40,10 +44,7 @@ public class EditTaskListController implements Initializable {
     private VBox vbWeeklyTasks;
     @FXML
     private Label lbConfirmation;
-    @FXML
-    private Button btnYes;
-    @FXML
-    private Button btnNo;
+
 
     public void onBtnHomeClick(){
         clearInputFields();

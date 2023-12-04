@@ -7,8 +7,10 @@ public class EventManager {
     private static EventManager instance;
     private EventHandler<UpdateProgressEvent> updateProgressEventHandler;
     private EventHandler<UpdateHomeProgressEvent> updateHomeProgressEventHandler;
-    private EventHandler<EditTaskListEvent> editTaskListEventEventHandler;
-    private EventHandler<ShowAllTaskEvent> showAllTaskEventEventHandler;
+    private EventHandler<EditTaskListEvent> editTaskListEventHandler;
+    private EventHandler<ShowAllTaskEvent> showAllTaskEventHandler;
+    private EventHandler<EditMemberListEvent> editMemberListEventHandler;
+    private EventHandler<ShowMemberButtonsEvent> showMemberButtonsEventHandler;
 
     public static synchronized EventManager getInstance() {
         if (instance == null) {
@@ -26,21 +28,39 @@ public class EventManager {
     }
 
     public void setEditTaskListEventHandler(EventHandler<EditTaskListEvent> handler) {
-        this.editTaskListEventEventHandler = handler;
+        this.editTaskListEventHandler = handler;
     }
-    public void setShowAllTaskEventEventHandler(EventHandler<ShowAllTaskEvent> handler) {
-        this.showAllTaskEventEventHandler = handler;
+    public void setShowAllTaskEventHandler(EventHandler<ShowAllTaskEvent> handler) {
+        this.showAllTaskEventHandler = handler;
+    }
+
+    public void setEditMemberListEventHandler(EventHandler<EditMemberListEvent> handler) {
+        this.editMemberListEventHandler = handler;
+    }
+    public void setShowMemberButtonsEventHandler(EventHandler<ShowMemberButtonsEvent> handler) {
+        this.showMemberButtonsEventHandler = handler;
+    }
+
+    public void fireShowMemberButtonsEvent(ShowMemberButtonsEvent event) {
+        if (showMemberButtonsEventHandler != null) {
+            showMemberButtonsEventHandler.handle(event);
+        }
+    }
+    public void fireEditMemberListEvent(EditMemberListEvent event) {
+        if (editMemberListEventHandler != null) {
+            editMemberListEventHandler.handle(event);
+        }
     }
 
     public void fireShowAllTaksEvent(ShowAllTaskEvent event) {
-        if (showAllTaskEventEventHandler != null) {
-            showAllTaskEventEventHandler.handle(event);
+        if (showAllTaskEventHandler != null) {
+            showAllTaskEventHandler.handle(event);
         }
     }
 
     public void fireEditTaskListEvent(EditTaskListEvent event) {
-        if (editTaskListEventEventHandler != null) {
-            editTaskListEventEventHandler.handle(event);
+        if (editTaskListEventHandler != null) {
+            editTaskListEventHandler.handle(event);
         }
     }
 
