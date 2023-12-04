@@ -35,7 +35,8 @@
     -fx-border-width: 0.5; /* Define a largura da borda (1 pixel, por exemplo) */
     -fx-border-style: solid; /* Define o estilo da borda como sólida */
     -fx-background-radius: 10; /* Raio para bordas arredondadas */
-    -fx-max-width: 280;
+    -fx-min-width: 220;
+    -fx-max-width: 220;
 }
 
 .transparent-scroll-pane {

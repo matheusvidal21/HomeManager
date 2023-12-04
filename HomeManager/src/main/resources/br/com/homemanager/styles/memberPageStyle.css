@@ -15,6 +15,10 @@
     -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
     -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-min-width: 100;
+    -fx-max-width: 100;
+    -fx-min-height: 37;
+    -fx-max-height: 37;
 }
 
 /* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
@@ -23,6 +27,7 @@
 }
 
 .label-hello {
+    -fx-padding: 0 0 0 5px;
     -fx-font-family: 'System'; /* Fonte */
     -fx-font-weight: bold; /* Negrito */
     -fx-font-size: 32px;

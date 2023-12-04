@@ -1,8 +1,10 @@
 package br.com.homemanager.controller;
 
 import br.com.homemanager.application.Program;
+import br.com.homemanager.event.EditMemberListEvent;
 import br.com.homemanager.event.EventManager;
 import br.com.homemanager.event.ShowMemberButtonsEvent;
+import br.com.homemanager.event.UpdateHomeProgressEvent;
 import br.com.homemanager.model.Home;
 import br.com.homemanager.model.Member;
 import br.com.homemanager.model.Session;
@@ -47,35 +49,66 @@ public class EditMemberListController implements Initializable {
     private Button btnYes;
     @FXML
     private Button btnNo;
-
+    @FXML
+    private Label lbWarning;
 
     public void onBtnHomeClick(){
         Program.changeScreen("homePage");
         HomeRepository.saveUserData();
         EventManager.getInstance().fireShowMemberButtonsEvent(new ShowMemberButtonsEvent());
+        EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
+        clearInputFields();
     }
 
     public void onBtnRemoveClick(){
+        lbWarning.setText("");
         Home currentUser = Session.getInstance().getCurrentUser();
-       // List<Member> memberListToRemove = getSelectedCurrentMembers(vbCurrentMembers, Member::new);
-        currentUser.getMembersList().removeAll(getSelectedCurrentMembers(vbCurrentMembers, Member::new));
-        HomeRepository.saveUserData();
-        System.out.println("foi clicado");
+        if(currentUser.getMembersList().size() > 0){
+            List<Member> memberListToRemove = getSelectedCurrentMembers(vbCurrentMembers, Member::new);
+            currentUser.getMembersList().removeAll(memberListToRemove);
+            HomeRepository.saveUserData();
+            EventManager.getInstance().fireEditMemberListEvent(new EditMemberListEvent());
+            clearInputFields();
+        }else{
+            lbWarning.setText("Your member list is already empty");
+        }
     }
 
     public void onBtnAddClick(){
         Home currentUser = Session.getInstance().getCurrentUser();
         List<Member> memberListToAdd = getSelectedNewMembers(vbNewMembers, Member::new);
-        currentUser.getMembersList().addAll(memberListToAdd);
+        StringBuilder duplicateNames = new StringBuilder();
+
+        for(Member newMember : memberListToAdd){
+            String newMemberName = newMember.getName();
+            if(!currentUser.getMembersList().stream().anyMatch(member -> member.getName().equals(newMemberName))){
+                currentUser.getMembersList().add(newMember);
+            }else{
+                if(!duplicateNames.isEmpty()){
+                    duplicateNames.append(", ");
+                }
+                duplicateNames.append(newMemberName);
+            }
+        }
+
+        if(!duplicateNames.isEmpty()){
+            lbWarning.setText("The members with the following names already exist on the list: " + duplicateNames.toString());
+        }else{
+            lbWarning.setText("");
+        }
+
         HomeRepository.saveUserData();
-        System.out.println("foi clicado");
+        clearInputFields();
+        EventManager.getInstance().fireEditMemberListEvent(new EditMemberListEvent());
     }
 
     public void onBtnFinishClick(){
-       // showConfirmation(true);
+        // showConfirmation(true);
         EventManager.getInstance().fireShowMemberButtonsEvent(new ShowMemberButtonsEvent());
+        EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
         HomeRepository.saveUserData();
         Program.changeScreen("homePage");
+        clearInputFields();
     }
 
     public List<Member> getSelectedCurrentMembers(VBox vbCurrentMembers, Function<String, Member> memberConstructor){
@@ -88,12 +121,12 @@ public class EditMemberListController implements Initializable {
     }
 
     public List<Member> getSelectedNewMembers(VBox vbNewMembers, Function<String, Member> memberConstructor){
-       return vbNewMembers.getChildren().stream()
-               .filter(node -> node instanceof HBox)
-               .map(node -> (HBox) node)
-               .filter(hBox -> ((CheckBox) hBox.getChildren().get(0)).isSelected())
-               .map(hBox -> memberConstructor.apply(((TextField) hBox.getChildren().get(1)).getText()))
-               .collect(Collectors.toList());
+        return vbNewMembers.getChildren().stream()
+                .filter(node -> node instanceof HBox)
+                .map(node -> (HBox) node)
+                .filter(hBox -> ((CheckBox) hBox.getChildren().get(0)).isSelected() && ((TextField) hBox.getChildren().get(1)).getText().length() > 0)
+                .map(hBox -> memberConstructor.apply(((TextField) hBox.getChildren().get(1)).getText()))
+                .collect(Collectors.toList());
     }
 
     public void onVboxCurrentMembers(){
@@ -149,9 +182,15 @@ public class EditMemberListController implements Initializable {
         vbNewMembers.setAlignment(Pos.TOP_CENTER);
     }
 
+    private void clearInputFields(){
+        showConfirmation(false);
+        cboNewMember.getSelectionModel().clearSelection();
+        vbNewMembers.getChildren().clear();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cboNewMember.getItems().addAll(1,2,3,4,5,6);
+        cboNewMember.getItems().addAll(1,2,3,4,5,6,7);
         setSpacingVbox();
         showConfirmation(false);
         EventManager.getInstance().setEditMemberListEventHandler(event -> {
@@ -159,5 +198,4 @@ public class EditMemberListController implements Initializable {
             cboNewMember.setOnAction(actionEvent -> onVboxNewMembers());
         });
     }
-
 }

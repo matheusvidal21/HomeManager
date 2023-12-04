@@ -53,36 +53,47 @@ public class MemberPageController implements Initializable {
     @FXML
     private Label lbCongratulations;
 
-    public void simulateProgressBar(Member member){
-        lbCongratulations.getStyleClass().clear();
-        lbCongratulations.setText("");
-        if(member.getDailyTasks().size() > 0 || member.getWeeklyTasks().size() > 0) {
-            ArrayList<Task> allTasks = new ArrayList<>();
-            allTasks.addAll(member.getWeeklyTasks());
-            allTasks.addAll(member.getDailyTasks());
-            int tasksCompleted = 0;
-            int totalTasks = member.getWeeklyTasks().size() + (member.getDailyTasks().size() * 5);
-            for(Task task : allTasks){
-                if(task instanceof DailyTask){
-                    tasksCompleted += (int) ((DailyTask) task).getProgress().get();
-                }else if(task.getTaskStatus() == TaskStatus.DONE){
-                    tasksCompleted++;
-                }
-            }
 
+    public void simulateProgressBar(Member member){
+        clearCongratulationsLabel();
+        lbProgress.setText("You don't have any tasks yet");
+
+        if(member.getDailyTasks().size() > 0 || member.getWeeklyTasks().size() > 0) {
+            int tasksCompleted = countCompletedTasks(member);
+            int totalTasks = member.getWeeklyTasks().size() + (member.getDailyTasks().size() * 5);
             double progress = (double) tasksCompleted / totalTasks;
+
             lbProgress.setText(String.format("%.0f", progress * 100)   + "% tasks completed");
 
             if(tasksCompleted == totalTasks){
-                lbCongratulations.getStyleClass().add("label-result-styled");
-                lbCongratulations.setText("Congratulations! You have completed all your tasks.");
+                showCongratulationsMessage();
             }
             memberProgressBar.setProgress(progress);
-        }else{
-            lbCongratulations.getStyleClass().clear();
-            lbCongratulations.setText("");
-            lbProgress.setText("You don't have any tasks yet");
         }
+    }
+
+    private int countCompletedTasks(Member member){
+        int tasksCompleted = 0;
+        for (Task task : member.getWeeklyTasks()) {
+            if (task.getTaskStatus() == TaskStatus.DONE) {
+                tasksCompleted++;
+            }
+        }
+
+        for (DailyTask dailyTask : member.getDailyTasks()) {
+            tasksCompleted += dailyTask.getProgress().get();
+        }
+        return tasksCompleted;
+    }
+
+    public void clearCongratulationsLabel(){
+        lbCongratulations.getStyleClass().clear();
+        lbCongratulations.setText("");
+    }
+
+    private void showCongratulationsMessage() {
+        lbCongratulations.getStyleClass().add("label-result-styled");
+        lbCongratulations.setText("Congratulations! You have completed all your tasks.");
     }
 
     public void onBtnLogoutCLick(){
@@ -99,11 +110,11 @@ public class MemberPageController implements Initializable {
         double textSize;
 
         if(member.getName().length() < 4){
-            textSize = 160.0;
+            textSize = 190.0;
         }else if (member.getName().length() < 9){
-            textSize = 270.0;
+            textSize = 300.0;
         }else{
-            textSize = 370.0;
+            textSize = 390.0;
         }
 
         lbHello.setPrefSize(textSize, 53);

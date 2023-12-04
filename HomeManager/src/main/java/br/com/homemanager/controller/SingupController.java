@@ -11,9 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class SingupController implements Initializable {
 
@@ -53,15 +52,15 @@ public class SingupController implements Initializable {
         }
 
         Home homeToAdd =  new Home(enteredUsername, enteredPassword);
-        addMembersToHome(homeToAdd);
-        HomeRepository.addHome(homeToAdd);
+        if(addMembersToHome(homeToAdd)){
+            HomeRepository.addHome(homeToAdd);
 
-        displaySuccessMessage("Registered user");
-        Session.getInstance().setCurrentUser(homeToAdd);
-        lbResult.setText("");
-        clearInputFields();
-        Program.changeScreen("taskChooserPage");
-
+            displaySuccessMessage("Registered user");
+            Session.getInstance().setCurrentUser(homeToAdd);
+            lbResult.setText("");
+            clearInputFields();
+            Program.changeScreen("taskChooserPage");
+        }
     }
 
     public void onBtnVoltarClick(ActionEvent event){
@@ -108,7 +107,7 @@ public class SingupController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cboQuantidadeMembros.getItems().addAll(1,2,3,4,5,6,7,8,9);
+        cboQuantidadeMembros.getItems().addAll(1,2,3,4,5,6,7);
         listaTxtFieldNomes = new ArrayList<>();
         cboQuantidadeMembros.setOnAction(event -> onVboxNomesMembrosChoose());
     }
@@ -130,12 +129,32 @@ public class SingupController implements Initializable {
         lbResult.setStyle("-fx-text-fill: red;");
     }
 
-    private void addMembersToHome(Home home) {
-        listaTxtFieldNomes.stream()
-                .map(TextField::getText)
-                .map(Member::new)
-                .forEach(home::addMember);
+    private boolean addMembersToHome(Home home) {
+        if(!existsRepeatedMembers()){
+            listaTxtFieldNomes.stream()
+                    .map(TextField::getText)
+                    .map(Member::new)
+                    .forEach(home::addMember);
+            return true;
+        }else{
+            lbResult.setText("You have inserted repeated members");
+            return false;
+        }
     }
+
+    private boolean existsRepeatedMembers(){
+        Set<String> memberNames = new HashSet<>();
+        for(TextField textField : listaTxtFieldNomes){
+            String memberName = textField.getText().trim();
+            if(!memberName.isEmpty()){
+                if(!memberNames.add(memberName)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }
 
 

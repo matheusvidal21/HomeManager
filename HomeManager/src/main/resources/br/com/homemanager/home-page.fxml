@@ -14,12 +14,16 @@
     <children>
         <AnchorPane fx:id="left_pane" prefHeight="586.0" prefWidth="264.0" styleClass="left_pane" stylesheets="@styles/homePageStyle.css">
             <children>
-                <Button alignment="CENTER" layoutX="80.0" layoutY="29.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="100.0" styleClass="button-styled" stylesheets="@styles/homePageStyle.css" text="Home" textAlignment="CENTER">
+                <ScrollPane fx:id="scrollPaneButtonMember" hbarPolicy="NEVER" layoutX="58.0" layoutY="78.0" prefHeight="304.0" prefWidth="144.0" styleClass="scroll-pane-member">
+                    <content>
+                        <VBox fx:id="vbBtnMembers" alignment="CENTER" prefHeight="300.0" prefWidth="144.0" />
+                    </content>
+                </ScrollPane>
+                <Button alignment="CENTER" layoutX="80.0" layoutY="30.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="100.0" styleClass="button-styled" stylesheets="@styles/homePageStyle.css" text="Home" textAlignment="CENTER">
                     <font>
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Button>
-                <VBox fx:id="vbBtnMembers" alignment="CENTER" layoutX="56.0" layoutY="78.0" prefHeight="298.0" prefWidth="144.0" />
                 <QuadCurve controlX="-58.0" controlY="-187.3333282470703" endX="69.0" endY="205.0" fill="#edc7f8" layoutX="195.0" layoutY="382.0" startX="-195.0" startY="204.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                 <Circle fill="#566675" layoutX="119.0" layoutY="424.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                 <Circle fill="#566675" layoutX="144.0" layoutY="424.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
@@ -48,29 +52,34 @@
                         <Font name="System Bold" size="16.0" />
                     </font>
                 </Label>
-            <Button fx:id="btnRedistributeDailyTasks" layoutX="33.0" layoutY="146.0" mnemonicParsing="false" onAction="#onBtnRedistributeDailyTasks" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Redistribute daily tasks">
-               <font>
-                  <Font size="20.0" />
-               </font></Button>
-            <Button fx:id="btnRedistributeWeeklyTasks" layoutX="33.0" layoutY="238.0" mnemonicParsing="false" onAction="#onBtnRedistributeWeeklyTasks" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Redistribute weekly tasks">
-               <font>
-                  <Font size="20.0" />
-               </font></Button>
-            <Label fx:id="lbResult" alignment="CENTER" layoutX="35.0" layoutY="94.0" prefHeight="35.0" prefWidth="360.0" styleClass="label-result" textAlignment="CENTER" />
-            <ProgressBar fx:id="progressBar" layoutX="33.0" layoutY="506.0" prefHeight="46.0" prefWidth="592.0" progress="0.0" />
-            <Label fx:id="lbProgress" alignment="CENTER" layoutX="131.0" layoutY="514.0" prefHeight="29.0" prefWidth="405.0" styleClass="label-result" textAlignment="CENTER" textFill="#f7f4f8">
-               <font>
-                  <Font size="16.0" />
-               </font></Label>
-            <Button fx:id="btnEditTaskList" layoutX="33.0" layoutY="418.0" mnemonicParsing="false" onAction="#onBtnEditTaskList" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Edit task list">
-               <font>
-                  <Font size="20.0" />
-               </font></Button>
-            <Button fx:id="btnEditMemberList" layoutX="33.0" layoutY="331.0" mnemonicParsing="false" onAction="#onBtnEditMemberList" prefHeight="44.0" prefWidth="360.0" styleClass="button-member" text="Edit member list">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Button>
+                <Button fx:id="btnRedistributeDailyTasks" layoutX="33.0" layoutY="141.0" mnemonicParsing="false" onAction="#onBtnRedistributeDailyTasks" prefHeight="42.0" prefWidth="360.0" styleClass="button-options" text="Redistribute daily tasks">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+                <Button fx:id="btnRedistributeWeeklyTasks" layoutX="33.0" layoutY="207.0" mnemonicParsing="false" onAction="#onBtnRedistributeWeeklyTasks" prefHeight="42.0" prefWidth="360.0" styleClass="button-options" text="Redistribute weekly tasks">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+                <Label fx:id="lbResult" alignment="CENTER" layoutX="35.0" layoutY="94.0" prefHeight="35.0" prefWidth="360.0" styleClass="label-result" textAlignment="CENTER" />
+                <ProgressBar fx:id="progressBar" layoutX="33.0" layoutY="506.0" prefHeight="46.0" prefWidth="592.0" progress="0.0" />
+                <Label fx:id="lbProgress" alignment="CENTER" layoutX="131.0" layoutY="514.0" prefHeight="29.0" prefWidth="405.0" styleClass="label-result" textAlignment="CENTER" textFill="#f7f4f8">
+                    <font>
+                        <Font size="16.0" />
+                    </font></Label>
+                <Button fx:id="btnEditTaskList" layoutX="33.0" layoutY="347.0" mnemonicParsing="false" onAction="#onBtnEditTaskList" prefHeight="42.0" prefWidth="360.0" styleClass="button-options" text="Edit task list">
+                    <font>
+                        <Font size="20.0" />
+                    </font></Button>
+                <Button fx:id="btnEditMemberList" layoutX="33.0" layoutY="277.0" mnemonicParsing="false" onAction="#onBtnEditMemberList" prefHeight="42.0" prefWidth="360.0" styleClass="button-options" text="Edit member list">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnRestartWeek" layoutX="33.0" layoutY="418.0" mnemonicParsing="false" onAction="#onBtnRestartWeek" prefHeight="42.0" prefWidth="360.0" styleClass="button-options" text="Restart week">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
             </children>
         </AnchorPane>
     </children>

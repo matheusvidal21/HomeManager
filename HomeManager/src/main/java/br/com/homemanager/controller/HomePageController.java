@@ -1,9 +1,7 @@
 package br.com.homemanager.controller;
 
-import br.com.homemanager.event.EditMemberListEvent;
-import br.com.homemanager.event.EventManager;
-import br.com.homemanager.event.EditTaskListEvent;
-import br.com.homemanager.event.UpdateProgressEvent;
+import br.com.homemanager.event.*;
+import br.com.homemanager.model.Home;
 import br.com.homemanager.model.Task;
 import br.com.homemanager.model.Member;
 import br.com.homemanager.application.Program;
@@ -16,10 +14,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.Separator;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -27,6 +22,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class HomePageController implements Initializable {
@@ -48,6 +44,8 @@ public class HomePageController implements Initializable {
     private Button btnEditTaskList;
     @FXML
     private Button btnEditMemberList;
+    @FXML
+    private ScrollPane scrollPaneButtonMember;
     @FXML
     private Label lbResult;
     @FXML
@@ -96,6 +94,25 @@ public class HomePageController implements Initializable {
         lbResult.setText("");
         HomeRepository.saveUserData();
         Program.changeScreen("editMemberListPage");
+    }
+
+    public void onBtnRestartWeek(){
+        Home currentUser = Session.getInstance().getCurrentUser();
+
+        currentUser.getMembersList().forEach(member -> {
+            member.getDailyTasks().clear();
+            member.getWeeklyTasks().clear();
+        });
+
+        currentUser.getHomeWTasks().forEach(weeklyTask -> weeklyTask.setTaskStatus(TaskStatus.NOT_DONE));
+        currentUser.getHomeDTasks().forEach(dailyTask -> {
+            dailyTask.setTaskStatus(TaskStatus.NOT_DONE);
+            dailyTask.setProgress(new AtomicInteger(0));
+        });
+
+        EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
+        HomeRepository.saveUserData();
+        displaySuccessMessage("Week restarted");
     }
 
     public void showAllTasks() {

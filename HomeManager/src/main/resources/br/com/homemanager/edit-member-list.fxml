@@ -17,7 +17,7 @@
         <Circle fill="#544d4d" layoutX="424.0" layoutY="430.0" radius="8.0" stroke="#544d4d" strokeType="INSIDE" />
         <QuadCurve controlX="17.0" controlY="59.0" endX="39.0" fill="#edc7f8" layoutX="434.0" layoutY="451.0" startX="-6.0" stroke="#544d4d" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="2.5" />
         <Circle fill="#544d4d" layoutX="474.0" layoutY="429.0" radius="8.0" stroke="#544d4d" strokeType="INSIDE" />
-        <Label alignment="CENTER" layoutX="171.0" layoutY="39.0" prefHeight="40.0" prefWidth="556.0" text="Edit your list of members" textAlignment="CENTER" textFill="#345449">
+        <Label alignment="CENTER" layoutX="174.0" layoutY="39.0" prefHeight="40.0" prefWidth="556.0" text="Edit your list of members" textAlignment="CENTER" textFill="#345449">
             <font>
                 <Font name="System Bold" size="32.0" />
             </font>
@@ -51,7 +51,7 @@
             <font>
                 <Font size="15.0" />
             </font></Button>
-        <Label alignment="CENTER" layoutX="251.0" layoutY="78.0" prefHeight="30.0" prefWidth="394.0" text="Add or remove members from your home" textAlignment="CENTER" textFill="#7d8381">
+        <Label alignment="CENTER" layoutX="254.0" layoutY="78.0" prefHeight="30.0" prefWidth="394.0" text="Add or remove members from your home" textAlignment="CENTER" textFill="#7d8381">
             <font>
                 <Font name="System Italic" size="15.0" />
             </font>
@@ -61,7 +61,7 @@
                 <URL value="@styles/editTaskListStyle.css" />
                 <URL value="@styles/taskChooserStyle.css" />
             </stylesheets>
-      </Button>
+        </Button>
         <Button fx:id="btnNo" layoutX="16.0" layoutY="79.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="47.0" styleClass="button-styled" text="No">
             <stylesheets>
                 <URL value="@styles/editTaskListStyle.css" />
@@ -70,13 +70,18 @@
             <font>
                 <Font size="14.0" />
             </font>
-      </Button>
+        </Button>
         <Label fx:id="lbConfirmation" layoutX="67.0" layoutY="33.0" prefHeight="81.0" prefWidth="140.0" styleClass="label-confirmation" stylesheets="@styles/editTaskListStyle.css" text="All weekly progress will be lost. Are you sure about that?" wrapText="true">
             <font>
                 <Font name="System Bold" size="13.0" />
             </font>
         </Label>
-      <Button fx:id="btnRemove" layoutX="220.0" layoutY="474.0" mnemonicParsing="false" onAction="#onBtnRemoveClick" prefHeight="26.0" prefWidth="88.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Remove" />
-      <Button fx:id="btnAdd" layoutX="587.0" layoutY="474.0" mnemonicParsing="false" onAction="#onBtnAddClick" prefHeight="26.0" prefWidth="88.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Add" />
+        <Button fx:id="btnRemove" layoutX="220.0" layoutY="474.0" mnemonicParsing="false" onAction="#onBtnRemoveClick" prefHeight="26.0" prefWidth="88.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Remove" />
+        <Button fx:id="btnAdd" layoutX="587.0" layoutY="474.0" mnemonicParsing="false" onAction="#onBtnAddClick" prefHeight="26.0" prefWidth="88.0" styleClass="button-styled" stylesheets="@styles/taskChooserStyle.css" text="Add" />
+        <Label fx:id="lbWarning" alignment="CENTER" contentDisplay="CENTER" layoutX="276.0" layoutY="108.0" prefHeight="34.0" prefWidth="352.0" textAlignment="CENTER" textFill="#da2727" wrapText="true">
+            <font>
+                <Font name="System Bold" size="12.0" />
+            </font>
+        </Label>
     </children>
 </AnchorPane>

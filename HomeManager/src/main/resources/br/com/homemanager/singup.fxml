@@ -40,7 +40,7 @@
                   <Font size="14.0" />
                </font>
                 </TextField>
-                <ComboBox fx:id="cboQuantidadeMembros" layoutX="307.0" layoutY="305.0" onKeyReleased="#onKeyReleased" prefHeight="28.0" prefWidth="59.0" styleClass="combo-box-styled">
+                <ComboBox fx:id="cboQuantidadeMembros" layoutX="325.0" layoutY="301.0" onKeyReleased="#onKeyReleased" prefHeight="28.0" prefWidth="59.0" styleClass="combo-box-styled">
                     <effect>
                         <Bloom />
                     </effect>

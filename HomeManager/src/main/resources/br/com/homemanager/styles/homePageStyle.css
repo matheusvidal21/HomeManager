@@ -23,7 +23,7 @@
     -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
 }
 
-.button-member {
+.button-options {
     -fx-background-color: #edc7f8; /* Background off white */
     -fx-border-color: black; /* Borda preta */
     -fx-border-width: 0.5px;
@@ -35,6 +35,25 @@
 }
 
 /* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
+.button-options:hover {
+    -fx-background-color: #D162F0; /* Cor do background ao passar o mouse */
+}
+
+.button-member {
+    -fx-background-color: #edc7f8; /* Background off white */
+    -fx-border-color: black; /* Borda preta */
+    -fx-border-width: 0.5px;
+    -fx-border-radius: 10; /* Raio para bordas arredondadas */
+    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
+    -fx-font-weight: bold; /* Negrito */
+    -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-min-width: 100;
+    -fx-max-width: 100;
+    -fx-min-height: 37;
+    -fx-max-height: 37;
+}
+
 .button-member:hover {
     -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
 }
@@ -101,4 +120,35 @@
     -fx-background-color: #345449; /* Cor da barra de progresso */
     -fx-background-insets: 0; /* Remove o preenchimento interno */
     -fx-background-radius: 15; /* Raio para a barra de progresso */
+}
+
+
+.scroll-pane-member {
+    -fx-hbar-policy: never;
+    -fx-background-color: transparent;
+}
+
+.scroll-pane-member .scroll-bar:vertical {
+    -fx-background-color: #edc7f8; /* Cor de fundo da barra */
+    -fx-background-radius: 10px;
+}
+
+/* Barra de rolagem quando é pressionada */
+.scroll-pane-member .scroll-bar:vertical:pressed {
+    -fx-background-color: #888888;
+}
+
+/* Botão para rolar para cima */
+.scroll-pane-member .scroll-bar:vertical .increment-button {
+    -fx-background-color: #edc7f8; /* Cor de fundo do botão */
+}
+
+/* Botão para rolar para baixo */
+.scroll-pane-member .scroll-bar:vertical .decrement-button {
+    -fx-background-color: #edc7f8; /* Cor de fundo do botão */
+}
+
+/* Estilizando o Thumb (a alça) */
+.scroll-pane-member .scroll-bar:vertical .thumb {
+    -fx-background-color: #D162F0; /* Cor de fundo do thumb */
 }

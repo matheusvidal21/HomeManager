@@ -62,24 +62,36 @@ public class EditTaskListController implements Initializable {
 
     private void saveNewTaskList(){
         Home currentUser = Session.getInstance().getCurrentUser();
-        List<Member> memberList = currentUser.getMembersList();
 
+        clearAllTasks(currentUser);
+        addSelectedTasks(currentUser);
+        saveAndNotifyChanges(currentUser);
+
+        Program.changeScreen("homePage");
+    }
+
+    private void clearAllTasks(Home currentUser){
         currentUser.getHomeDTasks().clear();
         currentUser.getHomeWTasks().clear();
-        memberList.forEach(member -> member.getDailyTasks().clear());
-        memberList.forEach(member -> member.getWeeklyTasks().clear());
+        currentUser.getMembersList().forEach(member -> {
+            member.getDailyTasks().clear();
+            member.getWeeklyTasks().clear();
+        });
+    }
 
+    private void addSelectedTasks(Home currentUser){
         currentUser.addAllDailyTasks(getSelectedTasks(vbDailyTasks, DailyTask::new));
         currentUser.addAllWeeklyTasks(getSelectedTasks(vbWeeklyTasks, WeeklyTask::new));
         currentUser.addAllDailyTasks(getSelectedNewTasks(vbDailyTasks, DailyTask::new));
         currentUser.addAllWeeklyTasks(getSelectedNewTasks(vbWeeklyTasks, WeeklyTask::new));
+    }
 
+    private void saveAndNotifyChanges(Home currentUser){
         clearInputFields();
         EventManager.getInstance().fireProgressEvent(new UpdateProgressEvent());
         EventManager.getInstance().fireShowAllTaksEvent(new ShowAllTaskEvent());
         EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
         HomeRepository.saveUserData();
-        Program.changeScreen("homePage");
     }
 
     private <T extends Task> List<T> getSelectedTasks(VBox vbTasks, Function<String, T> taskConstructor){
@@ -101,15 +113,12 @@ public class EditTaskListController implements Initializable {
                 .collect(Collectors.toList());
     }
 
-    public void showDailyTasks(){
-        vbDailyTasks.setAlignment(Pos.TOP_CENTER);
-        vbDailyTasks.setSpacing(5);
-        vbDailyTasks.getChildren().clear();
+    private void showTasks(VBox container, List<? extends Task> tasks) {
+        container.setAlignment(Pos.TOP_CENTER);
+        container.setSpacing(5);
+        container.getChildren().clear();
 
-        List<DailyTask> allTasks = new ArrayList<>();
-        allTasks.addAll(Session.getInstance().getCurrentUser().getHomeDTasks());
-
-        for(DailyTask task : allTasks){
+        for (Task task : tasks) {
             CheckBox checkBox = new CheckBox();
             checkBox.setSelected(true);
             checkBox.getStyleClass().add("custom-checkbox");
@@ -119,17 +128,27 @@ public class EditTaskListController implements Initializable {
 
             HBox hBox = new HBox(checkBox, label);
             hBox.setSpacing(7);
-            vbDailyTasks.getChildren().add(hBox);
+            container.getChildren().add(hBox);
         }
     }
 
-    public void onVboxDailyTasks(){
-        if(cboDailyTasks.getValue() != null){
-            int numbersOfTasks = cboDailyTasks.getValue();
-            int indexLastTask = Session.getInstance().getCurrentUser().getHomeDTasks().size();
-            vbDailyTasks.getChildren().remove(indexLastTask, vbDailyTasks.getChildren().size());
+    public void showDailyTasks() {
+        List<DailyTask> allTasks = new ArrayList<>(Session.getInstance().getCurrentUser().getHomeDTasks());
+        showTasks(vbDailyTasks, allTasks);
+    }
 
-            for(int i = 0; i < numbersOfTasks; i++){
+    public void showWeeklyTasks() {
+        List<WeeklyTask> allTasks = new ArrayList<>(Session.getInstance().getCurrentUser().getHomeWTasks());
+        showTasks(vbWeeklyTasks, allTasks);
+    }
+
+    private void onVboxTasks(VBox container, ComboBox<Integer> comboBox, List<? extends Task> tasks) {
+        if (comboBox.getValue() != null) {
+            int numberOfTasks = comboBox.getValue();
+            int lastIndex = tasks.size();
+            container.getChildren().remove(lastIndex, container.getChildren().size());
+
+            for (int i = 0; i < numberOfTasks; i++) {
                 CheckBox checkBox = new CheckBox();
                 checkBox.setSelected(true);
                 checkBox.getStyleClass().add("custom-checkbox");
@@ -138,52 +157,19 @@ public class EditTaskListController implements Initializable {
 
                 HBox hbox = new HBox(checkBox, textFieldTask);
                 hbox.setSpacing(7);
-                vbDailyTasks.getChildren().add(hbox);
+                container.getChildren().add(hbox);
             }
         }
     }
 
-    public void showWeeklyTasks(){
-        vbWeeklyTasks.setAlignment(Pos.TOP_CENTER);
-        vbWeeklyTasks.setSpacing(5);
-        vbWeeklyTasks.getChildren().clear();
-
-        List<WeeklyTask> allTasks = new ArrayList<>();
-        allTasks.addAll(Session.getInstance().getCurrentUser().getHomeWTasks());
-
-        for(WeeklyTask task : allTasks){
-            CheckBox checkBox = new CheckBox();
-            checkBox.setSelected(true);
-            checkBox.getStyleClass().add("custom-checkbox");
-
-            Label label = new Label(task.getTaskName());
-            label.getStyleClass().add("label-tasks");
-
-            HBox hBox = new HBox(checkBox, label);
-            hBox.setSpacing(7);
-            vbWeeklyTasks.getChildren().add(hBox);
-        }
+    public void onVboxDailyTasks() {
+        onVboxTasks(vbDailyTasks, cboDailyTasks, Session.getInstance().getCurrentUser().getHomeDTasks());
     }
 
-    public void onVboxWeeklyTasks(){
-        if(cboWeeklyTasks.getValue() != null){
-            int numberOfTasks = cboWeeklyTasks.getValue();
-            int indexLasTask = Session.getInstance().getCurrentUser().getHomeWTasks().size();
-            vbWeeklyTasks.getChildren().remove(indexLasTask, vbWeeklyTasks.getChildren().size());
-
-            for(int i = 0; i < numberOfTasks; i++){
-                CheckBox checkBox = new CheckBox();
-                checkBox.setSelected(true);
-                checkBox.getStyleClass().add("custom-checkbox");
-                TextField textFieldTask = new TextField();
-                textFieldTask.getStyleClass().add("text-field-no-border");
-
-                HBox hbox = new HBox(checkBox, textFieldTask);
-                hbox.setSpacing(7);
-                vbWeeklyTasks.getChildren().add(hbox);
-            }
-        }
+    public void onVboxWeeklyTasks() {
+        onVboxTasks(vbWeeklyTasks, cboWeeklyTasks, Session.getInstance().getCurrentUser().getHomeWTasks());
     }
+
 
     public void clearInputFields(){
         cboWeeklyTasks.getSelectionModel().clearSelection();
@@ -206,5 +192,4 @@ public class EditTaskListController implements Initializable {
             cboWeeklyTasks.setOnAction(actionEvent -> onVboxWeeklyTasks());
         });
     }
-
 }

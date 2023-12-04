@@ -51,8 +51,9 @@ public class LoginController{
             EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
             Program.changeScreen("homePage");
             clearInputFields();
+            lbResult.setText("");
         } else {
-            lbResult.setText("Usuário não encontrado ou senha incorreta");
+            lbResult.setText("User not found or incorrect password");
         }
     }
 
