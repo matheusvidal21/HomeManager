@@ -8,26 +8,18 @@ O Home Manager é um aplicativo intuitivo e prático desenvolvido para simplific
 
 ## Índice
 - 🔨 [Funcionalidades](#-funcionalidades)
-- 📁 [Estrutura do projeto](#-estrutura-de-diretórios)
+- 📁 [Estrutura de diretórios](#-estrutura-de-diretórios)
 - 📊 [Diagrama de classes](#-diagrama-de-classes)
+  - 📦 [Estrutura de pacotes](#&#128230-estrutura-de-pacotes)
 - 💻 [Técnicas e tecnologias utilizadas](#-técnicas-e-tecnologias-utilizadas)
   - 🗃️ [Classes e Componentes JavaFX Utilizados](#%EF%B8%8F-classes-e-componentes-javafx-utilizados)
 - 🔧 [Como executar](#-como-executar)
 - 👥 [Autores](#-autores)
  
 # 🔨 Funcionalidades
-
-<!--
 <p align="center">
-  <img src="docs/imgs/menu.png" alt="Menu principal">
-  <img src="docs/imgs/preenchertask.png" alt="Preencher tarefa">
+  <img src="docs/imgs/telas.png" alt="Telas do programa">
 </p>
-
-<p align="center">
-      <img src="docs/imgs/menueditar.png" alt="Menu: editar tarefa">
-      <img src="docs/imgs/menuordenar.png" alt="Menu: ordenar o quadro">
-      <img src="docs/imgs/menusalvar.png" alt="Menu: salvar o quadri">
-</p>-->
 
 O projeto Home Manager, um aplicativo dedicado ao gerenciamento eficiente de tarefas domésticas, oferece uma série de funcionalidades para promover a organização e colaboração dentro de uma residência:
 
@@ -55,7 +47,6 @@ O projeto Home Manager, um aplicativo dedicado ao gerenciamento eficiente de tar
   - **Resetar o progresso:** Opção para reiniciar o progresso de todas as tarefas da casa, marcando todas como "não realizadas";
   - **Limpar tarefas dos membros:** Remove todas as tarefas atribuídas aos membros, começando uma nova semana do zero;
 
-
 - **Visualização de perfil individual: 👤** Oferece uma visualização personalizada para cada membro, permitindo que eles visualizem as tarefas atribuídas a si mesmos, marquem-nas como concluídas e acompanhem seu progresso por meio de uma barra de progresso.
 
 - **Visualização geral: 👀** O aplicativo oferece uma visualização geral das tarefas, permitindo que os usuários vejam rapidamente todas as tarefas da casa;
@@ -82,36 +73,86 @@ O Home Manager é uma solução abrangente para famílias e casas compartilhadas
 - **README.md:** Documentação essencial do projeto em texto.
 
 # 📊 Diagrama de classes
-O diagrama de classes UML é uma representação visual da estrutura e das relações entre as classes em um projeto. Ele fornece uma visão geral da organização das classes, seus atributos e métodos, bem como as associações, heranças e dependências entre elas. Este diagrama é uma ferramenta poderosa para entender a arquitetura do sistema, identificar as principais entidades e suas interações, e facilitar o desenvolvimento, a manutenção e a comunicação entre os membros da equipe. Se você deseja explorar mais detalhes do diagrama de classes [clique aqui](docs/diagrama/) para ser redirecionado ao arquivo PDF correspondente.
+O diagrama de classes UML é uma representação visual da estrutura e das relações entre as classes em um projeto. Ele fornece uma visão geral da organização das classes, seus atributos e métodos, bem como as associações, heranças e dependências entre elas. Este diagrama é uma ferramenta poderosa para entender a arquitetura do sistema, identificar as principais entidades e suas interações, e facilitar o desenvolvimento, a manutenção e a comunicação entre os membros da equipe. Se você deseja explorar mais detalhes do diagrama de classes [clique aqui](docs/diagrama/diagrama.pdf) para ser redirecionado ao arquivo PDF correspondente.
+
+<p align="center">
+  <img src="docs/diagrama/diagrama.png" alt="Diagrama de Classes">
+</p>
+
+## 📦 Estrutura de pacotes
+
+1. [**`Pacote "application"`**](/HomeManager/src/main/java/br/com/homemanager/application)
+- `Program`: Esta classe representa o ponto de entrada do aplicativo, gerenciando a troca de telas e o início do aplicativo.
+
+2. [**`Pacote "controller"`**](/HomeManager/src/main/java/br/com/homemanager/controller)
+- `EditMemberListController`: Controlador responsável pela lógica para editar a lista de membros.
+- `EditTaskListController`: Controlador para editar a lista de tarefas.
+- `HomePageController`: Controlador principal que gerencia a página inicial do aplicativo.
+- `LoginController`: Controlador responsável pela lógica de autenticação de usuários.
+- `MemberPageController`: Controlador para a página individual de cada membro.
+- `SingupController`: Controlador responsável pela lógica de cadastro de novos usuários.
+
+3. [**`Pacote "event"`**](/HomeManager/src/main/java/br/com/homemanager/event)
+- `EventManager`: Gerenciador de eventos para controlar e distribuir eventos na aplicação.
+- `EditMemberListEvent`: Evento relacionado à página de edição da lista de membros.
+- `EditTaskListEvent`: Evento para página de edição da lista de tarefas.
+- `ShowAllTaskEvent`: Evento para exibir todas as tarefas.
+- `ShowMemberButtonsEvent`: Evento para mostrar os botões dos membros.
+- `UpdateHomeProgressEvent`: Evento para atualizar o progresso da página inicial.
+- `UpdateProgressEvent`: Evento para atualizar o progresso do membro.
+
+4. [**`Pacote "model"`**](/HomeManager/src/main/java/br/com/homemanager/model)
+- `Home`: Classe que modela a entidade casa, gerenciando tarefas e membros.
+- `Member`: Representação de um membro da casa.
+- `Session`: Representa a sessão do usuário atual.
+- `Task`: Classe abstrata que representa uma tarefa genérica.
+- `WeeklyTask`: Representação de uma tarefa semanal.
+- `DailyTask`: Representação de uma tarefa diária.
+
+5. [**`Pacote "enums"`**](/HomeManager/src/main/java/br/com/homemanager/model/enums)
+- `TaskStatus`: Enumeração que define o status das tarefas (concluído ou não concluído).
+
+6. [**`Pacote "repository"`**](/HomeManager/src/main/java/br/com/homemanager/repository)
+- `HomeRepository`: Repositório responsável pelo armazenamento e recuperação de dados da casa, incluindo membros e tarefas.
 
 # 💻 Técnicas e tecnologias utilizadas
-<!--
+
 <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center;">
-  <img src="docs/imgs/cpplogo.png" alt="Logo C++" height="70" style="margin-right: 20px;">
-  <img src="docs/imgs/vscode.png" alt="Logo VSCode" height="70" style="margin-right: 20px;">
-  <img src="docs/imgs/estrutura.png" alt="Logo Estrutura" height="70" style="margin-right: 20px;">
-  <img src="docs/imgs/gcc.png" alt="Logo GCC" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/java.png" alt="Logo Java" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/javafx.png" alt="Logo javafx" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/javadoc.png" alt="Logo Javadoc" height="50" style="margin-right: 20px;">
+  <img src="docs/imgs/maven.png" alt="Logo Maven" height="50" style="margin-right: 20px;">
+  <img src="docs/imgs/scenebuilder.png" alt="Logo SceneBuilder" height="70" style="margin-right: 20px;">
   <img src="docs/imgs/github.png" alt="Logo GitHub" height="70" style="margin-right: 20px;">
   <img src="docs/imgs/git.png" alt="Logo Git" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/intellij.png" alt="Logo Inlellij" height="70" style="margin-right: 20px;">
   <img src="docs/imgs/uml.png" alt="Logo UML" height="70" style="margin-right: 20px;">
-  <img src="docs/imgs/doxygen.png" alt="Logo Doxygen" height="50" style="margin-right: 20px;">
-</div>-->
+  <img src="docs/imgs/estrutura-de-dados.png" alt="Logo Estrutura de Dados" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/design-patterns.png" alt="Logo Design Patterns" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/persistencia-dados.png" alt="Logo Persistência de Dados" height="70" style="margin-right: 20px;">
+  <img src="docs/imgs/mvc.png" alt="Logo MVC" height="70" style="margin-right: 20px;">
+</div>
 
+### Tecnologias
 - **Java:** Linguagem de programação de alto nível, amplamente usada para desenvolvimento de aplicativos de software;
 - **JavaFX:** Plataforma para criar aplicativos de interface gráfica de usuário (GUI) em Java;
-- **FXML:** Linguagem de marcação utilizada no JavaFX para criar interfaces de usuário de forma declarativa;
+- **Intellij IDEA:** Um dos ambientes de desenvolvimento integrado (IDE) mais populares para programação em várias linguagens, incluindo Java;
 - **CSS:** Linguagem de estilo usada para estilizar a aparência das interfaces gráficas JavaFX;
+- **FXML:** Linguagem de marcação utilizada no JavaFX para criar interfaces de usuário de forma declarativa;
+- **Scene Builder:** Ferramenta de design visual que permite criar interfaces gráficas de usuário para aplicativos JavaFX de forma interativa e visual;
 - **Javadoc:** Ferramenta para gerar documentação a partir de código-fonte Java, fornecendo referências e documentação dos métodos;
 - **Maven:** Ferramenta de automação de compilação e gerenciamento de projetos em Java;
+- **Git & Github:** Sistema de controle de versão distribuído (Git) e plataforma de hospedagem de código (Github);
+
+### Técnicas e Paradigmas
 - **Generics:** Recurso do Java que permite a criação de classes, interfaces e métodos genéricos que aceitam tipos como parâmetros;
 - **Polimorfismo:** Capacidade de objetos de diferentes classes serem tratados por um mesmo tipo genérico, permitindo que métodos se comportem de maneiras diferentes em diferentes classes;
-- **Git & Github:** Sistema de controle de versão distribuído (Git) e plataforma de hospedagem de código (Github);
 - **Diagrama UML:** Conjunto de notações e diagramas para modelar sistemas de software;
+- **Estrutura de dados:** Métodos, estruturas e algoritmos para armazenar e organizar dados de forma eficiente;
 - **Modularização:** Técnica de dividir um sistema em módulos independentes para melhorar a manutenção e a escalabilidade;
 - **Event Handling:** Tratamento de eventos gerados por interações do usuário (por exemplo, cliques de botões, teclas pressionadas, etc.);
 - **Design Patterns:** Soluções recorrentes para problemas comuns de design de software, fornecendo abordagens testadas e comprovadas;
 - **Princípios SOLID:** Conjunto de princípios de design de software (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation e Dependency Inversion);
-- **Estrutura de dados:** Métodos, estruturas e algoritmos para armazenar e organizar dados de forma eficiente;
 - **Segurança de dados:** Práticas e técnicas para proteger informações sensíveis contra acesso não autorizado ou alterações indevidas, incluindo criptografia hash para senhas;
 - **Persistência de dados:** Mecanismos e técnicas para salvar e recuperar dados de forma permanente.
 - **Separation of Concerns:** Princípio de design para separar diferentes preocupações em módulos independentes;
@@ -135,7 +176,6 @@ O diagrama de classes UML é uma representação visual da estrutura e das rela�
 - ProgressBar: Utilizado para exibir o progresso em barras.
 - Scene: Define o conteúdo do palco (Stage) em JavaFX.
 - Stage: Janela principal do aplicativo JavaFX.
-
 
 # 🔧 Como executar?
 O aplicativo utiliza o Maven para facilitar o processo de compilação e execução. Siga as etapas abaixo para compilar e executar o projeto:
@@ -163,6 +203,14 @@ Isso iniciará o processo de compilação, baixando as dependências do Maven e 
 ## Observações
 - Certifique-se de que o arquivo pom.xml está presente no diretório raiz do projeto antes de executar o comando Maven.
 - Ao finalizar a compilação, o aplicativo JavaFX será iniciado automaticamente.
+
+## 👤 Usuário de exemplo para teste
+Para facilitar os testes e a exploração do sistema, um usuário de exemplo foi criado com membros e tarefas pré-cadastrados. Use as seguintes credenciais para acessar:
+
+- Username: familiagomes
+- Password: admin
+
+Este usuário já possui membros na lista e tarefas atribuídas. Sinta-se à vontade para explorar as funcionalidades do sistema utilizando estas credenciais de exemplo.
 
 ## Em caso de dúvidas
 Se você encontrar qualquer problema ou precisar de mais informações sobre como compilar o projeto, consulte a documentação do Maven ou entre em contato com a equipe de desenvolvimento.

@@ -57,6 +57,7 @@ public class EditMemberListController implements Initializable {
         HomeRepository.saveUserData();
         EventManager.getInstance().fireShowMemberButtonsEvent(new ShowMemberButtonsEvent());
         EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
+        lbWarning.setText("");
         clearInputFields();
     }
 
@@ -107,6 +108,7 @@ public class EditMemberListController implements Initializable {
         EventManager.getInstance().fireShowMemberButtonsEvent(new ShowMemberButtonsEvent());
         EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
         HomeRepository.saveUserData();
+        lbWarning.setText("");
         Program.changeScreen("homePage");
         clearInputFields();
     }

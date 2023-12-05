@@ -14,8 +14,6 @@ public class HomeRepository {
 
     static {
         loadUserData();
-        //homeList.forEach(Home::assignWeeklyTasks);
-        //homeList.forEach(Home::assignDailyTasks);
         printHomeList();
     }
 

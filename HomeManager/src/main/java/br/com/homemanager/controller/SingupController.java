@@ -12,7 +12,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class SingupController implements Initializable {
 
@@ -21,19 +20,19 @@ public class SingupController implements Initializable {
     @FXML
     private PasswordField txtPassword;
     @FXML
-    private ComboBox<Integer> cboQuantidadeMembros;
+    private ComboBox<Integer> cboNumberMembers;
     @FXML
     private ScrollPane scrollPane;
     @FXML
-    private VBox vboxNomesMembros;
+    private VBox vboxMemberNames;
     @FXML
-    private Button btnVoltar;
+    private Button btnBack;
     @FXML
-    private Button btnConcluir;
+    private Button btnFinish;
     @FXML
     private Label lbResult;
 
-    private List<TextField> listaTxtFieldNomes;
+    private List<TextField> listTxtFieldNames;
 
     public void onBtnConcluirClick(){
 
@@ -46,7 +45,7 @@ public class SingupController implements Initializable {
             return;
         }
 
-        if(cboQuantidadeMembros.getValue() == null || !areMembersNameFilled()){
+        if(cboNumberMembers.getValue() == null || !areMembersNameFilled()){
             displayErrorMessage("Fill in the names of the members");
             return;
         }
@@ -70,28 +69,28 @@ public class SingupController implements Initializable {
     }
 
     public void onVboxNomesMembrosChoose() {
-        int numbersOfMembers = cboQuantidadeMembros.getValue();
+        int numbersOfMembers = cboNumberMembers.getValue();
 
         // Limpa os campos antigos
-        vboxNomesMembros.getChildren().clear();
-        listaTxtFieldNomes.clear();
+        vboxMemberNames.getChildren().clear();
+        listTxtFieldNames.clear();
 
         // Adiciona novos campos TextField conforme a quantidade de membros
         for (int i = 0; i < numbersOfMembers; i++) {
             Label label = new Label("Member's name " + (i + 1) + ":");
             TextField textFieldNome = new TextField();
-            listaTxtFieldNomes.add(textFieldNome);
+            listTxtFieldNames.add(textFieldNome);
             textFieldNome.getStyleClass().add("text-field-member");
             label.getStyleClass().add("label-names-styled");
 
             // Adiciona rótulo e campo de texto ao VBox
-            vboxNomesMembros.getChildren().addAll(label, textFieldNome);
+            vboxMemberNames.getChildren().addAll(label, textFieldNome);
         }
-        vboxNomesMembros.setSpacing(10); // ESPAÇAMENTO ENTRE OS CAMPOS NOME
+        vboxMemberNames.setSpacing(10); // ESPAÇAMENTO ENTRE OS CAMPOS NOME
     }
 
     public boolean areMembersNameFilled() {
-        for (TextField textField : listaTxtFieldNomes) {
+        for (TextField textField : listTxtFieldNames) {
             if (textField.getText().isEmpty()) {
                 return false;
             }
@@ -102,21 +101,21 @@ public class SingupController implements Initializable {
     public void onKeyReleased(){
         boolean concluir;
         concluir = (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty());
-        btnConcluir.setDisable(concluir);
+        btnFinish.setDisable(concluir);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        cboQuantidadeMembros.getItems().addAll(1,2,3,4,5,6,7);
-        listaTxtFieldNomes = new ArrayList<>();
-        cboQuantidadeMembros.setOnAction(event -> onVboxNomesMembrosChoose());
+        cboNumberMembers.getItems().addAll(1,2,3,4,5,6,7);
+        listTxtFieldNames = new ArrayList<>();
+        cboNumberMembers.setOnAction(event -> onVboxNomesMembrosChoose());
     }
 
     private void clearInputFields(){
         txtUsername.clear();
         txtPassword.clear();
-        vboxNomesMembros.getChildren().clear();
-        listaTxtFieldNomes.forEach(TextField::clear);
+        vboxMemberNames.getChildren().clear();
+        listTxtFieldNames.forEach(TextField::clear);
     }
 
     private void displaySuccessMessage(String message) {
@@ -131,7 +130,7 @@ public class SingupController implements Initializable {
 
     private boolean addMembersToHome(Home home) {
         if(!existsRepeatedMembers()){
-            listaTxtFieldNomes.stream()
+            listTxtFieldNames.stream()
                     .map(TextField::getText)
                     .map(Member::new)
                     .forEach(home::addMember);
@@ -144,7 +143,7 @@ public class SingupController implements Initializable {
 
     private boolean existsRepeatedMembers(){
         Set<String> memberNames = new HashSet<>();
-        for(TextField textField : listaTxtFieldNomes){
+        for(TextField textField : listTxtFieldNames){
             String memberName = textField.getText().trim();
             if(!memberName.isEmpty()){
                 if(!memberNames.add(memberName)){
