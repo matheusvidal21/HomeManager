@@ -4,13 +4,13 @@
 <img src="docs/imgs/HomeManager.png" alt="Logo Home Manager" height="100">
 </p>
 
-O Home Manager é um aplicativo intuitivo e prático desenvolvido para simplificar a gestão de tarefas diárias e semanais em uma casa. Com o HomeManager, os membros de uma residência podem criar perfis individuais, cadastrar outros membros da casa e colaborar para manter a organização e eficiência nas atividades do lar. ¡Sua casa, sua organização!
+O Home Manager é um aplicativo intuitivo e prático desenvolvido para simplificar a gestão de tarefas diárias e semanais em uma casa. Com o Home Manager, os membros de uma residência podem criar perfis individuais, cadastrar outros membros da casa e colaborar para manter a organização e eficiência nas atividades do lar. ¡Sua casa, sua organização!
 
 ## Índice
 - 🔨 [Funcionalidades](#-funcionalidades)
 - 📁 [Estrutura de diretórios](#-estrutura-de-diretórios)
 - 📊 [Diagrama de classes](#-diagrama-de-classes)
-  - 📦 [Estrutura de pacotes](#&#128230-estrutura-de-pacotes)
+  - 📦 [Estrutura de pacotes](#-estrutura-de-pacotes)
 - 💻 [Técnicas e tecnologias utilizadas](#-técnicas-e-tecnologias-utilizadas)
   - 🗃️ [Classes e Componentes JavaFX Utilizados](#%EF%B8%8F-classes-e-componentes-javafx-utilizados)
 - 🔧 [Como executar](#-como-executar)
@@ -219,5 +219,5 @@ Se você encontrar qualquer problema ou precisar de mais informações sobre com
 
 # 👥 Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/129897959?v=4" width=115><br><sub>Isabela Gomes</sub>](https://github.com/cyberisa) |  [<img src="https://avatars.githubusercontent.com/u/102569695?s=400&u=f20bbb53cc46ec2bae01f8d60a28492bfdccbdd5&v=4" width=115><br><sub>Matheus Vidal</sub>](https://github.com/matheusvidal21) |
+| [<img src="https://avatars.githubusercontent.com/u/129897959?v=4" width=115><br><sub>Isabela Gomes</sub>](https://github.com/isabelamendesx) |  [<img src="https://avatars.githubusercontent.com/u/102569695?s=400&u=f20bbb53cc46ec2bae01f8d60a28492bfdccbdd5&v=4" width=115><br><sub>Matheus Vidal</sub>](https://github.com/matheusvidal21) |
 | :---: | :---: |
