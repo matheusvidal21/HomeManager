@@ -1,0 +1,7 @@
+module:br.com.homemanager
+br.com.homemanager.application
+br.com.homemanager.controller
+br.com.homemanager.event
+br.com.homemanager.model
+br.com.homemanager.model.enums
+br.com.homemanager.repository

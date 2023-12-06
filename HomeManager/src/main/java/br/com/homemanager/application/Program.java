@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
+ * @author Isabela Mendes
+ * @author Matheus Vidal
  * Classe principal que inicia a aplicação e gerencia as transições entre telas (cenas).
  */
 public class Program extends Application {

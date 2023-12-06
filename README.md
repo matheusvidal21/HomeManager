@@ -14,6 +14,7 @@ O Home Manager é um aplicativo intuitivo e prático desenvolvido para simplific
 - 💻 [Técnicas e tecnologias utilizadas](#-técnicas-e-tecnologias-utilizadas)
   - 🗃️ [Classes e Componentes JavaFX Utilizados](#%EF%B8%8F-classes-e-componentes-javafx-utilizados)
 - 🔧 [Como executar](#-como-executar)
+- 📄 [Documentação](#-documentação)
 - 👥 [Autores](#-autores)
  
 # 🔨 Funcionalidades
@@ -216,6 +217,10 @@ Este usuário já possui membros na lista e tarefas atribuídas. Sinta-se à von
 Se você encontrar qualquer problema ou precisar de mais informações sobre como compilar o projeto, consulte a documentação do Maven ou entre em contato com a equipe de desenvolvimento.
 
 - O uso do Maven simplifica o processo de compilação e gestão de dependências, proporcionando uma experiência mais eficiente no desenvolvimento do projeto Home Manager.
+
+# 📄 Documentação
+Toda a documentação referente ao projeto pode ser encontrada na pasta [docs/documentação](docs/documentação). Se você deseja visualizar a documentação do código-fonte, você pode acessar essa pasta para encontrar informações detalhadas sobre classes, métodos e funcionalidades implementadas.
+- Para navegar pela documentação, basta abrir o arquivo `index.html` ou outros arquivos fornecidos na pasta da documentação usando um navegador da web.
 
 # 👥 Autores
 
