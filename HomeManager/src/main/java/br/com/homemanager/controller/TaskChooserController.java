@@ -22,6 +22,10 @@ import java.util.ResourceBundle;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+/**
+ * Controlador responsável pela tela de seleção de tarefas.
+ * Gerencia a exibição e seleção de tarefas para atribuir aos membros.
+ */
 public class TaskChooserController implements Initializable {
     @FXML
     private VBox vbdailyTasks;
@@ -36,10 +40,13 @@ public class TaskChooserController implements Initializable {
     @FXML
     private TextField txtSpecialWTask;
     @FXML
-    private Button btnConcluir;
+    private Button btnFinish;
 
-    public void onBtnConcluirClick(){
-        // Home currentUser = Session.getInstance().getCurrentUser();
+    /**
+     * Manipula o evento de clique no botão "Finish" na tela de seleção de tarefas.
+     * Adiciona as tarefas selecionadas à instância de Home do usuário e muda para a tela de login.
+     */
+    public void onBtnFinishClick(){
         Session.getInstance().getCurrentUser().addAllDailyTasks(getSelectedTasks(vbdailyTasks, DailyTask::new));
         Session.getInstance().getCurrentUser().addAllWeeklyTasks(getSelectedTasks(vbWeeklyTasks, WeeklyTask::new));
         getSpecialDTask();
@@ -50,6 +57,26 @@ public class TaskChooserController implements Initializable {
         Program.changeScreen("loginPage");
     }
 
+    /**
+     * Obtém as tarefas selecionadas de uma caixa de tarefas específica.
+     *
+     * @param vbTasks          A caixa de tarefas da qual obter as tarefas selecionadas.
+     * @param taskConstructor  O construtor de tarefas a ser utilizado para criar novas instâncias de tarefas.
+     * @param <T>              Tipo genérico que estende a classe Task.
+     * @return                 Uma lista de tarefas selecionadas.
+     */
+    private <T extends Task> List<T> getSelectedTasks(VBox vbTasks, Function<String, T> taskConstructor) {
+        return vbTasks.getChildren().stream()
+                .filter(node -> node instanceof HBox)
+                .map(node -> (HBox) node)
+                .filter(hBox -> ((CheckBox) hBox.getChildren().get(0)).isSelected())
+                .map(hBox -> taskConstructor.apply(((Label) hBox.getChildren().get(1)).getText()))
+                .collect(Collectors.toList());
+    }
+
+    /**
+     * Obtém uma tarefa diária especial digitada pelo usuário, se estiver selecionada.
+     */
     public void getSpecialDTask(){
         Home currentUser = Session.getInstance().getCurrentUser();
         if(cbSpecialDTask.isSelected() && !txtSpecialDTask.getText().isEmpty()){
@@ -57,6 +84,9 @@ public class TaskChooserController implements Initializable {
         }
     }
 
+    /**
+     * Obtém uma tarefa semanal especial digitada pelo usuário, se estiver selecionada.
+     */
     public void getSpecialWTask(){
         Home currentUser = Session.getInstance().getCurrentUser();
         if(cbSpecialWTask.isSelected() && !txtSpecialWTask.getText().isEmpty()){
@@ -64,6 +94,9 @@ public class TaskChooserController implements Initializable {
         }
     }
 
+    /**
+     * Inicializa e exibe as tarefas diárias predefinidas na interface.
+     */
     private void showDailyTasks(){
         for(DailyTask dailyTask : HomeRepository.defaultDailyTasks()){
             CheckBox checkBox = new CheckBox();
@@ -78,6 +111,9 @@ public class TaskChooserController implements Initializable {
         vbdailyTasks.setSpacing(5);
     }
 
+    /**
+     * Inicializa e exibe as tarefas semanais predefinidas na interface.
+     */
     private void showWeeklyTasks(){
         for(WeeklyTask weeklyTask : HomeRepository.defaultWeeklyTasks()){
             CheckBox checkBox = new CheckBox();
@@ -90,15 +126,6 @@ public class TaskChooserController implements Initializable {
         }
         vbWeeklyTasks.setAlignment(Pos.TOP_CENTER);
         vbWeeklyTasks.setSpacing(5);
-    }
-
-    private <T extends Task> List<T> getSelectedTasks(VBox vbTasks, Function<String, T> taskConstructor) {
-        return vbTasks.getChildren().stream()
-                .filter(node -> node instanceof HBox)
-                .map(node -> (HBox) node)
-                .filter(hBox -> ((CheckBox) hBox.getChildren().get(0)).isSelected())
-                .map(hBox -> taskConstructor.apply(((Label) hBox.getChildren().get(1)).getText()))
-                .collect(Collectors.toList());
     }
 
     @Override

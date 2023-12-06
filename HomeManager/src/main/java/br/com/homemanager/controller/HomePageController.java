@@ -24,7 +24,10 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
-
+/**
+ * Controlador responsável pela página principal (Home Page) do aplicativo.
+ * Gerencia as interações do usuário na página inicial, exibindo informações sobre as tarefas, progresso e membros.
+ */
 public class HomePageController implements Initializable {
     @FXML
     private Button btnLogout;
@@ -51,6 +54,9 @@ public class HomePageController implements Initializable {
     @FXML
     private Label lbProgress;
 
+    /**
+     * Inicializa a barra de progresso simulando o progresso das tarefas da casa concluídas.
+     */
     public void simulateProgress(){
         List<Task> allTasks = new ArrayList<>();
         allTasks.addAll(Session.getInstance().getCurrentUser().getHomeDTasks());
@@ -64,24 +70,36 @@ public class HomePageController implements Initializable {
         progressBar.setProgress(progress);
     }
 
+    /**
+     * Realiza o logout do usuário e retorna para a tela de login.
+     */
     public void onBtnLogoutCLick(){
         lbResult.setText("");
         HomeRepository.saveUserData();
         Program.changeScreen("loginPage");
     }
 
+    /**
+     * Redistribui as tarefas diárias entre os membros e salva as alterações.
+     */
     public void onBtnRedistributeDailyTasks(){
         displaySuccessMessage("Daily tasks redistributed");
         Session.getInstance().getCurrentUser().assignDailyTasks();
         HomeRepository.saveUserData();
     }
 
+    /**
+     * Redistribui as tarefas semanais entre os membros e salva as alterações.
+     */
     public void onBtnRedistributeWeeklyTasks(){
         displaySuccessMessage("Weekly tasks redistributed");
         Session.getInstance().getCurrentUser().assignWeeklyTasks();
         HomeRepository.saveUserData();
     }
 
+    /**
+     * Altera para a tela de edição da lista de tarefas e salva as alterações.
+     */
     public void onBtnEditTaskList(){
         EventManager.getInstance().fireEditTaskListEvent(new EditTaskListEvent());
         lbResult.setText("");
@@ -89,6 +107,9 @@ public class HomePageController implements Initializable {
         Program.changeScreen("editTaskListPage");
     }
 
+    /**
+     * Altera para a tela de edição da lista de membros e salva as alterações.
+     */
     public void onBtnEditMemberList(){
         EventManager.getInstance().fireEditMemberListEvent(new EditMemberListEvent());
         lbResult.setText("");
@@ -96,6 +117,9 @@ public class HomePageController implements Initializable {
         Program.changeScreen("editMemberListPage");
     }
 
+    /**
+     * Reinicia a semana, limpando as tarefas dos membros e altera o progresso para o status inicial.
+     */
     public void onBtnRestartWeek(){
         Home currentUser = Session.getInstance().getCurrentUser();
 
@@ -115,6 +139,9 @@ public class HomePageController implements Initializable {
         displaySuccessMessage("Week restarted");
     }
 
+    /**
+     * Exibe todas as tarefas na tela, mostrando seus nomes.
+     */
     public void showAllTasks() {
         List<Task> allTasks = new ArrayList<>();
         allTasks.addAll(Session.getInstance().getCurrentUser().getHomeWTasks());
@@ -134,6 +161,9 @@ public class HomePageController implements Initializable {
         vbAllTasks.setSpacing(2);
     }
 
+    /**
+     * Adiciona botões de membros da casa na tela.
+     */
     public void addMembersButtons() {
         List<Member> membersList = Session.getInstance().getCurrentUser().getMembersList();
         vbBtnMembers.getChildren().clear();
@@ -150,12 +180,22 @@ public class HomePageController implements Initializable {
         vbBtnMembers.setSpacing(10);
     }
 
+    /**
+     * Manipula o clique nos botões de membros, atualiza o progresso e carrega a página do membro correspondente.
+     *
+     * @param member O membro do qual o botão foi clicado.
+     */
     private void handleMemberButtonClick(Member member) {
         lbResult.setText("");
         EventManager.getInstance().fireProgressEvent(new UpdateProgressEvent());
         loadMemberPageScene(member);
     }
 
+    /**
+     * Carrega a cena da página do membro correspondente ao membro selecionado.
+     *
+     * @param member O membro para o qual a página está sendo carregada.
+     */
     private void loadMemberPageScene(Member member) {
         try {
             // Carrega o arquivo FXML da cena da página do membro
@@ -180,11 +220,22 @@ public class HomePageController implements Initializable {
         }
     }
 
+    /**
+     * Exibe uma mensagem de sucesso com um texto especificado.
+     *
+     * @param message O texto da mensagem de sucesso a ser exibido.
+     */
     private void displaySuccessMessage(String message) {
         lbResult.setText(message);
         lbResult.setStyle("-fx-text-fill: green;");
     }
 
+    /**
+     * Método de inicialização que configura os manipuladores de eventos para atualizar o progresso e exibir tarefas e membros.
+     *
+     * @param url            A URL do recurso a ser inicializado.
+     * @param resourceBundle O ResourceBundle para localizar o recurso.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         EventManager.getInstance().setUpdateHomeProgressEventHandler(event -> {

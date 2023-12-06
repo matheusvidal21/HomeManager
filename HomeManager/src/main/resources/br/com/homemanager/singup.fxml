@@ -36,9 +36,9 @@
                     <effect>
                         <Glow />
                     </effect>
-               <font>
-                  <Font size="14.0" />
-               </font>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
                 </TextField>
                 <ComboBox fx:id="cboNumberMembers" layoutX="325.0" layoutY="301.0" onKeyReleased="#onKeyReleased" prefHeight="28.0" prefWidth="59.0" styleClass="combo-box-styled">
                     <effect>
@@ -54,9 +54,9 @@
                     <effect>
                         <Glow />
                     </effect>
-               <font>
-                  <Font size="14.0" />
-               </font>
+                    <font>
+                        <Font size="14.0" />
+                    </font>
                 </PasswordField>
                 <ScrollPane layoutX="122.0" layoutY="343.0" prefHeight="163.0" prefWidth="304.0" stylesheets="@styles/singupStyle.css">
                     <content>
@@ -64,7 +64,7 @@
                     </content>
                 </ScrollPane>
                 <Label fx:id="lbResult" alignment="CENTER" contentDisplay="CENTER" layoutX="65.0" layoutY="100.0" prefHeight="16.0" prefWidth="413.0" textAlignment="CENTER" textFill="RED" />
-                <Button fx:id="btnFinish" disable="true" layoutX="219.0" layoutY="523.0" mnemonicParsing="false" onAction="#onBtnConcluirClick" onKeyReleased="#onKeyReleased" prefHeight="31.0" prefWidth="104.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Finish" AnchorPane.bottomAnchor="29.0">
+                <Button fx:id="btnFinish" disable="true" layoutX="219.0" layoutY="523.0" mnemonicParsing="false" onAction="#onBtnFinishClick" onKeyReleased="#onKeyReleased" prefHeight="31.0" prefWidth="104.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Finish" AnchorPane.bottomAnchor="29.0">
                     <font>
                         <Font name="System Bold" size="15.0" />
                     </font>
@@ -83,7 +83,7 @@
                         <Font name="System Italic" size="14.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnBack" layoutX="22.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnVoltarClick" onKeyReleased="#onKeyReleased" prefHeight="29.0" prefWidth="72.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Back">
+                <Button fx:id="btnBack" layoutX="22.0" layoutY="20.0" mnemonicParsing="false" onAction="#onBtnBackClick" onKeyReleased="#onKeyReleased" prefHeight="29.0" prefWidth="72.0" styleClass="button-styled" stylesheets="@styles/singupStyle.css" text="Back">
                     <font>
                         <Font name="System Bold" size="14.0" />
                     </font>

@@ -7,6 +7,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável por lidar com o armazenamento e manipulação dos dados relacionados às casas (homes) dos usuários.
+ */
 public class HomeRepository {
 
     private static List<Home> homeList = new ArrayList<>();
@@ -17,21 +20,38 @@ public class HomeRepository {
         printHomeList();
     }
 
+    /**
+     * Imprime a lista de casas e suas respectivas tarefas.
+     */
     public static void printHomeList(){
         homeList.forEach(System.out::println);
         homeList.forEach(Home::printTasks);
     }
 
+    /**
+     * Limpa os dados de usuário armazenados.
+     */
     public static void clearUserData() {
         homeList = new ArrayList<>(); // Reinicializa a lista para vazia
         saveUserData(); // Salva a lista vazia no arquivo
     }
 
+    /**
+     * Adiciona uma nova casa (Home) à lista de casas.
+     *
+     * @param home A casa (Home) a ser adicionada.
+     */
     public static void addHome(Home home){
         homeList.add(home);
         saveUserData();
     }
 
+    /**
+     * Verifica se um nome de usuário já existe.
+     *
+     * @param username O nome de usuário a ser verificado.
+     * @return A Home associada ao nome de usuário, se existir; caso contrário, retorna null.
+     */
     public static Home usernameAlreadyExists(String username) {
         for (Home home : homeList) {
             if (home.getUsername().equals(username)) {
@@ -41,14 +61,21 @@ public class HomeRepository {
         return null; // Retorna null se o usuário não for encontrado
     }
 
+    /**
+     * Salva os dados de usuário no arquivo.
+     */
     public static void saveUserData() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
             oos.writeObject(homeList);
         } catch (IOException e) {
+            System.out.printf("The file could not be opened: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
+    /**
+     * Carrega os dados de usuário do arquivo.
+     */
     private static void loadUserData() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
             Object obj = ois.readObject();
@@ -56,11 +83,16 @@ public class HomeRepository {
                 homeList = (List<Home>) obj;
             }
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Não foi possível abrir o arquivo binário: " + e.getMessage());
+            System.err.println("The file could not be opened: " + e.getMessage());
             homeList = new ArrayList<>();
         }
     }
 
+    /**
+     * Gera uma lista de tarefas diárias padrão.
+     *
+     * @return A lista de tarefas diárias padrão.
+     */
     public static List<DailyTask> defaultDailyTasks(){
         List<DailyTask> defaultDailyTasks = new ArrayList<>();
         defaultDailyTasks.add(new DailyTask("Varrer a casa"));
@@ -74,6 +106,11 @@ public class HomeRepository {
         return defaultDailyTasks;
     }
 
+    /**
+     * Gera uma lista de tarefas semanais padrão.
+     *
+     * @return A lista de tarefas semanais padrão.
+     */
     public static List<WeeklyTask> defaultWeeklyTasks(){
         List<WeeklyTask> defaultWeeklyTasks = new ArrayList<>();
         defaultWeeklyTasks.add(new WeeklyTask("Lavar os banheiros"));
@@ -87,5 +124,4 @@ public class HomeRepository {
         defaultWeeklyTasks.add(new WeeklyTask("Ir ao açougue"));
         return defaultWeeklyTasks;
     }
-
 }

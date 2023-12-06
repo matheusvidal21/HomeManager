@@ -8,6 +8,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * Classe principal que inicia a aplicação e gerencia as transições entre telas (cenas).
+ */
 public class Program extends Application {
     private static Stage stage;
     // Scene = armazenar telas
@@ -17,7 +20,6 @@ public class Program extends Application {
     private static Scene homeScene;
     private static Scene editTaskListScene;
     private static Scene editMemberListScene;
-
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -56,6 +58,13 @@ public class Program extends Application {
         stage.show();
     }
 
+    /**
+     * Método para mudar a tela (cena) exibida.
+     *
+     * @param scene Nome da tela (cena) para ser exibida.
+     *              Opções: "loginPage", "singupPage", "taskChooserPage", "homePage", "editTaskListPage", "editMemberListPage".
+     * @throws RuntimeException Se a tela solicitada não existir.
+     */
     public static void changeScreen(String scene){
         switch (scene){
             case "loginPage":{
@@ -87,6 +96,11 @@ public class Program extends Application {
         }
     }
 
+    /**
+     * Método principal que inicia a aplicação.
+     *
+     * @param args Os argumentos da linha de comando.
+     */
     public static void main(String[] args) {
         launch();
     }

@@ -14,6 +14,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 
+/**
+ * Controlador responsável pela lógica da tela de login.
+ */
 public class LoginController{
 
     @FXML
@@ -28,10 +31,18 @@ public class LoginController{
     private Label lbResult;
     private HomePageController homePageController;
 
+    /**
+     * Define o controlador da página inicial.
+     *
+     * @param homePageController O controlador da página inicial.
+     */
     public void setHomePageController(HomePageController homePageController) {
         this.homePageController = homePageController;
     }
 
+    /**
+     * Manipula o clique no botão de login. Implementa a lógica de autenticação do usuário e o redirecionamento para a página inicial.
+     */
     public void onBtnLoginClick(){
         String enteredUsername = txtUsername.getText();
         char[] enteredPassword = txtPassword.getText().toCharArray();  // Usando getPassword para obter a senha como um char[]
@@ -57,17 +68,28 @@ public class LoginController{
         }
     }
 
+    /**
+     * Manipula o clique no botão de registro. Redireciona o usuário para a tela de cadastro.
+     *
+     * @param event O evento de clique no botão.
+     */
     public void onBtnSignClick(ActionEvent event){
         clearInputFields();
         Program.changeScreen("singupPage");
     }
 
+    /**
+     * Limpa os campos de entrada.
+     */
     private void clearInputFields(){
         btnLogin.setDisable(true);
         txtUsername.clear();
         txtPassword.clear();
     }
 
+    /**
+     * Atualiza o estado do botão de login com base nos campos de entrada preenchidos.
+     */
     public void onKeyReleased(){
         boolean login;
         login = (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty());

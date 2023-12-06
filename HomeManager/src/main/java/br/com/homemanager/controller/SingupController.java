@@ -13,6 +13,9 @@ import javafx.scene.layout.VBox;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Controlador responsável pela lógica da tela de cadastro de usuários.
+ */
 public class SingupController implements Initializable {
 
     @FXML
@@ -34,7 +37,11 @@ public class SingupController implements Initializable {
 
     private List<TextField> listTxtFieldNames;
 
-    public void onBtnConcluirClick(){
+    /**
+     * Manipula o clique no botão "Finish" para registrar um novo usuário.
+     * Faz uma verificação se o usuário já existe no repositório e se todos os membros estão preenchidos com nomes diferentes.
+     */
+    public void onBtnFinishClick(){
 
         String enteredUsername = txtUsername.getText();
         char[] enteredPassword = txtPassword.getText().toCharArray();
@@ -62,13 +69,22 @@ public class SingupController implements Initializable {
         }
     }
 
-    public void onBtnVoltarClick(ActionEvent event){
+    /**
+     * Manipula o clique no botão "Back" para retornar à tela de login.
+     *
+     * @param event O evento de clique no botão.
+     */
+    public void onBtnBackClick(ActionEvent event){
         lbResult.setText("");
         clearInputFields();
         Program.changeScreen("loginPage");
     }
 
-    public void onVboxNomesMembrosChoose() {
+    /**
+     * Manipula a escolha do número de membros para adicionar ao novo usuário.
+     * Adiciona campos TextField para o usuário preencher os nomes dos membros, com base na quantidade informada no ComboBox.
+     */
+    public void onVboxMemberNamesChoose() {
         int numbersOfMembers = cboNumberMembers.getValue();
 
         // Limpa os campos antigos
@@ -89,6 +105,11 @@ public class SingupController implements Initializable {
         vboxMemberNames.setSpacing(10); // ESPAÇAMENTO ENTRE OS CAMPOS NOME
     }
 
+    /**
+     * Verifica se todos os campos de nome dos membros estão preenchidos.
+     *
+     * @return true se todos os campos estiverem preenchidos, false caso contrário.
+     */
     public boolean areMembersNameFilled() {
         for (TextField textField : listTxtFieldNames) {
             if (textField.getText().isEmpty()) {
@@ -98,19 +119,18 @@ public class SingupController implements Initializable {
         return true;
     }
 
+    /**
+     * Atualiza o estado do botão de "Finish" com base nos campos de entrada preenchidos.
+     */
     public void onKeyReleased(){
-        boolean concluir;
-        concluir = (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty());
-        btnFinish.setDisable(concluir);
+        boolean finish;
+        finish = (txtUsername.getText().isEmpty() || txtPassword.getText().isEmpty());
+        btnFinish.setDisable(finish);
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        cboNumberMembers.getItems().addAll(1,2,3,4,5,6,7);
-        listTxtFieldNames = new ArrayList<>();
-        cboNumberMembers.setOnAction(event -> onVboxNomesMembrosChoose());
-    }
-
+    /**
+     * Limpa os campos de entrada da tela de cadastro.
+     */
     private void clearInputFields(){
         txtUsername.clear();
         txtPassword.clear();
@@ -118,16 +138,32 @@ public class SingupController implements Initializable {
         listTxtFieldNames.forEach(TextField::clear);
     }
 
+    /**
+     * Exibe uma mensagem de sucesso na interface.
+     *
+     * @param message A mensagem de sucesso a ser exibida.
+     */
     private void displaySuccessMessage(String message) {
         lbResult.setText(message);
         lbResult.setStyle("-fx-text-fill: green;");
     }
 
+    /**
+     * Exibe uma mensagem de erro na interface.
+     *
+     * @param message A mensagem de erro a ser exibida.
+     */
     private void displayErrorMessage(String message) {
         lbResult.setText(message);
         lbResult.setStyle("-fx-text-fill: red;");
     }
 
+    /**
+     * Adiciona membros a uma instância de Home, caso não tenha membros repetidos.
+     *
+     * @param home A instância de Home onde os membros serão adicionados.
+     * @return true se os membros são adicionados com sucesso, false se há membros repetidos.
+     */
     private boolean addMembersToHome(Home home) {
         if(!existsRepeatedMembers()){
             listTxtFieldNames.stream()
@@ -136,11 +172,16 @@ public class SingupController implements Initializable {
                     .forEach(home::addMember);
             return true;
         }else{
-            lbResult.setText("You have inserted repeated members");
+            displayErrorMessage("You have inserted repeated members");
             return false;
         }
     }
 
+    /**
+     * Verifica se há membros repetidos nos campos de nome dos membros.
+     *
+     * @return true se há membros repetidos, false caso contrário.
+     */
     private boolean existsRepeatedMembers(){
         Set<String> memberNames = new HashSet<>();
         for(TextField textField : listTxtFieldNames){
@@ -153,8 +194,16 @@ public class SingupController implements Initializable {
         }
         return false;
     }
-
+    /**
+     * Inicializa a tela de cadastro.
+     *
+     * @param url            O localizador de recursos.
+     * @param resourceBundle O pacote de recursos.
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        cboNumberMembers.getItems().addAll(1,2,3,4,5,6,7);
+        listTxtFieldNames = new ArrayList<>();
+        cboNumberMembers.setOnAction(event -> onVboxMemberNamesChoose());
+    }
 }
-
-
-

@@ -23,7 +23,11 @@ import java.util.ResourceBundle;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-
+/**
+ * Controlador responsável pela edição da lista de membros.
+ * Permite adicionar ou remover membros, visualizar membros existentes e controlar eventos associados à interface gráfica.
+ * Gerencia a atualização da lista de membros, a exibição de avisos e confirmações na interface.
+ */
 public class EditMemberListController implements Initializable {
     @FXML
     private Button btnFinish;
@@ -44,14 +48,12 @@ public class EditMemberListController implements Initializable {
     @FXML
     private VBox vbNewMembers;
     @FXML
-    private Label lbConfirmation;
-    @FXML
-    private Button btnYes;
-    @FXML
-    private Button btnNo;
-    @FXML
     private Label lbWarning;
 
+    /**
+     * Altera a tela para a página inicial.
+     * Limpa campos de entrada e atualiza a barra de progresso na tela inicial.
+     */
     public void onBtnHomeClick(){
         Program.changeScreen("homePage");
         HomeRepository.saveUserData();
@@ -61,6 +63,10 @@ public class EditMemberListController implements Initializable {
         clearInputFields();
     }
 
+    /**
+     * Remove membros selecionados da lista de membros existentes.
+     * Atualiza a exibição dos membros atuais após a remoção.
+     */
     public void onBtnRemoveClick(){
         lbWarning.setText("");
         Home currentUser = Session.getInstance().getCurrentUser();
@@ -75,6 +81,10 @@ public class EditMemberListController implements Initializable {
         }
     }
 
+    /**
+     * Adiciona membros selecionados à lista de membros existentes.
+     * Exibe um aviso caso algum membro já exista na lista.
+     */
     public void onBtnAddClick(){
         Home currentUser = Session.getInstance().getCurrentUser();
         List<Member> memberListToAdd = getSelectedNewMembers(vbNewMembers, Member::new);
@@ -103,8 +113,11 @@ public class EditMemberListController implements Initializable {
         EventManager.getInstance().fireEditMemberListEvent(new EditMemberListEvent());
     }
 
+    /**
+     * Altera a tela para a página inicial após salvar as informações do usuário e notificar eventos.
+     * Limpa campos de entrada e atualiza a barra de progresso na tela inicial.
+     */
     public void onBtnFinishClick(){
-        // showConfirmation(true);
         EventManager.getInstance().fireShowMemberButtonsEvent(new ShowMemberButtonsEvent());
         EventManager.getInstance().fireHomeEvent(new UpdateHomeProgressEvent());
         HomeRepository.saveUserData();
@@ -113,6 +126,13 @@ public class EditMemberListController implements Initializable {
         clearInputFields();
     }
 
+    /**
+     * Retorna uma lista dos membros atualmente selecionados na interface gráfica.
+     *
+     * @param vbCurrentMembers   VBox que exibe os membros atuais na interface
+     * @param memberConstructor  Função construtora de membros
+     * @return                   Lista dos membros atualmente selecionados
+     */
     public List<Member> getSelectedCurrentMembers(VBox vbCurrentMembers, Function<String, Member> memberConstructor){
         return vbCurrentMembers.getChildren().stream()
                 .filter(node -> node instanceof HBox)
@@ -122,6 +142,13 @@ public class EditMemberListController implements Initializable {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Retorna uma lista dos novos membros atualmente selecionados na interface gráfica.
+     *
+     * @param vbNewMembers       VBox que exibe os novos membros na interface
+     * @param memberConstructor  Função construtora de membros
+     * @return                   Lista dos novos membros atualmente selecionados
+     */
     public List<Member> getSelectedNewMembers(VBox vbNewMembers, Function<String, Member> memberConstructor){
         return vbNewMembers.getChildren().stream()
                 .filter(node -> node instanceof HBox)
@@ -131,6 +158,10 @@ public class EditMemberListController implements Initializable {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * Atualiza a exibição dos membros existentes na interface.
+     * Exibe os membros atuais em um VBox na interface gráfica.
+     */
     public void onVboxCurrentMembers(){
         List<Member> memberList = Session.getInstance().getCurrentUser().getMembersList();
         if(memberList != null){
@@ -152,6 +183,10 @@ public class EditMemberListController implements Initializable {
         }
     }
 
+    /**
+     * Adiciona membros à lista baseado na seleção do ComboBox de novos membros.
+     * Atualiza a exibição dos novos membros em um VBox na interface gráfica.
+     */
     public void onVboxNewMembers(){
         if(cboNewMember.getValue() != null){
             int numberOfMembers = cboNewMember.getValue();
@@ -171,12 +206,9 @@ public class EditMemberListController implements Initializable {
         }
     }
 
-    private void showConfirmation(boolean visualization){
-        lbConfirmation.setVisible(visualization);
-        btnNo.setVisible(visualization);
-        btnYes.setVisible(visualization);
-    }
-
+    /**
+     * Configura o espaçamento e alinhamento de elementos na interface gráfica.
+     */
     private void setSpacingVbox(){
         vbCurrentMembers.setSpacing(5);
         vbCurrentMembers.setAlignment(Pos.TOP_CENTER);
@@ -184,17 +216,25 @@ public class EditMemberListController implements Initializable {
         vbNewMembers.setAlignment(Pos.TOP_CENTER);
     }
 
+    /**
+     * Limpa os campos de entrada e as confirmações na interface gráfica.
+     */
     private void clearInputFields(){
-        showConfirmation(false);
         cboNewMember.getSelectionModel().clearSelection();
         vbNewMembers.getChildren().clear();
     }
 
+    /**
+     * Inicializa a interface gráfica quando o controlador é carregado.
+     * Configura elementos gráficos, como ComboBoxes e EventManager, e define ações para interações com os membros.
+     *
+     * @param url           Localização do recurso inicializado
+     * @param resourceBundle Recurso inicializado contendo dados localizados
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         cboNewMember.getItems().addAll(1,2,3,4,5,6,7);
         setSpacingVbox();
-        showConfirmation(false);
         EventManager.getInstance().setEditMemberListEventHandler(event -> {
             onVboxCurrentMembers();
             cboNewMember.setOnAction(actionEvent -> onVboxNewMembers());
