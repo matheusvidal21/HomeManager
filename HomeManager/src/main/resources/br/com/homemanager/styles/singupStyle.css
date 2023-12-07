@@ -11,20 +11,18 @@
 }
 
 .button-styled {
-    -fx-background-color: #f3e8d2; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
-    -fx-background-color: #8C816B; /* Cor do background ao passar o mouse */
+    -fx-background-color: #8C816B;
 }
 
-.text-field-no-border { /* Define a cor de fundo como transparente */
-    /* Define a cor da borda como transparente */
-    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+.text-field-no-border {
+    -fx-background-radius: 10;
     -fx-background-color: transparent;
     -fx-border-color: #345449;
     -fx-border-width: 0px 0px 2px 0px;
@@ -32,26 +30,26 @@
 
 .text-field-member {
     -fx-border-color: #345449;
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-border-width: 0.5; /* Define a largura da borda (1 pixel, por exemplo) */
-    -fx-border-style: solid; /* Define o estilo da borda como sólida */
-    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+    -fx-border-radius: 20;
+    -fx-border-width: 0.5;
+    -fx-border-style: solid;
+    -fx-background-radius: 10;
     -fx-max-width: 280;
 }
 
 .label-styled {
-    -fx-background-color: #f3e8d2; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
 .label-names-styled {
     -fx-text-fill: #345449;
-    -fx-background-color: #f3e8d2; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
     -fx-font-size: 12px;
 }
 
@@ -59,50 +57,49 @@
     -fx-padding: 12 5 12 12;
     -fx-vbar-policy: never;
     -fx-hbar-policy: never;
-    -fx-background-color: transparent; /* Define o fundo do ScrollPane como transparente */
-    -fx-background: transparent; /* Adiciona suporte a versões mais antigas do JavaFX */
-    -fx-border-color:  #345449; /* Define a cor da borda como preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-border-width: 1; /* Define a largura da borda (1 pixel, por exemplo) */
-    -fx-border-style: solid; /* Define o estilo da borda como sólida */
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color:  #345449;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
 }
 
-.text-field-no-border{ /* Define a cor de fundo como transparente */
-    /* Define a cor da borda como transparente */
-    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+.text-field-no-border{
+    -fx-background-radius: 10;
 }
 
 .combo-box-styled {
-    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
-    -fx-border-color: #000000; /* Cor da borda preta */
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: #000000;
+    -fx-font-family: 'System';
+    -fx-font-size: 13px;
 }
 
 .combo-box-styled .list-cell {
-    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
-    -fx-text-fill: #000000; /* Cor do texto preto */
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-background-color: #f3e8d2;
+    -fx-text-fill: #000000;
+    -fx-font-family: 'System';
+    -fx-font-size: 13px;
 }
 
 .combo-box-styled .list-cell:hover {
-    -fx-background-color: #8C816B; /* Cor de fundo ao passar o mouse */
+    -fx-background-color: #8C816B;
 }
 
 .combo-box-styled .arrow-button {
-    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
-    -fx-shape: ""; /* Remove a seta padrão */
+    -fx-background-color: #f3e8d2;
+    -fx-shape: "";
 }
 
 .combo-box-styled .arrow-button .arrow {
-    -fx-background-color: #000000; /* Cor da seta preta */
+    -fx-background-color: #000000;
 }
 
 .combo-box-styled .arrow-button:hover {
-    -fx-background-color: #000000; /* Cor de fundo ao passar o mouse */
+    -fx-background-color: #000000;
 }
 
 .combo-box-styled .arrow-button:hover .arrow {
-    -fx-background-color: #f3e8d2; /* Cor da seta ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }

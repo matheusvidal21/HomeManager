@@ -1,86 +1,85 @@
 .left_pane {
-    -fx-background-color: #f3e8d2; /* Substitua #00ff00 pela cor desejada */
+    -fx-background-color: #f3e8d2;
 }
 
 .right_pane {
-    -fx-background-color: #345449; /* Substitua #00ff00 pela cor desejada */
+    -fx-background-color: #345449;
 }
 
 .button-member {
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: black; /* Borda preta */
+    -fx-background-color: #edc7f8;
+    -fx-border-color: black;
     -fx-border-width: 0.5px;
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-family: 'Dejavu Sans Condensed';
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
     -fx-min-width: 100;
     -fx-max-width: 100;
     -fx-min-height: 37;
     -fx-max-height: 37;
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
 .button-member:hover {
-    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }
 
 .label-hello {
     -fx-padding: 0 0 0 5px;
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
     -fx-font-size: 32px;
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-background-color: #edc7f8;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
 }
 
 .label-styled {
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+    -fx-background-color: #edc7f8;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
     -fx-font-size: 18px;
 }
 
 .label-result-styled {
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+    -fx-background-color: #edc7f8;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
     -fx-font-size: 13px;
     -fx-text-alignment: center;
 }
 
 .label-tasks {
-    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-family: 'System';
     -fx-font-weight: bold;
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
-    -fx-font-size: 15px; /* Tamanho da fonte */
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-size: 15px;
 }
 
 .label-progress-bar {
-    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-family: 'System';
     -fx-font-weight: bold;
     -fx-text-fill: black;
-    -fx-font-size: 14px; /* Tamanho da fonte */
+    -fx-font-size: 14px;
 }
 
 .label-daily-progress {
-    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-family: 'System';
     -fx-font-weight: bold;
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
-    -fx-font-size: 14px; /* Tamanho da fonte */
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-size: 14px;
 }
 
 .daily-task-anchor {
@@ -109,16 +108,15 @@
     -fx-max-height: 140;
 }
 
-/* Estilo para o CheckBox */
 .custom-checkbox .box {
     -fx-background-color: transparent;
-    -fx-border-color: white; /* Cor da borda */
-    -fx-border-width: 2; /* Largura da borda */
-    -fx-border-radius: 3; /* Raio da borda */
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 3;
 }
 
 .custom-checkbox:selected .box {
-    -fx-background-color: #345449; /* Cor do fundo quando selecionado */
+    -fx-background-color: #345449;
 }
 
 .custom-checkbox .mark {
@@ -126,24 +124,24 @@
 }
 
 .custom-checkbox:selected .mark {
-    -fx-background-color: white; /* Cor do "check" quando selecionado */
+    -fx-background-color: white;
 }
 
 .progress-bar {
-    -fx-control-inner-background: #edc7f8; /* Cor de fundo da barra de progresso */
-    -fx-accent: #F048CE; /* Cor da barra de progresso */
+    -fx-control-inner-background: #edc7f8;
+    -fx-accent: #F048CE;
     -fx-border-color: white;
     -fx-border-width: 1px;
     -fx-border-radius: 15.5;
 }
 
 .progress-bar .track {
-    -fx-background-color: #edc7f8; /* Cor de fundo da barra de progresso */
-    -fx-background-radius: 15; /* Raio para o fundo da barra de progresso */
+    -fx-background-color: #edc7f8;
+    -fx-background-radius: 15;
 }
 
 .progress-bar .bar {
-    -fx-background-color: #F048CE; /* Cor da barra de progresso */
-    -fx-background-insets: 0; /* Remove o preenchimento interno */
-    -fx-background-radius: 15; /* Raio para a barra de progresso */
+    -fx-background-color: #F048CE;
+    -fx-background-insets: 0;
+    -fx-background-radius: 15;
 }

@@ -1,76 +1,74 @@
 .button-styled {
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-background-color: #e0e191; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+    -fx-background-color: #e0e191;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
-    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }
 
 .button-member {
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: black; /* Borda preta */
+    -fx-background-color: #edc7f8;
+    -fx-border-color: black;
     -fx-border-width: 0.5px;
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-family: 'Dejavu Sans Condensed';
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
 .button-member:hover {
-    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }
 
 .label-confirmation{
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-background-color: #f3e8d2; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
     -fx-padding: 5px;
 }
 
 .combo-box-styled {
-    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
-    -fx-border-color: #000000; /* Cor da borda preta */
-    -fx-border-radius: 50; /* Raio para bordas arredondadas */
-    -fx-background-radius: 50; /* Raio para o background arredondado */
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: #000000;
+    -fx-border-radius: 50;
+    -fx-background-radius: 50;
+    -fx-font-family: 'System';
+    -fx-font-size: 13px;
 }
 
 .combo-box-styled .list-cell {
-    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
-    -fx-text-fill: #000000; /* Cor do texto preto */
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-size: 13px; /* Tamanho da fonte */
+    -fx-background-color: #f3e8d2;
+    -fx-text-fill: #000000;
+    -fx-font-family: 'System';
+    -fx-font-size: 13px;
 }
 
 .combo-box-styled .list-cell:hover {
-    -fx-background-color: #8C816B; /* Cor de fundo ao passar o mouse */
+    -fx-background-color: #8C816B;
 }
 
 .combo-box-styled .arrow-button {
-    -fx-background-color: #f3e8d2; /* Cor de fundo off white */
-    -fx-shape: ""; /* Remove a seta padrão */
+    -fx-background-color: #f3e8d2;
+    -fx-shape: "";
 }
 
 .combo-box-styled .arrow-button .arrow {
-    -fx-background-color: #000000; /* Cor da seta preta */
+    -fx-background-color: #000000;
 }
 
 .combo-box-styled .arrow-button:hover {
-    -fx-background-color: #000000; /* Cor de fundo ao passar o mouse */
+    -fx-background-color: #000000;
 }
 
 .combo-box-styled .arrow-button:hover .arrow {
-    -fx-background-color: #f3e8d2; /* Cor da seta ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }

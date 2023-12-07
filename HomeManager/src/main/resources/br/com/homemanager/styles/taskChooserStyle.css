@@ -1,50 +1,49 @@
 .button-styled {
-    -fx-background-color: #f3e8d2; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele  */
 .button-styled:hover {
-    -fx-background-color: #8C816B; /* Cor do background ao passar o mouse */
+    -fx-background-color: #8C816B;
 }
 
 .label-styled {
-    -fx-background-color: #f3e8d2; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-background-color: #f3e8d2;
+    -fx-border-color: transparent;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
 .label-tasks {
-    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-family: 'System';
     -fx-font-weight: bold;
-    -fx-border-color: transparent; /* Borda transparente */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
-    -fx-font-size: 15px; /* Tamanho da fonte */
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-font-size: 15px;
 }
 
 .transparent-scroll-pane {
-    -fx-background-color: transparent; /* Define o fundo do ScrollPane como transparente */
-    -fx-background: transparent; /* Adiciona suporte a versões mais antigas do JavaFX */
-    -fx-border-color: white; /* Define a cor da borda como preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-border-width: 1; /* Define a largura da borda (1 pixel, por exemplo) */
-    -fx-border-style: solid; /* Define o estilo da borda como sólida */
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: white;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
 }
 
-.text-field-no-border{ /* Define a cor de fundo como transparente */
-    -fx-border-color: white; /* Define a cor da borda como branca */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-border-width: 1; /* Define a largura da borda (1 pixel, por exemplo) */
-    -fx-border-style: solid; /* Define o estilo da borda como sólida */
-    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+.text-field-no-border{
+    -fx-border-color: white;
+    -fx-border-radius: 20;
+    -fx-border-width: 1;
+    -fx-border-style: solid;
+    -fx-background-radius: 10;
 }
 
 .scroll-pane{
-    -fx-padding: 15 5 15 15; /* Adicionando espaçamento (topo, direita, inferior, esquerda) */
+    -fx-padding: 15 5 15 15;
     -fx-background-color: transparent;
 }
 
@@ -52,16 +51,15 @@
     -fx-background-color: transparent;
 }
 
-/* Estilo para o CheckBox */
 .custom-checkbox .box {
     -fx-background-color: transparent;
-    -fx-border-color: white; /* Cor da borda */
-    -fx-border-width: 2; /* Largura da borda */
-    -fx-border-radius: 3; /* Raio da borda */
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 3;
 }
 
 .custom-checkbox:selected .box {
-    -fx-background-color: #edc7f8; /* Cor do fundo quando selecionado */
+    -fx-background-color: #edc7f8;
 }
 
 .custom-checkbox .mark {
@@ -69,10 +67,9 @@
 }
 
 .custom-checkbox:selected .mark {
-    -fx-background-color: #345449; /* Cor do "check" quando selecionado */
+    -fx-background-color: #345449;
 }
 
-.text-field-no-border{ /* Define a cor de fundo como transparente */
-    /* Define a cor da borda como transparente */
-    -fx-background-radius: 10; /* Raio para bordas arredondadas */
+.text-field-no-border{
+    -fx-background-radius: 10;
 }

@@ -150,7 +150,6 @@ public class Home implements Serializable {
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
-            // Em um ambiente real, você lidaria com essa exceção de maneira mais apropriada
             return null;
         }
     }
@@ -232,7 +231,7 @@ public class Home implements Serializable {
             int numberOfTasks = tasksPerMember + (remainingTasks > 0 ? 1 : 0);
             remainingTasks--;
 
-            // Embaralha a lista de tarefas semanais para distribuição aleatória
+            // Embaralha a lista de tarefas diárias para distribuição aleatória
             Collections.shuffle(homeAvailableTasks);
 
             // Remove as tarefas atuais do membro

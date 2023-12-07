@@ -1,53 +1,50 @@
 .left_pane {
-    -fx-background-color: #345449; /* Substitua #00ff00 pela cor desejada */
+    -fx-background-color: #345449;
 }
 
 .right_pane {
-    -fx-background-color: #f3e8d2; /* Substitua #00ff00 pela cor desejada */
+    -fx-background-color: #f3e8d2;
 }
 
 .button-styled {
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
     -fx-font-size: 15px;
-    -fx-background-color: #e0e191; /* Background off white */
-    -fx-border-color: #000000; /* Borda preta */
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
+    -fx-background-color: #e0e191;
+    -fx-border-color: #000000;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
 
-
-/* Estilo para o Botão ao passar o mouse sobre ele */
 .button-styled:hover {
     -fx-font-size: 15px;
-    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }
 
 .button-options {
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: black; /* Borda preta */
+    -fx-background-color: #edc7f8;
+    -fx-border-color: black;
     -fx-border-width: 0.5px;
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-family: 'Dejavu Sans Condensed';
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
 }
 
-/* Estilo para o Botão ao passar o mouse sobre ele (opcional) */
 .button-options:hover {
-    -fx-background-color: #D162F0; /* Cor do background ao passar o mouse */
+    -fx-background-color: #D162F0;
 }
 
 .button-member {
-    -fx-background-color: #edc7f8; /* Background off white */
-    -fx-border-color: black; /* Borda preta */
+    -fx-background-color: #edc7f8;
+    -fx-border-color: black;
     -fx-border-width: 0.5px;
-    -fx-border-radius: 10; /* Raio para bordas arredondadas */
-    -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 16px; /* Tamanho da fonte */
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-font-family: 'Dejavu Sans Condensed';
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
     -fx-min-width: 100;
     -fx-max-width: 100;
     -fx-min-height: 37;
@@ -55,71 +52,71 @@
 }
 
 .button-member:hover {
-    -fx-background-color: #f3e8d2; /* Cor do background ao passar o mouse */
+    -fx-background-color: #f3e8d2;
 }
 
 .label-styled {
-    -fx-font-family: 'Dejavu Sans Condensed'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-background-color: #e0e191; /* Background off white */
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-font-family: 'Dejavu Sans Condensed';
+    -fx-font-weight: bold;
+    -fx-background-color: #e0e191;
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
 }
 
 .label-tasks {
-    -fx-font-family: 'System'; /* Fonte */
+    -fx-font-family: 'System';
     -fx-font-weight: bold;
-    -fx-border-color: transparent; /* Borda preta */
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
-    -fx-background-radius: 20; /* Raio para o background arredondado */
+    -fx-border-color: transparent;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
 }
 
 .label-result{
-    -fx-background-radius: 10; /* Raio para o background arredondado */
-    -fx-font-family: 'System'; /* Fonte */
-    -fx-font-weight: bold; /* Negrito */
-    -fx-font-size: 15px; /* Tamanho da fonte */
+    -fx-background-radius: 10;
+    -fx-font-family: 'System';
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
 }
 
 .vbox-tasks{
-    -fx-background-color: #edc7f8; /* Background off white */
+    -fx-background-color: #edc7f8;
     -fx-border-color: transparent;
-    -fx-border-radius: 20; /* Raio para bordas arredondadas */
+    -fx-border-radius: 20;
     -fx-background-radius: 20;
 }
 
 .scroll-pane {
-    -fx-background-color: transparent; /* Define o fundo do ScrollPane como transparente */
+    -fx-background-color: transparent;
 }
 
 .scroll-pane .viewport {
-    -fx-background-color: transparent; /* Define o fundo da área visível do ScrollPane como transparente */
+    -fx-background-color: transparent;
 }
 
 .scroll-pane .content {
-    -fx-background-color: #f0f0f0; /* Define a cor de fundo do conteúdo do ScrollPane */
-    -fx-background-radius: 10; /* Define o raio da borda do conteúdo do ScrollPane */
+    -fx-background-color: #f0f0f0;
+    -fx-background-radius: 10;
 }
 
 
 .progress-bar {
-    -fx-control-inner-background: #edc7f8; /* Cor de fundo da barra de progresso */
-    -fx-accent: #345449; /* Cor da barra de progresso */
+    -fx-control-inner-background: #edc7f8;
+    -fx-accent: #345449;
     -fx-border-color: black;
     -fx-border-width: 1px;
     -fx-border-radius: 15.5;
 }
 
 .progress-bar .track {
-    -fx-background-color: #edc7f8; /* Cor de fundo da barra de progresso */
-    -fx-background-radius: 15; /* Raio para o fundo da barra de progresso */
+    -fx-background-color: #edc7f8;
+    -fx-background-radius: 15;
 }
 
 .progress-bar .bar {
-    -fx-background-color: #345449; /* Cor da barra de progresso */
-    -fx-background-insets: 0; /* Remove o preenchimento interno */
-    -fx-background-radius: 15; /* Raio para a barra de progresso */
+    -fx-background-color: #345449;
+    -fx-background-insets: 0;
+    -fx-background-radius: 15;
 }
 
 
@@ -129,26 +126,22 @@
 }
 
 .scroll-pane-member .scroll-bar:vertical {
-    -fx-background-color: #edc7f8; /* Cor de fundo da barra */
+    -fx-background-color: #edc7f8;
     -fx-background-radius: 10px;
 }
 
-/* Barra de rolagem quando é pressionada */
 .scroll-pane-member .scroll-bar:vertical:pressed {
     -fx-background-color: #888888;
 }
 
-/* Botão para rolar para cima */
 .scroll-pane-member .scroll-bar:vertical .increment-button {
-    -fx-background-color: #edc7f8; /* Cor de fundo do botão */
+    -fx-background-color: #edc7f8;
 }
 
-/* Botão para rolar para baixo */
 .scroll-pane-member .scroll-bar:vertical .decrement-button {
-    -fx-background-color: #edc7f8; /* Cor de fundo do botão */
+    -fx-background-color: #edc7f8;
 }
 
-/* Estilizando o Thumb (a alça) */
 .scroll-pane-member .scroll-bar:vertical .thumb {
-    -fx-background-color: #D162F0; /* Cor de fundo do thumb */
+    -fx-background-color: #D162F0;
 }
