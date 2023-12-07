@@ -6,6 +6,8 @@
 
 O Home Manager é um aplicativo intuitivo e prático desenvolvido para simplificar a gestão de tarefas diárias e semanais em uma casa. Com o Home Manager, os membros de uma residência podem criar perfis individuais, cadastrar outros membros da casa e colaborar para manter a organização e eficiência nas atividades do lar. ¡Sua casa, sua organização!
 
+**`Vídeo de apresentação`**: [clique aqui](https://youtu.be/6-JOVB7AtCs)
+
 ## Índice
 - 🔨 [Funcionalidades](#-funcionalidades)
 - 📁 [Estrutura de diretórios](#-estrutura-de-diretórios)
