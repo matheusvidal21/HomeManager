@@ -6,8 +6,6 @@
 
 O Home Manager é um aplicativo intuitivo e prático desenvolvido para simplificar a gestão de tarefas diárias e semanais em uma casa. Com o Home Manager, os membros de uma residência podem criar perfis individuais, cadastrar outros membros da casa e colaborar para manter a organização e eficiência nas atividades do lar. ¡Sua casa, sua organização!
 
-**`Vídeo de apresentação`**: [clique aqui](https://youtu.be/6-JOVB7AtCs)
-
 ## Índice
 - 🔨 [Funcionalidades](#-funcionalidades)
 - 📁 [Estrutura de diretórios](#-estrutura-de-diretórios)
@@ -226,5 +224,5 @@ Toda a documentação referente ao projeto pode ser encontrada na pasta [docs/do
 
 # 👥 Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/129897959?v=4" width=115><br><sub>Isabela Gomes</sub>](https://github.com/isabelamendesx) |  [<img src="https://avatars.githubusercontent.com/u/102569695?s=400&u=f20bbb53cc46ec2bae01f8d60a28492bfdccbdd5&v=4" width=115><br><sub>Matheus Vidal</sub>](https://github.com/matheusvidal21) |
+| [<img src="https://avatars.githubusercontent.com/u/102569695?s=400&u=f20bbb53cc46ec2bae01f8d60a28492bfdccbdd5&v=4" width=115><br><sub>Matheus Vidal</sub>](https://github.com/matheusvidal21) | [<img src="https://avatars.githubusercontent.com/u/129897959?v=4" width=115><br><sub>Isabela Gomes</sub>](https://github.com/isabelamendesx) |
 | :---: | :---: |
